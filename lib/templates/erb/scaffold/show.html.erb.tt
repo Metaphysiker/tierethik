@@ -1,0 +1,3 @@
+<div class="container">
+  <%%= render '<%= plural_table_name %>/show', <%= singular_table_name %>: @<%= singular_table_name %> %>
+</div>
