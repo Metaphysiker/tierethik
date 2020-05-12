@@ -1,0 +1,53 @@
+<% url_cover = image_url("pigs.jpg") %>
+
+<section class="page-cover-bg" style="background-image: url('<%= url_cover %>'); height: 500px;">
+    <div class="container d-flex align-items-start justify-content-center h-100 pt-2">
+
+        <%#= image_tag("logo_stinah_ws_vektor.png", class: "img-fluid mb-4 rounded overlay-darker", style: "height: 180px;") %>
+
+    </div>
+</section>
+
+<div class="container mb-3">
+  <div class="row">
+    <div class="col-md-4 col-sm-12">
+      <div class="card text-white a-color mb-3 mt-n6 pb-2 p-2 rounded-0">
+        <div class="card-body">
+          <p class="spaced-letters text-light">
+            <strong>HERZLICH WILLKOMMEN</strong>
+            <hr align="left" width="10%" class="bg-light">
+          </p>
+          <p class="card-text">Die Stiftung Tiere in Not - Animal Help (Stinah) setzt sich dafür ein, dass die Stellung der Tiere als Mitlebewesen gefestigt wird. Auf unserem Lebenshof bieten wir über 100 Tieren einenPlatz, an dem sie vor Ausbeutung geschützt sind und ein Leben in Würde führen können.</p>
+          <p class="card-text text-light">
+            <strong>
+              Für Ihr Interesse und Ihren Einsatz für Tiere danken wir Ihnen herzlich!
+            </strong>
+          </p>
+        </div>
+      </div>
+      <%= image_tag("pig_cute.png", class: "img-fluid mt-n3") %>
+    </div>
+
+    <div class="col-md-8 col-sm-12 d-flex ">
+      <div class="row">
+      <div class="col-12 mb-5">
+        <div class="mt-n7 p-2">
+          <div class="float-right mr-5">
+            <%= link_to root_path do %>
+              <button type="button" class="btn c-color btn-circle btn-xl text-white spaced-letters">
+                <strong>AKTIV<br /> WERDEN! <br /></strong>
+                <hr align="center" width="20px" class="bg-light">
+              </button>
+            <% end %>
+          </div>
+        </div>
+      </div>
+        <div class="align-self-end">
+          <div class="col-12">
+              <%#= render "posts/horizontal_card", post: Post.last if Post.last.present? %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
