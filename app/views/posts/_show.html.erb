@@ -1,3 +1,16 @@
+<div class="container pt-3">
+  <h1 class="text-h-color spaced-letters font-weight-light"><%= post.title.upcase %></h1>
+  <p class="">
+
+    <%= post.description %>
+
+  </p>
+  <p>
+  <%= simple_format(post.content) %>
+  </p>
+</div>
+
+
 <div class="card my-3 b-color rounded-0">
 <div class="card-body b-color">
   <h3 class="card-title"><%= post.title %></h3>

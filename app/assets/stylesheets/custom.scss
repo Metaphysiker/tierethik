@@ -13,6 +13,7 @@ $d-color: #9a76a3;
 $e-color: #9a7e59;
 $f-color: #5fa778;
 $g-color: #B4C760;
+$h-color: #27945E;
 
 body {
   //background-color: $base-color;
@@ -33,6 +34,10 @@ body {
 
 .text-a-color{
   color: lighten($a-color, 20%);
+}
+
+.text-h-color{
+  color: $h-color;
 }
 
 

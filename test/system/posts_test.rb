@@ -15,6 +15,7 @@ class PostsTest < ApplicationSystemTestCase
     click_on "New Post"
 
     fill_in "Content", with: @post.content
+    fill_in "Description", with: @post.description
     fill_in "Title", with: @post.title
     click_on "Create Post"
 
@@ -27,6 +28,7 @@ class PostsTest < ApplicationSystemTestCase
     click_on "Edit", match: :first
 
     fill_in "Content", with: @post.content
+    fill_in "Description", with: @post.description
     fill_in "Title", with: @post.title
     click_on "Update Post"
 

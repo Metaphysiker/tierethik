@@ -1,10 +1,23 @@
+<div class="container pt-3">
+  <h1 class="text-h-color spaced-letters font-weight-light"><%%= <%= singular_table_name %>.title.upcase %></h1>
+  <p class="">
+
+    <%%= <%= singular_table_name %>.description %>
+
+  </p>
+  <p>
+  <%%= simple_format(<%= singular_table_name %>.content) %>
+  </p>
+</div>
+
+
 <div class="card my-3 b-color rounded-0">
 <div class="card-body b-color">
   <h3 class="card-title"><%%= post.title %></h3>
     <div class="text-justify">
       <p class="card-text"><%%= post.content %></p>
   </div>
-    <% attributes.reject(&:password_digest?).reject { |n| ["title","content"].include? n.name }.each do |attribute| -%>
+    <% attributes.reject(&:password_digest?).reject { |n| ["title","content", "description"].include? n.name }.each do |attribute| -%>
     <p>
     <strong><%= attribute.human_name %>:</strong>
   <% if attribute.attachment? -%>
