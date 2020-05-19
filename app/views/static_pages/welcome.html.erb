@@ -11,7 +11,7 @@
 <div class="container mb-3">
   <div class="row">
     <div class="col-md-4 col-sm-12">
-      <div class="card text-white a-color mb-3 mt-n6 pb-2 p-2 rounded-0">
+      <div class="card text-white a-color mb-3 mt-n6 pb-5 p-2 rounded-0">
         <div class="card-body">
           <p class="spaced-letters text-light">
             <strong>HERZLICH WILLKOMMEN</strong>
@@ -43,7 +43,7 @@
       </div>
         <div class="align-self-end">
           <div class="col-12">
-              <%= render "posts/horizontal_card", post: Post.last if Post.last.present? %>
+              <%= render "posts/card.html.erb", post: Post.last if Post.last.present? %>
           </div>
         </div>
       </div>
