@@ -17,6 +17,7 @@ RUBY
     end
 
     gem "mini_magick"
+    gem "font-awesome-rails"
     run "bundle install"
   end
 end
