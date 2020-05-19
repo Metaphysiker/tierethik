@@ -1,9 +1,9 @@
+<% # rails g erb:scaffold Post title:string description:text content:text %>
+
 <div class="container pt-3">
-  <h1 class="text-h-color spaced-letters font-weight-light"><%= post.title.upcase %></h1>
-  <p class="">
-
+  <h3 class="text-h-color spaced-letters font-weight-light text-uppercase"><%= post.title %></h3>
+  <p class="font-weight-bold text-muted pt-3">
     <%= post.description %>
-
   </p>
   <p>
   <%= simple_format(post.content) %>

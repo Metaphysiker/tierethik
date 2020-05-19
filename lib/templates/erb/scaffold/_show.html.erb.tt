@@ -1,9 +1,9 @@
+<%% # rails g erb:scaffold <%= singular_table_name.capitalize %> title:string description:text content:text %>
+
 <div class="container pt-3">
-  <h1 class="text-h-color spaced-letters font-weight-light"><%%= <%= singular_table_name %>.title.upcase %></h1>
-  <p class="">
-
+  <h3 class="text-h-color spaced-letters font-weight-light text-uppercase"><%%= <%= singular_table_name %>.title %></h3>
+  <p class="font-weight-bold text-muted pt-3">
     <%%= <%= singular_table_name %>.description %>
-
   </p>
   <p>
   <%%= simple_format(<%= singular_table_name %>.content) %>
