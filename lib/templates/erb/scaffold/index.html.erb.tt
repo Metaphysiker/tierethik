@@ -9,6 +9,6 @@
         <%%= link_to 'Neuer Eintrag', new_<%= singular_table_name %>_path, class: "btn btn-primary my-2" %>
       </div><hr />
     <%% end %>
-    <%%= render partial: "<%= plural_table_name %>/show", collection: @<%= plural_table_name %>, as: :<%= singular_table_name %> %>
+    <%%= render partial: "<%= plural_table_name %>/card", collection: @<%= plural_table_name %>, as: :<%= singular_table_name %> %>
   </div>
 </div>

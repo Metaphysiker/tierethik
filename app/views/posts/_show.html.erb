@@ -19,16 +19,6 @@
   <p>
   <%= simple_format(post.content) %>
   </p>
-</div>
-
-
-<div class="card my-3 b-color rounded-0">
-<div class="card-body b-color">
-  <h3 class="card-title"><%= post.title %></h3>
-    <div class="text-justify">
-      <p class="card-text"><%= post.content %></p>
-  </div>
-    
   <% if is_current_user_admin? %>
     <div class="text-center m-2">
       <hr />
@@ -36,5 +26,4 @@
       <%= link_to 'Eintrag löschen', post_path(post), method: :delete, data: {confirm: 'Bist du sicher?'}, class: "btn btn-danger m-2" %>
     </div>
   <% end %>
-
 </div>

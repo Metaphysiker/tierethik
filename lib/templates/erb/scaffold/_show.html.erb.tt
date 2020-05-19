@@ -19,31 +19,6 @@
   <p>
   <%%= simple_format(<%= singular_table_name %>.content) %>
   </p>
-</div>
-
-
-<div class="card my-3 b-color rounded-0">
-<div class="card-body b-color">
-  <h3 class="card-title"><%%= post.title %></h3>
-    <div class="text-justify">
-      <p class="card-text"><%%= post.content %></p>
-  </div>
-    <% attributes.reject(&:password_digest?).reject { |n| ["title","content", "description"].include? n.name }.each do |attribute| -%>
-    <p>
-    <strong><%= attribute.human_name %>:</strong>
-  <% if attribute.attachment? -%>
-    <%%= link_to <%= singular_table_name %>.<%= attribute.column_name %>.filename, <%= singular_table_name %>.<%= attribute.column_name %> if <%= singular_table_name %>.<%= attribute.column_name %>.attached? %>
-  <% elsif attribute.attachments? -%>
-    <%% <%= singular_table_name %>.<%= attribute.column_name %>.each do |<%= attribute.singular_name %>| %>
-      <div><%%= link_to <%= attribute.singular_name %>.filename, <%= attribute.singular_name %> %></div>
-    <%% end %>
-  <% else -%>
-    <%%= <%= singular_table_name %>.<%= attribute.column_name %> %>
-  <% end -%>
-  </p>
-
-  <% end -%>
-
   <%% if is_current_user_admin? %>
     <div class="text-center m-2">
       <hr />
@@ -51,5 +26,4 @@
       <%%= link_to 'Eintrag löschen', <%= singular_table_name %>_path(<%= singular_table_name %>), method: :delete, data: {confirm: 'Bist du sicher?'}, class: "btn btn-danger m-2" %>
     </div>
   <%% end %>
-
 </div>
