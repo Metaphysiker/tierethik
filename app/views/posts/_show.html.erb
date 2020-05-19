@@ -1,5 +1,15 @@
 <% # rails g erb:scaffold Post title:string description:text content:text %>
 
+<% url_cover = post.cover.attached? ? rails_blob_url(post.cover) : image_url("pigs.jpg") %>
+
+<section class="page-cover-bg" style="background-image: url('<%= url_cover %>'); height: <%= ActiveStorage::Analyzer::ImageAnalyzer.new(page.cover).metadata[:height] %>px;">
+    <div class="container d-flex align-items-start justify-content-center h-100 pt-2">
+
+        <%#= image_tag("logo_stinah_ws_vektor.png", class: "img-fluid mb-4 rounded overlay-darker", style: "height: 180px;") %>
+
+    </div>
+</section>
+
 <div class="container pt-3">
   <h3 class="text-h-color spaced-letters font-weight-light text-uppercase"><%= post.title %></h3>
   <p class="font-weight-bold text-muted pt-3">
