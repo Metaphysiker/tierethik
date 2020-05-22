@@ -3,13 +3,16 @@
 <%% url_cover = <%= singular_table_name %>.cover.attached? ? rails_blob_url(<%= singular_table_name %>.cover) : image_url("pigs.jpg") %>
 <%% height_of_cover = post.cover.attached? ? ActiveStorage::Analyzer::ImageAnalyzer.new(post.cover).metadata[:height] : 500 %>
 
-<section class="page-cover-bg" style="background-image: url('<%%= url_cover %>'); height: <%%= height_of_cover %>px;">
-    <div class="container d-flex align-items-start justify-content-center h-100 pt-2">
+<% if @cover_display == "section" %>
+  <section class="page-cover-bg" style="background-image: url('<%%= url_cover %>'); height: <%%= height_of_cover %>px;">
+      <div class="container d-flex align-items-start justify-content-center h-100 pt-2">
 
-        <%%#= image_tag("logo_stinah_ws_vektor.png", class: "img-fluid mb-4 rounded overlay-darker", style: "height: 180px;") %>
+          <%%#= image_tag("logo_stinah_ws_vektor.png", class: "img-fluid mb-4 rounded overlay-darker", style: "height: 180px;") %>
 
-    </div>
-</section>
+      </div>
+  </section>
+<% end %>
+
 
 <div class="container pt-3">
   <h3 class="text-h-color spaced-letters font-weight-light text-uppercase"><%%= <%= singular_table_name %>.title %></h3>
