@@ -4,6 +4,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.3'
 
 gem "breadcrumbs_on_rails"
+gem 'inline_svg'
+gem 'meta-tags'
 
 gem 'devise'
 gem 'simple_form'

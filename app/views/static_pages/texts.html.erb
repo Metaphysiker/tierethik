@@ -1,0 +1,51 @@
+<% url_cover = image_url("elephants2.jpg") %>
+
+
+  <section class="d-none d-lg-block page-cover-bg b-color" style="background-image: url('<%= url_cover %>'); height: 500px;">
+      <div class="container d-flex align-items-start justify-content-center h-100 pt-2">
+
+          <%#= image_tag("logo_stinah_ws_vektor.png", class: "img-fluid mb-4 rounded overlay-darker", style: "height: 180px;") %>
+
+      </div>
+  </section>
+
+  <section class="d-sm-block d-lg-none page-cover-bg b-color" style="background-image: url('<%= url_cover %>'); height: 500px; background-position: left center !important;">
+      <div class="container d-flex align-items-start justify-content-center h-100 pt-2">
+
+          <%#= image_tag("logo_stinah_ws_vektor.png", class: "img-fluid mb-4 rounded overlay-darker", style: "height: 180px;") %>
+
+      </div>
+  </section>
+
+  <div class="container pt-4">
+    <h3 class="text-h-color spaced-letters font-weight-light text-uppercase"><%= @page_title %></h3>
+    <p class="font-weight-bold text-muted pt-3">
+      <%= @page_description %>
+    </p>
+    <h5 class="text-h-color spaced-letters font-weight-light text-uppercase pt-3">Einführungstexte</h5>
+    <p>
+      <%= link_to "Was ist Tierethik? - Eine kurze Einführung", "https://www.philosophie.ch/artikel/was-ist-tierethik" %>
+    </p>
+    <p>
+      <strong>Buchempfehlung: </strong> <%= link_to "\"Tierethik zur Einführung\"  - von Herwig Grimm und Markus Wild ", "https://www.junius-verlag.de/Programm/Tierethik-zur-Einfuehrung.html" %>
+    </p>
+    <h5 class="text-h-color spaced-letters font-weight-light text-uppercase pt-3">Klassische Positionen der Tierethik</h5>
+    <p>
+      <%= link_to "\"Gleicheit für Tiere?\" - von Peter Singer", "https://www.philosophie.ch/artikel/was-ist-tierethik" %>
+    </p>
+    <p>
+      <%= link_to "\"The Case for Animal Rights\" - von Tom Regan", "https://www.philosophie.ch/artikel/was-ist-tierethik" %>
+    </p>
+    <p>
+      <%= link_to "\"Virtue Ethics and the Treatment of Animals\" - von Rosalind Hursthouse", "https://www.philosophie.ch/artikel/was-ist-tierethik" %>
+    </p>
+    <p>
+      <%= link_to "\"Zoopolis\" - von Sue Donaldson und Will Kymlicka", "https://www.philosophie.ch/artikel/staatsbuergerschaft-fuer-tiere" %>
+    </p>
+    <h5 class="text-h-color spaced-letters font-weight-light text-uppercase pt-3">Texte für Aktivist*innen</h5>
+    <p>
+      <%= link_to "Was ist Tierethik? - Eine kurze Einführung", "https://www.philosophie.ch/artikel/was-ist-tierethik" %>
+    </p>
+  </div>
+
+  <%= render "shared/info_cards" %>
