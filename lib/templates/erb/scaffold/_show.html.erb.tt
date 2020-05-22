@@ -4,7 +4,6 @@
 <%% height_of_cover = <%= singular_table_name %>.cover.attached? ? ActiveStorage::Analyzer::ImageAnalyzer.new(<%= singular_table_name %>.cover).metadata[:height] : 500 %>
 
 <% if @cover_display == "section" %>
-<% byebug %>
   <section class="page-cover-bg" style="background-image: url('<%%= url_cover %>'); height: <%%= height_of_cover %>px;">
       <div class="container d-flex align-items-start justify-content-center h-100 pt-2">
 
