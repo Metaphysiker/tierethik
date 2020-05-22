@@ -16,14 +16,14 @@
 
 <div class="container pt-3">
 
-  
+
 
   <h3 class="text-h-color spaced-letters font-weight-light text-uppercase"><%= post.title %></h3>
   <p class="font-weight-bold text-muted pt-3">
     <%= post.description %>
   </p>
   <p>
-  <%= simple_format(post.content) %>
+  <%= raw Sanitize.fragment(post.content, Sanitize::Config::RELAXED) %>
   </p>
   <% if is_current_user_admin? %>
     <div class="text-center m-2">
