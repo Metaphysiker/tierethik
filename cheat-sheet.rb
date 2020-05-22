@@ -1,5 +1,11 @@
 rails g scaffold Post title:string description:text content:text
 
+#breites Bild
+rails g scaffold Post title:string description:text content:text --cover_display section
+
+#Bild oben
+rails g scaffold Page title:string description:text content:text --cover_display top
+
 rails g add_cover Post
 
 rails g tinymce Post

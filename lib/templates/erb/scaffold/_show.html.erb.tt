@@ -1,9 +1,10 @@
 <%% # rails g erb:scaffold <%= singular_table_name.capitalize %> title:string description:text content:text %>
 
 <%% url_cover = <%= singular_table_name %>.cover.attached? ? rails_blob_url(<%= singular_table_name %>.cover) : image_url("pigs.jpg") %>
-<%% height_of_cover = post.cover.attached? ? ActiveStorage::Analyzer::ImageAnalyzer.new(post.cover).metadata[:height] : 500 %>
+<%% height_of_cover = <%= singular_table_name %>.cover.attached? ? ActiveStorage::Analyzer::ImageAnalyzer.new(<%= singular_table_name %>.cover).metadata[:height] : 500 %>
 
 <% if @cover_display == "section" %>
+<% byebug %>
   <section class="page-cover-bg" style="background-image: url('<%%= url_cover %>'); height: <%%= height_of_cover %>px;">
       <div class="container d-flex align-items-start justify-content-center h-100 pt-2">
 
@@ -15,6 +16,15 @@
 
 
 <div class="container pt-3">
+
+  <% if @cover_display == "top" %>
+    <%% if <%= singular_table_name%>.cover.attached? %>
+      <div class="text-center">
+        <%%= image_tag <%= singular_table_name%>.cover, class: "img-fluid" %>
+      </div>
+    <%% end %>
+  <% end %>
+
   <h3 class="text-h-color spaced-letters font-weight-light text-uppercase"><%%= <%= singular_table_name %>.title %></h3>
   <p class="font-weight-bold text-muted pt-3">
     <%%= <%= singular_table_name %>.description %>

@@ -53,8 +53,8 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem 'mini_magick'
 gem "font-awesome-rails"
 
 gem 'tinymce-rails'
 gem 'sanitize'
+gem 'mini_magick'

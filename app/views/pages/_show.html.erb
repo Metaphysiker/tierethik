@@ -1,0 +1,33 @@
+<% # rails g erb:scaffold Page title:string description:text content:text %>
+
+<% url_cover = page.cover.attached? ? rails_blob_url(page.cover) : image_url("pigs.jpg") %>
+<% height_of_cover = page.cover.attached? ? ActiveStorage::Analyzer::ImageAnalyzer.new(page.cover).metadata[:height] : 500 %>
+
+
+
+
+<div class="container pt-3">
+
+  
+    <% if page.cover.attached? %>
+      <div class="text-center">
+        <%= image_tag page.cover, class: "img-fluid" %>
+      </div>
+    <% end %>
+  
+
+  <h3 class="text-h-color spaced-letters font-weight-light text-uppercase"><%= page.title %></h3>
+  <p class="font-weight-bold text-muted pt-3">
+    <%= page.description %>
+  </p>
+  <p>
+  <%= simple_format(page.content) %>
+  </p>
+  <% if is_current_user_admin? %>
+    <div class="text-center m-2">
+      <hr />
+      <%= link_to 'Eintrag bearbeiten', edit_page_path(page), class: "btn btn-primary m-2" %>
+      <%= link_to 'Eintrag löschen', page_path(page), method: :delete, data: {confirm: 'Bist du sicher?'}, class: "btn btn-danger m-2" %>
+    </div>
+  <% end %>
+</div>
