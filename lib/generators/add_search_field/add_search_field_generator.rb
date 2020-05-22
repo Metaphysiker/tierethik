@@ -44,6 +44,11 @@ end
   def add_search_controller
     create_file "app/controllers/#{singular_table_name}_search_controller.rb" do <<-'RUBY'
 class #{singular_table_name.capitalize}SearchController < ApplicationController
+
+  def search_example
+    @#{plural_table_name} = #{singular_table_name.capitalize}.all
+  end
+
   def search
     if params[:search_inputs].present?
       @search_inputs = OpenStruct.new(params[:search_inputs])
@@ -109,6 +114,18 @@ $( records_div ).fadeOut( "fast", function() {
     });
 
 });
+      RUBY
+    end
+  end
+
+  def add_search_example
+    create_file "app/views/#{singular_table_name}_search/search_example.html.erb" do <<-'RUBY'
+<div class="container">
+  <%= render "#{singular_table_name}_search/search_form", #{plural_table_name}: @#{plural_table_name} %>
+  <div class="#{plural_table_name}">
+    <%= render partial: "#{plural_table_name}/show", collection: @#{plural_table_name}, as: :#{singular_table_name} %>
+  </div>
+</div>
       RUBY
     end
   end
