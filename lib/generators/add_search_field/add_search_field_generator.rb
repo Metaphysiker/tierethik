@@ -44,14 +44,13 @@ end
   def add_search_controller
     create_file "app/controllers/#{singular_table_name}_search_controller.rb" do <<-'RUBY'
 class #{singular_table_name.capitalize}SearchController < ApplicationController
-  def search_#{plural_table_name}
+  def search
     if params[:search_inputs].present?
       @search_inputs = OpenStruct.new(params[:search_inputs])
     else
       @search_inputs = OpenStruct.new()
     end
   @#{plural_table_name} = #{singular_table_name}Search.new(@search_inputs).search
-  #@animals = @animals.page(params[:page])
 
     respond_to do |format|
       format.js
@@ -62,8 +61,60 @@ end
     end
   end
 
+  def add_search_form
+    create_file "app/views/#{singular_table_name}_search/_search_form.html.erb" do <<-'RUBY'
+<%= simple_form_for :search_inputs, {url: search_#{plural_table_name}_path, method: :get, remote: true} do |f| %>
+  <%= f.text_field :search_term, placeholder: "Stöbern", autocomplete: :off, class: "form-control" %>
+  <%= f.submit "Suchen", id: "trigger_search", class: "btn btn-primary" %>
+<% end %>
+
+
+<script>
+    $(document).ready(function(){
+      var records_div = ".#{plural_table_name}"
+      var search_records = "#search_inputs_search_term";
+      var trigger_records = "#trigger_search";
+
+      $( trigger_records ).click(function() {
+        if ($( records_div ).html() != "<div class=\"mx-auto loader\"></div>"){
+          $( records_div ).html( "<div class=\"mx-auto loader\"></div>" );
+        }
+      });
+
+        $( search_records ).keyup(function() {
+          if ($( search_records ).val().length > 3){
+            if ($( records_div ).html() != "<div class=\"mx-auto loader\"></div>"){
+              $( records_div ).html( "<div class=\"mx-auto loader\"></div>" );
+            }
+            $(trigger_records).click();
+          }
+        });
+    });
+</script>
+
+      RUBY
+    end
+  end
+
+  def add_js_for_form
+    create_file "app/views/#{singular_table_name}_search/search.js.erb" do <<-'RUBY'
+var records_div = ".#{plural_table_name}";
+
+$( records_div ).fadeOut( "fast", function() {
+
+    content = $("<%= escape_javascript( render partial: "#{plural_table_name}/card", collection: @#{plural_table_name}, as: :#{singular_table_name} ) %>")
+
+    $(records_div).fadeOut("fast", function(){
+      $(records_div).empty().append(content).fadeIn("fast");
+    });
+
+});
+      RUBY
+    end
+  end
+
   def add_route
-    route "get '/#{plural_table_name}/search_#{plural_table_name}', to: '#{plural_table_name}#search_animals', as: '#{plural_table_name}_animals'"
+    route "get '/#{singular_table_name}_search/search', to: '#{singular_table_name}_search#search', as: 'search_#{plural_table_name}'"
   end
 
 end
