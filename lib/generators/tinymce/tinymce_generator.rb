@@ -4,6 +4,7 @@ class TinymceGenerator < Rails::Generators::NamedBase
 
   def add_gem
     gem "tinymce-rails"
+    gem "sanitize"
     run "bundle install"
   end
 
@@ -27,6 +28,11 @@ plugins:
       append_to_file "app/views/#{plural_table_name}/_form.html.erb" do
         "<%= tinymce_assets %> \n <%= tinymce %>"
       end
+    end
+
+    def change_view_file
+      @name_of_attribute = options['name_of_attribute']
+      gsub_file "app/views/#{plural_table_name}/_show.html.erb", "<%= #{singular_table_name}.#{@name_of_attribute} %>", "<%= raw Sanitize.fragment(#{singular_table_name}.#{@name_of_attribute}, Sanitize::Config::RELAXED) %>"
     end
 
   end

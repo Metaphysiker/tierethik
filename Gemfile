@@ -57,3 +57,4 @@ gem 'mini_magick'
 gem "font-awesome-rails"
 
 gem 'tinymce-rails'
+gem 'sanitize'

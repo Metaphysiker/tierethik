@@ -17,7 +17,7 @@
     <%= post.description %>
   </p>
   <p>
-  <%= simple_format(post.content) %>
+  <%= raw Sanitize.fragment(post.content, Sanitize::Config::RELAXED) %>
   </p>
   <% if is_current_user_admin? %>
     <div class="text-center m-2">
