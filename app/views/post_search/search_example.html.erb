@@ -1,0 +1,6 @@
+<div class="container">
+  <%= render "post_search/search_form", posts: @posts %>
+  <div class="posts">
+    <%= render partial: "posts/show", collection: @posts, as: :post %>
+  </div>
+</div>
