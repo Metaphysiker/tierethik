@@ -21,8 +21,7 @@ plugins:
     end
 
     def change_form_file
-        @name_of_attribute = options['name_of_attribute']
-
+      @name_of_attribute = options['name_of_attribute']
       gsub_file "app/views/#{plural_table_name}/_form.html.erb", "<%= f.input :#{@name_of_attribute} %>", "<%= f.text_area :#{@name_of_attribute}, :class => \"tinymce\", :rows => 40, :cols => 120 %>"
 
       append_to_file "app/views/#{plural_table_name}/_form.html.erb" do
