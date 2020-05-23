@@ -20,6 +20,14 @@ body {
 	//font-family: Nunito;
 }
 
+blockquote {
+  border-left: 2px solid #ccc;
+  margin-left: 1rem;
+  padding-left: 1rem;
+}
+
+
+
 .base-color {
   background-color: $base-color;
 }
