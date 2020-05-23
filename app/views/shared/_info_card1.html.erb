@@ -1,0 +1,19 @@
+<div class="card bg-light no-gutters mb-3 b-color rounded-0">
+  <div class="card-body b-color text-center" style="padding-top: 0px;">
+    <p class="text-center">
+      <div class="info-card-icon text-center">
+            <%= inline_svg_tag "icon_beratung_sz.svg", class: '' %>
+        </div>
+    </p>
+    <h4 class="spaced-letters text-a-color">
+      <strong>
+        <%= "Beratung".upcase %>
+      </strong>
+    </h4>
+    <p>
+      <%= link_to root_path do %>
+        <button type="button" class="mt-3 btn btn-e-color btn-sm spaced-letters text-nowrap rounded-0"><strong>MEHR ERFAHREN</strong> <%= fa_icon "chevron-right", class: "ml-2" %></button>
+      <% end %>
+    </p>
+  </div>
+</div>
