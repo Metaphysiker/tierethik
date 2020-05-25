@@ -31,7 +31,7 @@ FILE
 
 
     create_file "app/models/#{@third_model_name.singularize}.rb" do <<-FILE
-class #{@third_model_name.singularize.camelize}
+class #{@third_model_name.singularize.camelize}  < ApplicationRecord
   belongs_to :#{@first_model.downcase.singularize}
   belongs_to :#{@second_model.downcase.singularize}
 end
