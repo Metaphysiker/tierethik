@@ -10,6 +10,16 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
+    image = @post.cover.attached? ? rails_blob_path(@post.cover) : ActionController::Base.helpers.asset_url("pigs.jpg", type: :image)
+
+    set_meta_tags title: @post.title, reverse: true,
+              description: @post.description,
+              og: {
+                title: :title,
+                description: :description,
+                url: post_url(@post),
+                image: image
+              }
   end
 
   # GET /posts/new

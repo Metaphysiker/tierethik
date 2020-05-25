@@ -10,6 +10,16 @@ class PagesController < ApplicationController
   # GET /pages/1
   # GET /pages/1.json
   def show
+    image = @page.cover.attached? ? rails_blob_path(@page.cover) : ActionController::Base.helpers.asset_url("pigs.jpg", type: :image)
+
+    set_meta_tags title: @page.title, reverse: true,
+              description: @page.description,
+              og: {
+                title: :title,
+                description: :description,
+                url: page_url(@page),
+                image: image
+              }
   end
 
   # GET /pages/new
