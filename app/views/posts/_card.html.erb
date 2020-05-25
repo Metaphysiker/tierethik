@@ -4,11 +4,11 @@
   <% end %>
 
   <div class="card-body">
-    <p class="card-text">
+    <p class="card-text text-dark">
       <%= l(post.created_at, format: "%d.%m.%Y") %> <span class="badge e-color rounded-0 text-white"><%= "Mitteilungen".upcase %></span>
     </p>
     <h5 class="card-title spaced-letters"><%= post.title.upcase %></h5>
-    <p class="card-text"><%= post.description %></p>
+    <p class="card-text text-dark"><%= post.description %></p>
     <p>
       <%= link_to post_path(post) do %>
         <button type="button" class="btn btn-e-color btn-sm spaced-letters text-nowrap rounded-0">MEHR ERFAHREN <%= fa_icon "chevron-right", class: "ml-2" %></button>
