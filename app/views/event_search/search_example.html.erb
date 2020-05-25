@@ -1,0 +1,6 @@
+<div class="container">
+  <%= render "event_search/search_form", events: @events %>
+  <div class="events">
+    <%= render partial: "events/show", collection: @events, as: :event %>
+  </div>
+</div>

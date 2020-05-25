@@ -1,0 +1,11 @@
+var records_div = ".events";
+
+$( records_div ).fadeOut( "fast", function() {
+
+    content = $("<%= escape_javascript( render partial: "events/card", collection: @events, as: :event ) %>")
+
+    $(records_div).fadeOut("fast", function(){
+      $(records_div).empty().append(content).fadeIn("fast");
+    });
+
+});

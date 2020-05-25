@@ -1,0 +1,6 @@
+<div class="container-fluid bg-light py-5">
+  <div class="container">
+    <h5 class="spaced-letters mb-4"><%= "Kommende Events".upcase %></h5>
+      <%= render "events/cards_in_group_of_3", events: Event.incoming %>
+  </div>
+</div>

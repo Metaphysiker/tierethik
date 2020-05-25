@@ -1,0 +1,29 @@
+<%= simple_form_for :search_inputs, {url: search_events_path, method: :get, remote: true} do |f| %>
+  <%= f.text_field :search_term, placeholder: "Stöbern", autocomplete: :off, class: "form-control" %>
+  <%= f.submit "Suchen", id: "trigger_search", class: "btn btn-primary" %>
+<% end %>
+
+
+<script>
+    $(document).ready(function(){
+      var records_div = ".events"
+      var search_records = "#search_inputs_search_term";
+      var trigger_records = "#trigger_search";
+
+      $( trigger_records ).click(function() {
+        if ($( records_div ).html() != "<div class="mx-auto loader"></div>"){
+          $( records_div ).html( "<div class="mx-auto loader"></div>" );
+        }
+      });
+
+        $( search_records ).keyup(function() {
+          if ($( search_records ).val().length > 3){
+            if ($( records_div ).html() != "<div class="mx-auto loader"></div>"){
+              $( records_div ).html( "<div class="mx-auto loader"></div>" );
+            }
+            $(trigger_records).click();
+          }
+        });
+    });
+</script>
+

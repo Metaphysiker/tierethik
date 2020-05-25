@@ -12,6 +12,8 @@ rails g tinymce Post
 
 rails g tinymce Post --name_of_attribute content
 
+rails g add_search_field Post
+
 <section class="page-cover-bg" style="background-image: url('<%%= url_cover %>'); height: <%%= height_of_cover %>px;">
     <div class="container d-flex align-items-start justify-content-center h-100 pt-2">
 

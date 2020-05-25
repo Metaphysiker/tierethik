@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get '/event_search/search_example', to: 'event_search#search_example'
+  get '/event_search/search', to: 'event_search#search', as: 'search_events'
+  resources :events
   resources :tags
   resources :pages
   get '/post_search/search_example', to: 'post_search#search_example'
