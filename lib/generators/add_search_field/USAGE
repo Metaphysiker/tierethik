@@ -1,8 +1,8 @@
 Description:
-    Explain the generator
+    Creates a search field with ajax.
 
 Example:
-    rails generate add_search_field Thing
+    rails generate add_search_field Post
 
     This will create:
         what/will/it/create

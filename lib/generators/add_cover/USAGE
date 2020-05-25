@@ -1,8 +1,8 @@
 Description:
-    Explain the generator
+    Adds Cover
 
 Example:
-    rails generate add_cover Thing
+    rails g add_cover Post
 
     This will create:
-        what/will/it/create
+        Adds model_name.cover
