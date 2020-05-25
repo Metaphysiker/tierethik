@@ -1,8 +1,8 @@
 Description:
-    Explain the generator
+    creates_many_to_many_relationship. Expects models to exist
 
 Example:
-    rails generate add_many_to_many_relationship Thing
+    rails g add_many_to_many_relationship Post --model Tag
 
     This will create:
         what/will/it/create

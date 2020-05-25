@@ -23,7 +23,7 @@ has_many :#{@second_model.downcase.pluralize}, :through => :#{@third_model_name}
 FILE
     end
 
-    inject_into_file "app/models/#{@second_model.downcase.singularize}.rb", after: "class #{@first_model.capitalize} < ApplicationRecord\n" do <<-FILE
+    inject_into_file "app/models/#{@second_model.downcase.singularize}.rb", after: "class #{@second_model.capitalize} < ApplicationRecord\n" do <<-FILE
 has_many :#{@third_model_name}
 has_many :#{@first_model.downcase.pluralize}, :through => :#{@third_model_name}
 FILE

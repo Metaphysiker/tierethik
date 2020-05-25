@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :tags
   resources :pages
   get '/post_search/search_example', to: 'post_search#search_example'
   get '/post_search/search', to: 'post_search#search', as: 'search_posts'
