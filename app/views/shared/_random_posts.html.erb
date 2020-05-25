@@ -1,0 +1,6 @@
+<div class="container-fluid a-color py-5">
+  <div class="container">
+    <h5 class="spaced-letters text-white mb-4"><%= "Weitere Artikel".upcase %></h5>
+      <%= render "posts/cards_in_group_of_3", posts: Post.where(id: Post.pluck(:id).sample(3)) %>
+  </div>
+</div>
