@@ -1,0 +1,23 @@
+<div class="card b-color mb-2 h-100">
+  <% if post.cover.attached? %>
+    <%= image_tag post.cover, class: "card-img" %>
+  <% end %>
+
+  <div class="card-body d-flex flex-column">
+    <p class="card-text text-dark">
+      <%= l(post.created_at, format: "%d.%m.%Y") %> <span class="badge e-color rounded-0 text-white"><%= "Mitteilungen".upcase %></span>
+    </p>
+    <h5 class="card-title spaced-letters"><%= post.title.upcase %></h5>
+    <p class="card-text text-dark"><%= post.description %></p>
+      <%= link_to post_path(post) do %>
+        <button type="button" class="align-self-end btn btn-e-color btn-sm spaced-letters text-nowrap rounded-0 mt-auto">MEHR ERFAHREN <%= fa_icon "chevron-right", class: "ml-2" %></button>
+      <% end %>
+  </div>
+  <% if is_current_user_admin? %>
+    <div class="text-center m-2">
+      <hr />
+      <%= link_to 'Eintrag bearbeiten', edit_post_path(post), class: "btn btn-primary m-2" %>
+      <%= link_to 'Eintrag löschen', post_path(post), method: :delete, data: {confirm: 'Bist du sicher?'}, class: "btn btn-danger m-2" %>
+    </div>
+  <% end %>
+</div>
