@@ -9,6 +9,7 @@
         <%= link_to 'Neuer Eintrag', new_post_path, class: "btn btn-primary my-2" %>
       </div><hr />
     <% end %>
-    <%= render partial: "posts/card", collection: @posts, as: :post %>
+    <%#= render partial: "posts/card", collection: @posts, as: :post %>
+    <%= render "posts/cards_in_group_of_3", posts: @posts %>
   </div>
 </div>

@@ -9,6 +9,7 @@
         <%= link_to 'Neuer Eintrag', new_event_path, class: "btn btn-primary my-2" %>
       </div><hr />
     <% end %>
-    <%= render partial: "events/card", collection: @events, as: :event %>
+    <%#= render partial: "events/card", collection: @events, as: :event %>
+    <%= render "events/cards_in_group_of_3", events: @events %>
   </div>
 </div>
