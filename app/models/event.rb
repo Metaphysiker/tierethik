@@ -2,6 +2,10 @@ class Event < ApplicationRecord
 before_save :update_search_field
 scope :events_ilike, ->(search_term) { where("search_field ILIKE ?", search_term) }
 
+extend FriendlyId
+friendly_id :title, use: :slugged
+
+
 def update_search_field
   self.search_field =
 [
