@@ -1,4 +1,4 @@
-class PagePolicy < ApplicationPolicy
+class PostPolicy < ApplicationPolicy
   attr_reader :user, :record
 
   def initialize(user, record)
