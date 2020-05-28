@@ -9,10 +9,13 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <%= link_to "Artikel", posts_path, class:"nav-link #{'active' unless @posts.nil? && @post.nil?}"  %>
+        <%= link_to "Blog", posts_path, class:"nav-link #{'active' unless @posts.nil? && @post.nil?}"  %>
       </li>
       <li class="nav-item">
         <%= link_to 'Events', events_path, class:"nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Ressourcen", root_path, class:"nav-link #{'active' unless @posts.nil? && @post.nil?}"  %>
       </li>
       <% Page.all.each do |page| %>
         <li class="nav-item">

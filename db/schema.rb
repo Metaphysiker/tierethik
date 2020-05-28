@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_26_193115) do
+ActiveRecord::Schema.define(version: 2020_05_28_173133) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -87,6 +87,7 @@ ActiveRecord::Schema.define(version: 2020_05_26_193115) do
     t.datetime "updated_at", precision: 6, null: false
     t.text "search_field"
     t.string "slug"
+    t.string "author", default: ""
     t.index ["slug"], name: "index_posts_on_slug", unique: true
   end
 

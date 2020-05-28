@@ -15,11 +15,11 @@
 
 
 <div class="container pt-3">
-
-
-
   <h3 class="text-h-color spaced-letters font-weight-light text-uppercase"><%= post.title %></h3>
-  <p class="font-weight-bold text-muted pt-3">
+  <% unless post.author.blank? %>
+  <p class="text-muted">- von <%= post.author %></p>
+  <% end %>
+  <p class="font-weight-bold text-muted">
     <%= post.description %>
   </p>
   <p>
