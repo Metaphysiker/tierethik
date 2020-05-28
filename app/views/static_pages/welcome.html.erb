@@ -44,7 +44,10 @@
       </div>
         <div class="align-self-end">
           <div class="col-12">
-              <%= render "posts/card.html.erb", post: Post.last if Post.last.present? %>
+              <%#= render "posts/card.html.erb", post: Post.last if Post.last.present? %>
+              <% spotlight_post = Post.where(slug: "was-ist-tierethik").first %>
+              <% spotlight_post = Post.last unless spotlight_post.present? %>
+              <%= render "posts/card.html.erb", post: spotlight_post if spotlight_post.present? %>
           </div>
         </div>
       </div>
