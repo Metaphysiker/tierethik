@@ -23,7 +23,9 @@
     <%= post.description %>
   </p>
   <p>
-  <%= raw sanitizing(post.content) %>
+    <div style="font-size: large;">
+      <%= raw sanitizing(post.content) %>
+    </div>
   </p>
   <% if is_current_user_admin? %>
     <div class="text-center m-2">
