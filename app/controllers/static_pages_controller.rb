@@ -17,4 +17,8 @@ class StaticPagesController < ApplicationController
     @page_description = 'Eine Übersicht aller Texte und Argumente auf Fokus Tierethik'
     @page_keywords    = 'Tierethik, Argumente'
   end
+
+  def debate_a_vegan
+    
+  end
 end
