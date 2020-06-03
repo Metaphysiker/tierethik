@@ -2,5 +2,6 @@
   <div class="container">
     <h5 class="spaced-letters mb-4"><%= "Kommende Events".upcase %></h5>
       <%= render "events/cards_in_group_of_3", events: Event.incoming.order(:created_at).first(3) %>
+      <%= link_to "Alle Events anzeigen", events_path, class: "btn btn-d-color btn-sm spaced-letters text-uppercase text-nowrap rounded-0" %>
   </div>
 </div>

@@ -2,5 +2,6 @@
   <div class="container">
     <h5 class="spaced-letters text-white mb-4"><%= "Die neuesten Artikel".upcase %></h5>
       <%= render "posts/cards_in_group_of_3", posts: Post.last(3) %>
+      <%= link_to "Alle Artikel anzeigen", posts_path, class: "btn btn-e-color btn-sm spaced-letters text-uppercase text-nowrap rounded-0" %>
   </div>
 </div>
