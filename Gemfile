@@ -9,6 +9,7 @@ gem "breadcrumbs_on_rails"
 gem 'inline_svg'
 gem 'meta-tags'
 gem 'friendly_id', '~> 5.2.4'
+gem 'devise-i18n'
 
 gem 'devise'
 gem 'simple_form'
