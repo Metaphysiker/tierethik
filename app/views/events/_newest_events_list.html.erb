@@ -1,0 +1,7 @@
+<div class="container-fluid bg-light py-5">
+  <div class="container">
+    <h5 class="spaced-letters mb-4"><%= "Kommende Events".upcase %></h5>
+      <%= render partial: "events/horizontal_card", collection: Event.incoming.order(:created_at).first(5), as: :event %>
+      <%= link_to "Alle Events anzeigen", event_calendar_path, class: "btn btn-d-color btn-sm spaced-letters text-uppercase text-nowrap rounded-0" %>
+  </div>
+</div>

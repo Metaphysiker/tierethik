@@ -4,20 +4,20 @@
 <% events = events.between(day.beginning_of_day, day.end_of_day)%>
 <% events.each do |event| %>
 
-    <div class="border rounded text-white bg-info w-100 p-1 trigger-hover-div-for-event" data-event-id="<%= event.id %>">
+    <div class="border border-info rounded text-white bg-info w-100 p-1 trigger-hover-div-for-event" data-event-id="<%= event.id %>">
       <%= link_to event.title, event_path(event), class: "text-white" %>
 
       <div id="hover-div-for-event-<%= event.id %>" style="display:none;">
         <hr class="bg-light" />
 
           <strong>
-            <%= event.location %>
+            <%= event.location %><br />
             <%= event.start_of_date.strftime("%H:%M") %> - <%= event.end_of_date.strftime("%H:%M") %><br />
           </strong>
         <hr class="bg-light" />
-        <i><%= event.description %></i>
-        <br />
-        <%= sanitize event.content.truncate(200) %>
+        <%= event.description %>
+        <hr class="bg-light" />
+        <%= link_to event.hyperlink, event.hyperlink, target: "_blank", class: "text-white" %>
       </div>
     </div>
 

@@ -55,7 +55,9 @@
   </div>
 </div>
 
-  <%= render "events/newest_events" %>
+  <%= render "events/newest_events_list" %>
+  <%#= render "event_calendar/event_calendar", events: Event.incoming.first(5) %>
+  <%#= render partial: "events/horizontal_card", collection: Event.incoming.order(:created_at).first(5), as: :event %>
   <%= render "posts/latest_posts" %>
   <%#= render "shared/patenschaft" %>
   <%#= render "posts/cards_in_group_of_3", posts: Post.last(3) %>

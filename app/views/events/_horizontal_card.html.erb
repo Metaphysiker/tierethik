@@ -10,7 +10,7 @@
       </div>
       <div class="col-3 d-flex justify-content-center align-items-center">
         <p class="lead">
-          <%= l(event.start_of_date, format: "%-d %b") %><br />
+          <%= l(event.start_of_date, format: "%-d %B") %><br />
           <small><%= event.start_of_date.strftime("%H:%M") %> - <%= event.end_of_date.strftime("%H:%M") %></small>
         </p>
       </div>
@@ -19,7 +19,8 @@
 
             <h5 class="card-title"><%= link_to event.title, event_path(event), class: "text-dark" %></h5>
             <p class="text-secondary">
-              <strong>Ort: </strong><%= event.location %>
+              <strong>Ort: </strong><%= event.location %><br />
+              <strong>Link: </strong><%= link_to event.hyperlink, event.hyperlink, target: "_blank" %>
             </p>
             <p class="card-text"><%= event.description.truncate(75) %></p>
             <p class="card-text"><%= link_to "Mehr Informationen", event_path(event) %></p>
@@ -34,7 +35,7 @@
     <div class="row no-gutters">
       <div class="col-3 d-flex justify-content-center align-items-center">
         <p class="lead">
-          <%= l(event.start_of_date, format: "%-d %b") %><br />
+          <%= l(event.start_of_date, format: "%-d %B") %><br />
           <small><%= event.start_of_date.strftime("%H:%M") %> - <%= event.end_of_date.strftime("%H:%M") %></small>
         </p>
       </div>
@@ -43,7 +44,8 @@
 
             <h5 class="card-title"><%= link_to event.title, event_path(event), class: "text-dark" %></h5>
             <p class="text-secondary">
-              <strong>Ort: </strong><%= event.location %>
+              <strong>Ort: </strong><%= event.location %><br />
+              <strong>Link: </strong><%= link_to event.hyperlink, event.hyperlink, target: "_blank" %>
             </p>
             <p class="card-text"><%= event.description.truncate(75) %></p>
             <p class="card-text"><%= link_to "Mehr Informationen", event_path(event) %></p>
@@ -59,13 +61,14 @@
         <div class="col-12">
           <div class="card-body">
             <p class="lead text-center">
-              <%= l(event.start_of_date, format: "%-d %b") %><br />
+              <%= l(event.start_of_date, format: "%-d %B") %><br />
               <small><%= event.start_of_date.strftime("%H:%M") %> - <%= event.end_of_date.strftime("%H:%M") %></small>
             </p>
             <hr />
             <h5 class="card-title"><%= link_to event.title, event_path(event), class: "text-dark" %></h5>
             <p class="text-secondary">
-              <strong>Ort: </strong><%= event.location %>
+              <strong>Ort: </strong><%= event.location %><br />
+              <strong>Link: </strong><%= link_to event.hyperlink, event.hyperlink, target: "_blank" %>
             </p>
             <p class="card-text"><%= event.description.truncate(75) %></p>
             <p class="card-text"><%= link_to "Mehr Informationen", event_path(event) %></p>

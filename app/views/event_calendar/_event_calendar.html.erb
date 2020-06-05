@@ -55,9 +55,7 @@
 
 
     <div class="">
-        <% @events.each do |event| %>
-          <%= render "events/horizontal_card", event: event %>
-        <% end %>
+        <%= render "event_calendar/event_list_calendar", events: @events %>
     </div>
 
   </div>
