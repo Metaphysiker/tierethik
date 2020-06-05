@@ -11,5 +11,8 @@ Rails.application.routes.draw do
   root 'static_pages#welcome'
   get '/static_pages/texts', to: 'static_pages#texts', as: 'texts'
   get '/static_pages/debate_a_vegan', to: 'static_pages#debate_a_vegan', as: 'debate_a_vegan'
+
+  #get '/event_calendar', to: 'event_calendar#event_calendar', as: 'event_calendar'
+  get '/event_calendar/(:date)', to: 'event_calendar#event_calendar', as: 'event_calendar'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

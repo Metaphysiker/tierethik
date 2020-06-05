@@ -1,0 +1,39 @@
+<div class="float-right small-text"><small><%= day.strftime("%-d") %></small></div>
+<br>
+<%# events = events.where(start_of_date: day)%>
+<% events = events.between(day.beginning_of_day, day.end_of_day)%>
+<% events.each do |event| %>
+
+    <div class="border rounded text-white bg-info w-100 p-1 trigger-hover-div-for-event" data-event-id="<%= event.id %>">
+      <%= link_to event.title, event_path(event), class: "text-white" %>
+
+      <div id="hover-div-for-event-<%= event.id %>" style="display:none;">
+        <hr class="bg-light" />
+
+          <strong>
+            <%= event.start_of_date.strftime("%H:%M") %> - <%= event.end_of_date.strftime("%H:%M") %>
+          </strong>
+          <br />
+        <i><%= event.description %></i>
+        <br />
+        <%= sanitize event.content.truncate(200) %>
+      </div>
+    </div>
+
+
+<% end %>
+
+<script>
+    $(document).ready(function(){
+      $(".trigger-hover-div-for-event").hover(function(event) {
+          var event_id = $(this).data( "event-id" );
+          var hover_div = "#hover-div-for-event-" + event_id
+          //console.log("hover");
+          $(hover_div).css({top: event.clientY, left: event.clientX}).show();
+      }, function() {
+          var event_id = $(this).data( "event-id" );
+          var hover_div = "#hover-div-for-event-" + event_id
+          $(hover_div).hide();
+      });
+    });
+</script>

@@ -16,5 +16,7 @@ end
   has_one_attached :cover
 
   scope :incoming, -> { where("start_of_date > ?", DateTime.now).order("start_of_date") }
+  #scope :between ->(start_of_date, end_of_date) { where('start_of_date BETWEEN ? AND ?', start_of_date, end_of_date) }
+  scope :between, -> (start_of_date, end_of_date) { where(start_of_date: start_of_date..end_of_date) }
 
 end
