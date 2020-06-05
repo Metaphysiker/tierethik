@@ -11,9 +11,10 @@
         <hr class="bg-light" />
 
           <strong>
-            <%= event.start_of_date.strftime("%H:%M") %> - <%= event.end_of_date.strftime("%H:%M") %>
+            <%= event.location %>
+            <%= event.start_of_date.strftime("%H:%M") %> - <%= event.end_of_date.strftime("%H:%M") %><br />
           </strong>
-          <br />
+        <hr class="bg-light" />
         <i><%= event.description %></i>
         <br />
         <%= sanitize event.content.truncate(200) %>

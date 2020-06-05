@@ -19,8 +19,10 @@
   <h3 class="text-h-color spaced-letters font-weight-light text-uppercase"><%= event.title %></h3>
   <p>
       <b>Von: </b><%= event.start_of_date.strftime("%d.%m.%Y - %H:%M") %><br />
-        <b>Bis: </b><%= event.end_of_date.strftime("%d.%m.%Y - %H:%M") %>
+        <b>Bis: </b><%= event.end_of_date.strftime("%d.%m.%Y - %H:%M") %><br />
+        <strong>Ort: </strong><%= event.location %>
   </p>
+  <hr />
   <p class="font-weight-bold text-muted pt-3">
     <%= event.description %>
   </p>

@@ -3,6 +3,7 @@
   <h5 class="card-title text-d-color spaced-letters"><%= fa_icon "calendar", class: "mr-2" %> <strong><%= l(event.start_of_date, format: "%d.%m.%y") %></strong></h5>
   <h5 class="card-title text-d-color spaced-letters"><strong><%= event.title.upcase %></strong></h5>
   <p class="card-text"><%= event.description %></p>
+  <p class="card-text"><strong>Ort: </strong><%= event.location %></p>
     <a href="<%= event_path(event) %>" class="align-self-end btn btn-sm btn-block btn-d-color rounded-0 spaced-letters text-nowrap" style="margin-top: auto;">Mehr erfahren <%= fa_icon "chevron-right", class: "ml-2" %></a>
   </div>
 </div>

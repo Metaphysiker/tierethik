@@ -1,23 +1,76 @@
-<div class="card b-color">
-  <div class="row no-gutters">
-    <div class="col-md-8">
-      <% if event.cover.attached? %>
-        <%= image_tag event.cover, class: "card-img" %>
-      <% end %>
-    </div>
-    <div class="col-md-4">
-      <div class="card-body">
-        <p class="card-text">
-          <%= l(event.created_at, format: "%d.%m.%Y") %> <span class="badge e-color rounded-0 text-white">MITTEILUNGEN</span>
-        </p>
-        <h5 class="card-title spaced-letters"><%= event.title.upcase %></h5>
-        <p class="card-text"><%= event.content.truncate(150) %></p>
-        <p>
-          <%= link_to event_path(event) do %>
-            <button type="button" class="btn btn-e-color btn-sm spaced-letters text-nowrap rounded-0">MEHR ERFAHREN <%= fa_icon "chevron-right", class: "ml-2" %></button>
+<div class="d-none d-md-block">
+  <div class="card mb-3">
+    <div class="row no-gutters">
+      <div class="col-3">
+        <% if event.cover.attached? %>
+          <%= link_to event_path(event), class: "text-dark" do %>
+            <%= image_tag event.cover, class: "card-img" %>
           <% end %>
+        <% end %>
+      </div>
+      <div class="col-3 d-flex justify-content-center align-items-center">
+        <p class="lead">
+          <%= l(event.start_of_date, format: "%-d %b") %><br />
+          <small><%= event.start_of_date.strftime("%H:%M") %> - <%= event.end_of_date.strftime("%H:%M") %></small>
         </p>
       </div>
+        <div class="col-6">
+          <div class="card-body">
+
+            <h5 class="card-title"><%= link_to event.title, event_path(event), class: "text-dark" %></h5>
+            <p class="text-secondary">
+              <strong>Ort: </strong><%= event.location %>
+            </p>
+            <p class="card-text"><%= event.description.truncate(75) %></p>
+            <p class="card-text"><%= link_to "Mehr Informationen", event_path(event) %></p>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
+</div>
+
+<div class="d-none d-sm-block d-md-none">
+  <div class="card mb-4">
+    <div class="row no-gutters">
+      <div class="col-3 d-flex justify-content-center align-items-center">
+        <p class="lead">
+          <%= l(event.start_of_date, format: "%-d %b") %><br />
+          <small><%= event.start_of_date.strftime("%H:%M") %> - <%= event.end_of_date.strftime("%H:%M") %></small>
+        </p>
+      </div>
+        <div class="col-8">
+          <div class="card-body">
+
+            <h5 class="card-title"><%= link_to event.title, event_path(event), class: "text-dark" %></h5>
+            <p class="text-secondary">
+              <strong>Ort: </strong><%= event.location %>
+            </p>
+            <p class="card-text"><%= event.description.truncate(75) %></p>
+            <p class="card-text"><%= link_to "Mehr Informationen", event_path(event) %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class="d-block d-sm-none">
+  <div class="card mb-4">
+    <div class="row no-gutters">
+        <div class="col-12">
+          <div class="card-body">
+            <p class="lead text-center">
+              <%= l(event.start_of_date, format: "%-d %b") %><br />
+              <small><%= event.start_of_date.strftime("%H:%M") %> - <%= event.end_of_date.strftime("%H:%M") %></small>
+            </p>
+            <hr />
+            <h5 class="card-title"><%= link_to event.title, event_path(event), class: "text-dark" %></h5>
+            <p class="text-secondary">
+              <strong>Ort: </strong><%= event.location %>
+            </p>
+            <p class="card-text"><%= event.description.truncate(75) %></p>
+            <p class="card-text"><%= link_to "Mehr Informationen", event_path(event) %></p>
+          </div>
+        </div>
+      </div>
+    </div>
 </div>
