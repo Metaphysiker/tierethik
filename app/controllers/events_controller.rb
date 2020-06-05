@@ -1,3 +1,5 @@
+require 'icalendar'
+
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
 
@@ -62,6 +64,30 @@ class EventsController < ApplicationController
       format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def api_events
+    @events = Event.incoming
+    render json: @events.to_json
+  end
+
+  def icalendar
+    @events = Event.incoming
+    cal = Icalendar::Calendar.new
+    filename = "tierethik-events.ical"
+
+    @events.each do |event|
+      cal.event do |e|
+        e.dtstart     = event.start_of_date
+        e.dtend       = event.end_of_date
+        e.summary     = event.title
+        e.description = event.description
+        e.ip_class    = "PRIVATE"
+      end
+    end
+
+
+    send_data cal.to_ical, type: 'text/calendar', disposition: 'attachment', filename: filename
   end
 
   private
