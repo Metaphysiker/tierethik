@@ -31,9 +31,3 @@
 
 de:
   hello: "Hello world"
-date:
-  formats:
-    default: "%d-%m-%Y"
-datetime:
-  formats:
-    default: "%d-%m-%Y %m:%s"
