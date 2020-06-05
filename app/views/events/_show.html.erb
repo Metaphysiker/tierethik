@@ -20,7 +20,8 @@
   <p>
       <b>Von: </b><%= event.start_of_date.strftime("%d.%m.%Y - %H:%M") %><br />
         <b>Bis: </b><%= event.end_of_date.strftime("%d.%m.%Y - %H:%M") %><br />
-        <strong>Ort: </strong><%= event.location %>
+        <strong>Ort: </strong><%= event.location %><br />
+        <strong>Link: </strong><%= link_to event.hyperlink, event.hyperlink, target: "_blank" %>
   </p>
   <hr />
   <p class="font-weight-bold text-muted pt-3">
