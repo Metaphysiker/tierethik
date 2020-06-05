@@ -1,0 +1,25 @@
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin font-light {
+  font-weight: 200;
+}
+
+@mixin font-light-italic {
+  font-weight: 200;
+  font-style: italic;
+}
+
+@mixin font-medium {
+  font-weight: 500;
+}
+
+@mixin font-medium-italic {
+  font-weight: 500;
+  font-style: italic;
+}
