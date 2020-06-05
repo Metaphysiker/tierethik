@@ -15,15 +15,18 @@ import frLocale from '@fullcalendar/core/locales/fr';
 
 document.addEventListener('DOMContentLoaded', function() {
   var calendarEl = document.getElementById('calendar');
+  deLocale['buttonText']['list'] = 'Liste';
 
   var calendar = new Calendar(calendarEl, {
     locales: [deLocale, itLocale, frLocale],
+    //locale: $html.attr('lang'),
     plugins: [ dayGridPlugin, timeGridPlugin, listPlugin, bootstrapPlugin],
     themeSystem: 'bootstrap',
     header: {
       left: 'prev,next today',
       center: 'title',
-      right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+      //right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+      right: 'dayGridMonth,listMonth'
     },
     weekNumbers: false,
     eventLimit: true, // allow "more" link when too many events
