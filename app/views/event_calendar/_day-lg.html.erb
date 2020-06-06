@@ -4,7 +4,7 @@
 <% events = events.between(day.beginning_of_day, day.end_of_day)%>
 <% events.each do |event| %>
 
-    <div class="border border-info rounded text-white bg-info w-100 p-1 trigger-hover-div-for-event" data-event-id="<%= event.id %>">
+    <div class="border border-info rounded text-white bg-info w-100 p-1 trigger-hover-div-for-event mb-1" data-event-id="<%= event.id %>">
       <%= link_to event.title, event_path(event), class: "text-white" %>
 
       <div id="hover-div-for-event-<%= event.id %>" style="display:none;">

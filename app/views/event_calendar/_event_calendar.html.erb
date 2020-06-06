@@ -12,6 +12,10 @@
           <p>
             <%= link_to "Alle Events in deinen Kalender eintragen", events_icalendar_path, class: "btn btn-info"  %>
           </p>
+          <p>
+            Um diesen Kalender zu abonnieren, trage diese URL in dein Kalender-Programm ein: <br />
+            <%= link_to events_icalendar_url, events_icalendar_path %>
+          </p>
       </div>
       <div class="text-center m-2">
         <%= link_to event_calendar_path(date - 1.month) do %>
