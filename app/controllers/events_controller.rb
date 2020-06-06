@@ -77,13 +77,14 @@ class EventsController < ApplicationController
     cal = Icalendar::Calendar.new
     filename = "tierethik-events"
     tzid = "Europe/Zurich"
+    cal.x_wr_calname = 'Fokus Tierethik'
 
     if params[:format] == 'vcs'
-      cal.prodid = '-//Microsoft Corporation//Outlook MIMEDIR//EN'
+      #cal.prodid = '-//Microsoft Corporation//Outlook MIMEDIR//EN'
       cal.version = '1.0'
       filename += '.vcs'
     else # ical
-      cal.prodid = '-//Acme Widgets, Inc.//NONSGML ExportToCalendar//EN'
+      #cal.prodid = '-//Acme Widgets, Inc.//NONSGML ExportToCalendar//EN'
       cal.version = '2.0'
       filename += '.ics'
     end
@@ -95,7 +96,7 @@ class EventsController < ApplicationController
         d.tzoffsetto   = "+0200"
         d.tzname       = "CEST"
         d.dtstart      = "19700329T020000"
-        d.rrule        = "FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU"
+        #d.rrule        = "FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU"
       end
 
       t.standard do |s|
@@ -115,13 +116,13 @@ class EventsController < ApplicationController
         e.description = event.description
         e.url         = event.hyperlink
         e.location    = event.location
-        e.ip_class    = "PUBLIC"
       end
     end
 
     cal.publish
 
-    send_data cal.to_ical, type: 'text/calendar', disposition: 'attachment', filename: filename
+    #send_data cal.to_ical, type: 'text/calendar', disposition: 'attachment', filename: filename
+    render plain: cal.to_ical
   end
 
   private
