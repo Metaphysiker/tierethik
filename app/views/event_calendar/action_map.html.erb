@@ -3,34 +3,34 @@
 <h2>My Map</h2>
 <div id="map" class="map" style="height: 500px; width: 100%"></div>
 <script type="text/javascript">
-  var attribution = new ol.control.Attribution({
-      collapsible: false
-  });
 
   var map = new ol.Map({
-      controls: ol.control.defaults({attribution: false}).extend([attribution]),
-      layers: [
-          new ol.layer.Tile({
-              source: new ol.source.OSM({
-                  url: 'https://tile.openstreetmap.be/osmbe/{z}/{x}/{y}.png',
-                  attributions: [ ol.source.OSM.ATTRIBUTION, 'Tiles courtesy of <a href="https://geo6.be/">GEO-6</a>' ],
-                  maxZoom: 18
-              })
-          })
-      ],
-      target: 'map',
-      view: new ol.View({
-          center: ol.proj.fromLonLat([4.35247, 50.84673]),
-          maxZoom: 18,
-          zoom: 12
+    target: 'map',
+    layers: [
+      new ol.layer.Tile({
+        source: new ol.source.OSM()
       })
+    ],
+    view: new ol.View({
+      center: ol.proj.fromLonLat([8.22, 46.81]),
+      zoom: 8
+    })
   });
 
   var layer = new ol.layer.Vector({
       source: new ol.source.Vector({
           features: [
+          <% Event.last(1).each do |event| %>
+          <% results = Geocoder.search(event.location) %>
+          <% latitude = results.first.coordinates[0] %>
+          <% longitude = results.first.coordinates[1] %>
+
+          new ol.Feature({
+              geometry: new ol.geom.Point(ol.proj.fromLonLat([<%= longitude %>, <%= latitude %>]))
+          }),
+          <% end %>
               new ol.Feature({
-                  geometry: new ol.geom.Point(ol.proj.fromLonLat([4.35247, 50.84673]))
+                  geometry: new ol.geom.Point(ol.proj.fromLonLat([9.22, 46.81]))
               })
           ]
       })
