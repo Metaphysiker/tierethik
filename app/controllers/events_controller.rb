@@ -121,8 +121,8 @@ class EventsController < ApplicationController
 
     cal.publish
 
-    #send_data cal.to_ical, type: 'text/calendar', disposition: 'attachment', filename: filename
-    render plain: cal.to_ical
+    send_data cal.to_ical, type: 'text/calendar', disposition: 'attachment', filename: filename
+    #render plain: cal.to_ical
   end
 
   private
