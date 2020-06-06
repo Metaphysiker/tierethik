@@ -12,4 +12,8 @@ class EventCalendarController < ApplicationController
     @events = Event.where(start_of_date: only_month_days).order(:start_of_date)
 
   end
+
+  def action_map
+    
+  end
 end

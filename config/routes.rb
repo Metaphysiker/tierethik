@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   #get '/event_calendar', to: 'event_calendar#event_calendar', as: 'event_calendar'
   get '/event_calendar/(:date)', to: 'event_calendar#event_calendar', as: 'event_calendar'
+  get '/action_map', to: 'event_calendar#action_map', as: 'action_map'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   get 'api/events', to: 'events#api_events'
