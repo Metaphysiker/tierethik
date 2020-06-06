@@ -1,4 +1,5 @@
 require 'icalendar'
+require 'icalendar/tzinfo'
 
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
@@ -86,6 +87,10 @@ class EventsController < ApplicationController
       filename += '.ics'
     end
 
+    cal.timezone do |t|
+      t.tzid = "Europe/Bern"
+    end
+
     @events.each do |event|
       cal.event do |e|
         e.dtstart     = event.start_of_date
@@ -94,7 +99,7 @@ class EventsController < ApplicationController
         e.description = event.description
         e.url         = event.hyperlink
         e.location    = event.location
-        e.ip_class    = "PRIVATE"
+        e.ip_class    = "PUBLIC"
       end
     end
 
