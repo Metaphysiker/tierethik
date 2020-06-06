@@ -76,6 +76,7 @@ class EventsController < ApplicationController
     @events = Event.incoming
     cal = Icalendar::Calendar.new
     filename = "tierethik-events"
+    tzid = "Europe/Zurich"
 
     if params[:format] == 'vcs'
       cal.prodid = '-//Microsoft Corporation//Outlook MIMEDIR//EN'
@@ -88,13 +89,28 @@ class EventsController < ApplicationController
     end
 
     cal.timezone do |t|
-      t.tzid = "Europe/Bern"
+      t.tzid = tzid
+      t.daylight do |d|
+        d.tzoffsetfrom = "+0100"
+        d.tzoffsetto   = "+0200"
+        d.tzname       = "CEST"
+        d.dtstart      = "19700329T020000"
+        d.rrule        = "FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU"
+      end
+
+      t.standard do |s|
+        s.tzoffsetfrom = "+0200"
+        s.tzoffsetto   = "+0100"
+        s.tzname       = "CET"
+        s.dtstart      = "19701025T030000"
+        s.rrule        = "FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU"
+      end
     end
 
     @events.each do |event|
       cal.event do |e|
-        e.dtstart     = event.start_of_date
-        e.dtend       = event.end_of_date
+        e.dtstart     = Icalendar::Values::DateTime.new event.start_of_date, 'tzid' => tzid
+        e.dtend       = Icalendar::Values::DateTime.new event.end_of_date, 'tzid' => tzid
         e.summary     = event.title
         e.description = event.description
         e.url         = event.hyperlink
@@ -103,6 +119,7 @@ class EventsController < ApplicationController
       end
     end
 
+    cal.publish
 
     send_data cal.to_ical, type: 'text/calendar', disposition: 'attachment', filename: filename
   end
