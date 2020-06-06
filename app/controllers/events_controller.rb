@@ -2,7 +2,7 @@ require 'icalendar'
 require 'icalendar/tzinfo'
 
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :set_event, only: [:show, :edit, :update, :destroy, :to_icalendar]
 
   # GET /events
   # GET /events.json
@@ -117,6 +117,58 @@ class EventsController < ApplicationController
         e.url         = event.hyperlink
         e.location    = event.location
       end
+    end
+
+    cal.publish
+
+    send_data cal.to_ical, type: 'text/calendar', disposition: 'attachment', filename: filename
+    #render plain: cal.to_ical
+  end
+
+  def to_icalendar
+
+    cal = Icalendar::Calendar.new
+    filename = @event.title
+    tzid = "Europe/Zurich"
+    cal.x_wr_calname = 'Fokus Tierethik'
+
+    if params[:format] == 'vcs'
+      #cal.prodid = '-//Microsoft Corporation//Outlook MIMEDIR//EN'
+      cal.version = '1.0'
+      filename += '.vcs'
+    else # ical
+      #cal.prodid = '-//Acme Widgets, Inc.//NONSGML ExportToCalendar//EN'
+      cal.version = '2.0'
+      filename += '.ics'
+    end
+
+    cal.timezone do |t|
+      t.tzid = tzid
+      t.daylight do |d|
+        d.tzoffsetfrom = "+0100"
+        d.tzoffsetto   = "+0200"
+        d.tzname       = "CEST"
+        d.dtstart      = "19700329T020000"
+        #d.rrule        = "FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU"
+      end
+
+      t.standard do |s|
+        s.tzoffsetfrom = "+0200"
+        s.tzoffsetto   = "+0100"
+        s.tzname       = "CET"
+        s.dtstart      = "19701025T030000"
+        s.rrule        = "FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU"
+      end
+    end
+
+    event = @event
+    cal.event do |e|
+      e.dtstart     = Icalendar::Values::DateTime.new event.start_of_date, 'tzid' => tzid
+      e.dtend       = Icalendar::Values::DateTime.new event.end_of_date, 'tzid' => tzid
+      e.summary     = event.title
+      e.description = event.description
+      e.url         = event.hyperlink
+      e.location    = event.location
     end
 
     cal.publish

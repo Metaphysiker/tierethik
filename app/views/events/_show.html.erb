@@ -18,10 +18,10 @@
 
   <h3 class="text-h-color spaced-letters font-weight-light text-uppercase"><%= event.title %></h3>
   <p>
-      <b>Von: </b><%= event.start_of_date.strftime("%d.%m.%Y - %H:%M") %><br />
-        <b>Bis: </b><%= event.end_of_date.strftime("%d.%m.%Y - %H:%M") %><br />
-        <strong>Ort: </strong><%= event.location %><br />
-        <strong>Link: </strong><%= link_to event.hyperlink, event.hyperlink, target: "_blank" %>
+    <b>Von: </b><%= event.start_of_date.strftime("%d.%m.%Y - %H:%M") %><br />
+    <b>Bis: </b><%= event.end_of_date.strftime("%d.%m.%Y - %H:%M") %><br />
+    <strong>Ort: </strong><%= event.location %><br />
+    <strong>Link: </strong><%= link_to event.hyperlink, event.hyperlink, target: "_blank" %>
   </p>
   <hr />
   <p class="font-weight-bold text-muted pt-3">
@@ -29,6 +29,9 @@
   </p>
   <p>
   <%= simple_format(event.content) %>
+  </p>
+  <p>
+    <%= link_to "Diesen Event in deinen Kalender eintragen", to_icalendar_path(event), class: "btn btn-info"  %>
   </p>
   <% if is_current_user_admin? %>
     <div class="text-center m-2">

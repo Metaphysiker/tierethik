@@ -24,6 +24,9 @@
             </p>
             <p class="card-text"><%= event.description.truncate(75) %></p>
             <p class="card-text"><%= link_to "Mehr Informationen", event_path(event) %></p>
+            <p>
+              <%= link_to "Diesen Event in deinen Kalender eintragen", to_icalendar_path(event), class: "btn btn-info"  %>
+            </p>
           </div>
         </div>
       </div>
@@ -49,6 +52,9 @@
             </p>
             <p class="card-text"><%= event.description.truncate(75) %></p>
             <p class="card-text"><%= link_to "Mehr Informationen", event_path(event) %></p>
+            <p>
+              <%= link_to "Diesen Event in deinen Kalender eintragen", to_icalendar_path(event), class: "btn btn-info"  %>
+            </p>
           </div>
         </div>
       </div>
@@ -72,6 +78,9 @@
             </p>
             <p class="card-text"><%= event.description.truncate(75) %></p>
             <p class="card-text"><%= link_to "Mehr Informationen", event_path(event) %></p>
+            <p>
+              <%= link_to "Diesen Event in deinen Kalender eintragen", to_icalendar_path(event), class: "btn btn-info"  %>
+            </p>
           </div>
         </div>
       </div>

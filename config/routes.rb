@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   get 'api/events', to: 'events#api_events'
-  get 'api/events_icalendar', to: 'events#icalendar'
+  get 'api/events_icalendar', to: 'events#icalendar', as: 'events_icalendar'
+  get 'api/events_to_icalendar/:id', to: 'events#to_icalendar', as: 'to_icalendar'
 
 end

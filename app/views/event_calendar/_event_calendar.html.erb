@@ -7,6 +7,12 @@
 <!-- Month -->
 <div class="container-fluid bg-white">
     <div class="jumbotron bg-white">
+      <div class="text-center mb-4">
+          <h3 class="text-h-color spaced-letters font-weight-light text-uppercase">Event-Kalender</h3>
+          <p>
+            <%= link_to "Alle Events in deinen Kalender eintragen", events_icalendar_path, class: "btn btn-info"  %>
+          </p>
+      </div>
       <div class="text-center m-2">
         <%= link_to event_calendar_path(date - 1.month) do %>
           <div class="btn btn-primary">
@@ -14,7 +20,7 @@
           </div>
         <% end %>
         <span class="mx-3">
-          <b><%= I18n.t("date.month_names")[month] %></b>
+          <b><%= I18n.t("date.month_names")[month] %> <%= date.year %></b>
         </span>
         <%= link_to event_calendar_path(date + 1.month) do %>
           <div class="btn btn-primary">
