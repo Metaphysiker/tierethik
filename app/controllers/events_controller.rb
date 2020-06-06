@@ -74,7 +74,17 @@ class EventsController < ApplicationController
   def icalendar
     @events = Event.incoming
     cal = Icalendar::Calendar.new
-    filename = "tierethik-events.ical"
+    filename = "tierethik-events"
+
+    if params[:format] == 'vcs'
+      cal.prodid = '-//Microsoft Corporation//Outlook MIMEDIR//EN'
+      cal.version = '1.0'
+      filename += '.vcs'
+    else # ical
+      cal.prodid = '-//Acme Widgets, Inc.//NONSGML ExportToCalendar//EN'
+      cal.version = '2.0'
+      filename += '.ics'
+    end
 
     @events.each do |event|
       cal.event do |e|
@@ -82,6 +92,8 @@ class EventsController < ApplicationController
         e.dtend       = event.end_of_date
         e.summary     = event.title
         e.description = event.description
+        e.url         = event.hyperlink
+        e.location    = event.location
         e.ip_class    = "PRIVATE"
       end
     end
