@@ -67,10 +67,11 @@
 
       $("<%=corresponding_div%>").hover(
         function() {
-          console.log(marker<%= index %>);
           marker<%= index %>.openPopup();
+          $("<%=corresponding_div%>").toggleClass( "shadow" );
         }, function() {
           marker<%= index %>.closePopup();
+          $("<%=corresponding_div%>").toggleClass( "shadow" );
         }
       );
 
