@@ -6,12 +6,12 @@
   crossorigin=""></script>
 
   <div class="container-fluid">
-    <h2>My Map</h2>
+    <h2>Aktions-Landkarte</h2>
     <div class="row">
-      <div class="col-8">
+      <div class="col-md-8 col-sm-12">
            <div id="mapid" style="height: 600px;"></div>
       </div>
-      <div class="col-4">
+      <div class="col-md-4 col-sm-12">
         <% Event.incoming.each_with_index do |event, index| %>
           <div id="<%= "event_map_#{event.id}_div" %>" class="p-3 mb-5 bg-light rounded"><%= event.title %></div>
         <% end %>
@@ -37,32 +37,54 @@
     //Handle marker click
     var onMarkerClick = function(e){
         var target_div = "#" + this.options.myCustomId + "_div";
-        console.log(target_div);
-
+        //this.openPopup();
+        //console.log(this);
+        //console.log(this.options);
+        //console.log(object);
         $(target_div).toggleClass( "shadow" );
-        //$(target_div).append( $( "<span> ***</span>" ) );
-        //alert("You clicked on marker with customId: " +this.options.myCustomId);
     }
+
 
     <% Event.incoming.each_with_index do |event, index| %>
       <% id_for_event = "event_map_#{event.id}" %>
+      <% corresponding_div = "#event_map_#{event.id}_div" %>
 
       <% results = Geocoder.search(event.location) %>
       <% latitude = results.first.coordinates[0] %>
       <% longitude = results.first.coordinates[1] %>
-      // Custom id for the marker
-      //var id = "13452"
 
       //Create new marker
       var marker<%= index %> = L.marker([<%= latitude %>, <%= longitude %>], {myCustomId: "<%= id_for_event %>"});
+
       //Show popup when clicking on marker
       marker<%= index %>.bindPopup("<strong><%= event.title.to_s %></strong><br /><%= event.start_of_date.strftime("%-d.%-m.%Y") %>");
-      //Handle click on marker
-      marker<%= index %>.on('mouseover', onMarkerClick);
-      marker<%= index %>.on('mouseout', onMarkerClick);
 
-      //Add marker to map
+      //Handle click on marker
+      //marker<%= index %>.on('mouseover', onMarkerClick);
+      //marker<%= index %>.on('mouseout', onMarkerClick);
+
       marker<%= index %>.addTo(mymap);
+
+      $("<%=corresponding_div%>").hover(
+        function() {
+          console.log(marker<%= index %>);
+          marker<%= index %>.openPopup();
+        }, function() {
+          marker<%= index %>.closePopup();
+        }
+      );
+
+      $(marker<%= index %>).hover(
+        function() {
+          marker<%= index %>.openPopup();
+          $("<%=corresponding_div%>").toggleClass( "shadow" );
+        }, function() {
+          marker<%= index %>.closePopup();
+          $("<%=corresponding_div%>").toggleClass( "shadow" );
+        }
+      );
+
+
     <% end %>
 
 
