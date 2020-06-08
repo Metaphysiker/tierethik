@@ -1,0 +1,41 @@
+<script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.3.1/build/ol.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.3.1/css/ol.css" type="text/css">
+<h2>My Map</h2>
+<div id="map" class="map" style="height: 500px; width: 100%"></div>
+<script type="text/javascript">
+
+  var map = new ol.Map({
+    target: 'map',
+    layers: [
+      new ol.layer.Tile({
+        source: new ol.source.OSM()
+      })
+    ],
+    view: new ol.View({
+      center: ol.proj.fromLonLat([8.22, 46.81]),
+      zoom: 8
+    })
+  });
+
+  var layer = new ol.layer.Vector({
+      source: new ol.source.Vector({
+          features: [
+          <% Event.all.each do |event| %>
+          <% results = Geocoder.search(event.location) %>
+          <% latitude = results.first.coordinates[0] %>
+          <% longitude = results.first.coordinates[1] %>
+
+          new ol.Feature({
+              geometry: new ol.geom.Point(ol.proj.fromLonLat([<%= longitude %>, <%= latitude %>]))
+          }),
+          <% end %>
+              new ol.Feature({
+                  geometry: new ol.geom.Point(ol.proj.fromLonLat([9.22, 46.81]))
+              })
+          ]
+      })
+  });
+  map.addLayer(layer);
+
+
+</script>
