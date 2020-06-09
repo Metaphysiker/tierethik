@@ -46,10 +46,12 @@
 
 
     <% Event.incoming.each_with_index do |event, index| %>
+      <% next if event.nil? || event.location.nil? %>
       <% id_for_event = "event_map_#{event.id}" %>
       <% corresponding_div = "#event_map_#{event.id}_div" %>
 
       <% results = Geocoder.search(event.location) %>
+      <% next if results.nil? %>
       <% latitude = results.first.coordinates[0] %>
       <% longitude = results.first.coordinates[1] %>
 

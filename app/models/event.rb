@@ -1,10 +1,24 @@
 class Event < ApplicationRecord
 before_save :update_search_field
+before_save :update_longitude_latitude
 scope :events_ilike, ->(search_term) { where("search_field ILIKE ?", search_term) }
+
+#geocoded_by :location
+#after_validation :geocode
 
 extend FriendlyId
 friendly_id :title, use: :slugged
 
+def update_longitude_latitude
+  results = Geocoder.search(self.location)
+  if results.nil?
+    self.longitude = 0.0
+    self.latitude = 0.0
+  else
+    self.longitude = results.first.coordinates[1]
+    self.latitude = results.first.coordinates[0]
+  end
+end
 
 def update_search_field
   self.search_field =
