@@ -10,8 +10,9 @@ extend FriendlyId
 friendly_id :title, use: :slugged
 
 def update_longitude_latitude
+  #byebug
   results = Geocoder.search(self.location)
-  if results.nil?
+  if results.nil? || results.empty?
     self.longitude = 0.0
     self.latitude = 0.0
   else

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_09_191644) do
+ActiveRecord::Schema.define(version: 2020_06_09_203921) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 2020_06_09_191644) do
     t.string "hyperlink", default: ""
     t.decimal "latitude", default: "0.0"
     t.decimal "longitude", default: "0.0"
+    t.string "feed_origin", default: ""
     t.index ["slug"], name: "index_events_on_slug", unique: true
   end
 
