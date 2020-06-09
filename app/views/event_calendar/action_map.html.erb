@@ -6,14 +6,14 @@
   crossorigin=""></script>
 
   <div class="container-fluid">
-    <h2>Aktions-Landkarte</h2>
+    <h2>Aktionslandkarte</h2>
     <div class="row">
       <div class="col-md-8 col-sm-12">
            <div id="mapid" style="height: 600px;"></div>
       </div>
       <div class="col-md-4 col-sm-12">
         <% Event.incoming.each_with_index do |event, index| %>
-          <div id="<%= "event_map_#{event.id}_div" %>" class="p-3 mb-5 bg-light rounded"><%= event.title %></div>
+          <div id="<%= "event_map_#{event.id}_div" %>" class="p-1 mb-2 bg-light rounded"><%= event.start_of_date.strftime("%-d.%-m.%Y") %> - <%= link_to event.title, event_path(event) %></div>
         <% end %>
         </div>
     </div>
@@ -46,14 +46,11 @@
 
 
     <% Event.incoming.each_with_index do |event, index| %>
-      <% next if event.nil? || event.location.nil? %>
       <% id_for_event = "event_map_#{event.id}" %>
       <% corresponding_div = "#event_map_#{event.id}_div" %>
 
-      <% results = Geocoder.search(event.location) %>
-      <% next if results.nil? %>
-      <% latitude = results.first.coordinates[0] %>
-      <% longitude = results.first.coordinates[1] %>
+      <% latitude = event.latitude %>
+      <% longitude = event.longitude %>
 
       //Create new marker
       var marker<%= index %> = L.marker([<%= latitude %>, <%= longitude %>], {myCustomId: "<%= id_for_event %>"});

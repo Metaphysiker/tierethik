@@ -11,8 +11,15 @@
       <li class="nav-item">
         <%= link_to "Blog", posts_path, class:"nav-link #{'active' unless @posts.nil? && @post.nil?}"  %>
       </li>
-      <li class="nav-item">
-        <%= link_to 'Events', event_calendar_path, class:"nav-link" %>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownEventLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Events
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownEventLink">
+          <%= link_to 'Kalender', event_calendar_path, class:"dropdown-item" %>
+          <%= link_to 'Aktionslandkarte', action_map_path, class:"dropdown-item" %>
+          <%= link_to 'Event vorschlagen', new_event_path, class:"dropdown-item" %>
+        </div>
       </li>
       <li class="nav-item">
         <%= link_to "Argumentiere mit einem Veganer!", debate_a_vegan_path, class:"nav-link"  %>
