@@ -9,3 +9,7 @@
 Role.roles.each do |role|
   Role.create(name: role)
 end
+
+Tag.tags.each do |tag|
+  Tag.create(title: tag)
+end
