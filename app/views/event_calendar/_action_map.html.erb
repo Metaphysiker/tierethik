@@ -1,0 +1,109 @@
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+  integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+  crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+  integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+  crossorigin=""></script>
+
+  <div class="container-fluid bg-white py-4">
+    <h3 class="text-h-color spaced-letters font-weight-light text-uppercase">
+      Aktionslandkarte
+    </h3>
+    <div class="row d-flex flex-row-reverse">
+      <div class="col-lg-4 col-md-12">
+        <% events.each_with_index do |event, index| %>
+          <div id="<%= "event_map_#{event.id}_div" %>" class="rounded border p-2 mb-2 bg-light rounded">
+            <div class="row">
+                <div class="col-3">
+                  <%= event.start_of_date.strftime("%-d.%-m.%Y") %>
+                </div>
+                <div class="col-9">
+                  <%= link_to event.title, event_path(event) %>
+                </div>
+            </div>
+          </div>
+        <% end %>
+        <%= link_to ">> Alle Events im Kalender sehen", event_calendar_path %>
+      </div>
+      <div class="col-lg-8 col-md-12">
+           <div id="mapid" style="height: 600px;"></div>
+      </div>
+    </div>
+  </div>
+
+
+
+<script>
+  $( document ).ready(function() {
+    var mymap = L.map('mapid').setView([46.81, 8.22], 8);
+L.tileLayer('https://api.mapbox.com/styles/v1/{username}/ckb94nmvg0nzv1imupjj6rxg8/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+    //L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+      attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+      maxZoom: 18,
+      //id: 'mapbox/streets-v11',
+      //id: 'mapbox/outdoors-v11',
+      id: 'mapbox/light-v10',
+      tileSize: 512,
+      zoomOffset: -1,
+      username: "metaphysiker",
+      accessToken: 'pk.eyJ1IjoibWV0YXBoeXNpa2VyIiwiYSI6ImNrYjY3YXg5bTB2NWkydm16Z2FtZmx5aDQifQ.IjUmtjPVcjp5kUM9tHA5Jg'
+    }).addTo(mymap);
+
+    //mymap.setLayoutProperty('country-label', 'text-field', ['get', 'name_de'])
+
+    //Handle marker click
+    var onMarkerClick = function(e){
+        var target_div = "#" + this.options.myCustomId + "_div";
+        //this.openPopup();
+        //console.log(this);
+        //console.log(this.options);
+        //console.log(object);
+        $(target_div).toggleClass( "shadow" );
+    }
+
+
+    <% events.each_with_index do |event, index| %>
+      <% id_for_event = "event_map_#{event.id}" %>
+      <% corresponding_div = "#event_map_#{event.id}_div" %>
+
+      <% latitude = event.latitude %>
+      <% longitude = event.longitude %>
+
+      //Create new marker
+      var marker<%= index %> = L.marker([<%= latitude %>, <%= longitude %>], {myCustomId: "<%= id_for_event %>"});
+
+      //Show popup when clicking on marker
+      marker<%= index %>.bindPopup("<strong><%= event.title.to_s %></strong><br /><%= event.start_of_date.strftime("%-d.%-m.%Y") %>");
+
+      //Handle click on marker
+      //marker<%= index %>.on('mouseover', onMarkerClick);
+      //marker<%= index %>.on('mouseout', onMarkerClick);
+
+      marker<%= index %>.addTo(mymap);
+
+      $("<%=corresponding_div%>").hover(
+        function() {
+          marker<%= index %>.openPopup();
+          $("<%=corresponding_div%>").toggleClass( "shadow" );
+        }, function() {
+          marker<%= index %>.closePopup();
+          $("<%=corresponding_div%>").toggleClass( "shadow" );
+        }
+      );
+
+      $(marker<%= index %>).hover(
+        function() {
+          marker<%= index %>.openPopup();
+          $("<%=corresponding_div%>").toggleClass( "shadow" );
+        }, function() {
+          marker<%= index %>.closePopup();
+          $("<%=corresponding_div%>").toggleClass( "shadow" );
+        }
+      );
+
+
+    <% end %>
+
+
+});
+</script>
