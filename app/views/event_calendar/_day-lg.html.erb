@@ -7,7 +7,8 @@
     <div class="border border-info rounded text-white bg-info w-100 p-1 trigger-hover-div-for-event mb-1" data-event-id="<%= event.id %>">
       <%= link_to event.title, event_path(event), class: "text-white" %>
 
-      <div id="hover-div-for-event-<%= event.id %>" style="display:none;">
+      <div id="hover-div-for-event-<%= event.id %>" class="border border-white bg-info rounded text-white  p-2" style="display:none; position: absolute;">
+        <strong><%= link_to event.title, event_path(event), class: "text-white" %></strong>
         <hr class="bg-light" />
 
           <strong>
