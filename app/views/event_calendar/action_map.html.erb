@@ -24,15 +24,20 @@
 <script>
   $( document ).ready(function() {
     var mymap = L.map('mapid').setView([46.81, 8.22], 8);
-
-    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+L.tileLayer('https://api.mapbox.com/styles/v1/{username}/ckb94nmvg0nzv1imupjj6rxg8/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+    //L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
       attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
       maxZoom: 18,
-      id: 'mapbox/streets-v11',
+      //id: 'mapbox/streets-v11',
+      //id: 'mapbox/outdoors-v11',
+      id: 'mapbox/light-v10',
       tileSize: 512,
       zoomOffset: -1,
+      username: "metaphysiker",
       accessToken: 'pk.eyJ1IjoibWV0YXBoeXNpa2VyIiwiYSI6ImNrYjY3YXg5bTB2NWkydm16Z2FtZmx5aDQifQ.IjUmtjPVcjp5kUM9tHA5Jg'
     }).addTo(mymap);
+
+    //mymap.setLayoutProperty('country-label', 'text-field', ['get', 'name_de'])
 
     //Handle marker click
     var onMarkerClick = function(e){
