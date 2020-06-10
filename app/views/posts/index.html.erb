@@ -1,8 +1,9 @@
 <div class="container">
   <div class="jumbotron bg-white my-4">
     <div class="text-center">
-
-      <h1 class="my-4">Übersicht</h1>
+      <h3 class="text-h-color spaced-letters font-weight-light text-uppercase">
+        <%= @title %>
+      </h3>
     </div>
     <% if is_current_user_admin? %>
       <div class="text-center">
@@ -10,6 +11,6 @@
       </div><hr />
     <% end %>
     <%#= render partial: "posts/card", collection: @posts, as: :post %>
-    <%= render "posts/cards_in_group_of_3", posts: @posts %>
+    <%= render "posts/cards_in_group_of_3", posts: @posts unless @posts.nil? %>
   </div>
 </div>

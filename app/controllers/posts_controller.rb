@@ -4,7 +4,15 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    if params[:tag].present?
+      tag = Tag.find_by_title(params[:tag])
+      @posts = tag.posts
+      @title = tag.title
+    else
+      @posts = Post.all
+      @title = "Blog"
+    end
+
   end
 
   # GET /posts/1
