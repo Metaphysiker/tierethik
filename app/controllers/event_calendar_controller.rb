@@ -9,8 +9,10 @@ class EventCalendarController < ApplicationController
     end
 
     only_month_days = @date.beginning_of_month..@date.end_of_month
-    @events = Event.where(start_of_date: only_month_days).order(:start_of_date)
+    calendar_days = @date.beginning_of_month.beginning_of_week..@date.end_of_month.end_of_week
+    @events = Event.where(start_of_date: calendar_days).order(:start_of_date)
     #@events = Event.incoming.first(10)
+    #byebug
   end
 
   def action_map

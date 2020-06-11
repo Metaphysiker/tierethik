@@ -3,6 +3,7 @@
 <% last_day = date.end_of_month.end_of_week %>
 <% all_month_days = first_day..last_day %>
 <% only_month_days = date.beginning_of_month..date.end_of_month %>
+<%= events.count %>
 
 <!-- Month -->
 <div class="container-fluid bg-white">
@@ -53,7 +54,7 @@
               <% backgroundcolorforday = "bg-lightgray" unless day.between?(date.beginning_of_month, date.end_of_month) %>
               <% backgroundcolorforday = "bg-lightcyan" if day === Date.today %>
               <td class="day-td <%= day.strftime("%d-%m-%Y") %> <%= backgroundcolorforday %>" style="width: 14.28%;">
-                <%= render "event_calendar/day-lg", day: day, events: @events %>
+                <%= render "event_calendar/day-lg", day: day, events: events %>
               </td>
               <% end %>
             </tr>
@@ -64,9 +65,9 @@
     </div>
 
     <div class="">
-        <%= render "event_calendar/event_list_calendar", events: @events %>
+        <%= render "event_calendar/event_list_calendar", events: events %>
     </div>
 
   </div>
 </div>
-<%= render "event_calendar/action_map", events: @events %>
+<%= render "event_calendar/action_map", events: events %>
