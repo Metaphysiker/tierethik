@@ -7,7 +7,7 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.incoming
+    @events = Event.incoming.published
   end
 
   # GET /events/1
@@ -68,12 +68,12 @@ class EventsController < ApplicationController
   end
 
   def api_events
-    @events = Event.incoming
+    @events = Event.incoming.published
     render json: @events.to_json
   end
 
   def icalendar
-    @events = Event.incoming
+    @events = Event.incoming.published
     cal = Icalendar::Calendar.new
     filename = "tierethik-events"
     tzid = "Europe/Zurich"
@@ -177,6 +177,26 @@ class EventsController < ApplicationController
     #render plain: cal.to_ical
   end
 
+  def new_event_for_non_users
+    @event = Event.new
+  end
+
+  def create_event_for_non_users
+    @event = Event.new(event_params)
+
+    @event.published = "no"
+
+    respond_to do |format|
+      if @event.save
+        format.html { redirect_to event_calendar_path, notice: 'Vielen Dank! Event wird nach einem Review freigeschaltet.' }
+        format.json { render :show, status: :created, location: @event }
+      else
+        format.html { render :new }
+        format.json { render json: @event.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_event
@@ -186,6 +206,6 @@ class EventsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def event_params
       params.require(:event).permit(:location, :hyperlink, :cover,
-:title, :description, :content, :start_of_date, :end_of_date)
+:title, :description, :content, :start_of_date, :end_of_date, :published)
     end
 end

@@ -28,7 +28,15 @@ def update_search_field
 ].compact.join(' ')
 end
 
+def self.published_statuses
+  ["yes", "no"]
+end
+
   has_one_attached :cover
+
+  #scope :published_status, -> (status) { where(published: status)}
+  scope :published, -> { where(published: "yes") }
+  scope :unpublished, -> { where(published: "no") }
 
   scope :incoming, -> { where("start_of_date > ?", DateTime.now - 1.day).order("start_of_date") }
   #scope :between ->(start_of_date, end_of_date) { where('start_of_date BETWEEN ? AND ?', start_of_date, end_of_date) }

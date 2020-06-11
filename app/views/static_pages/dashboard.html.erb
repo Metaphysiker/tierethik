@@ -1,0 +1,5 @@
+<div class="container">
+  <% Event.unpublished.each do |event| %>
+    <%= link_to event.title, event_path(event) %><br />
+  <% end %>
+</div>

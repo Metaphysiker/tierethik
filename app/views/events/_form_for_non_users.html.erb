@@ -1,5 +1,5 @@
-
-<%= simple_form_for(@event) do |f| %>
+<%= simple_form_for @event, {url: create_event_for_non_users_path, method: :post} do |f| %>
+<%#= simple_form_for(@event) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
@@ -11,7 +11,7 @@
     <%= f.input :hyperlink %>
     <%= f.input :start_of_date %>
     <%= f.input :end_of_date %>
-    <%= f.input :published, collection: Event.published_statuses.map {|p| [p, p]} %>
+    <%#= f.input :published, collection: Event.published_statuses.map {|p| [p, p]} %>
     <%= f.text_area :content, :class => "tinymce", :rows => 40, :cols => 120 %>
   </div>
 

@@ -19,6 +19,10 @@ class StaticPagesController < ApplicationController
   end
 
   def debate_a_vegan
+
+  end
+
+  def dashboard
     
   end
 end
