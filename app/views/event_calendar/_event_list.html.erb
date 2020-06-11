@@ -1,0 +1,15 @@
+<div class="container-fluid bg-white py-4">
+  <h3 class="text-h-color spaced-letters font-weight-light text-uppercase">
+    Event-Liste
+  </h3>
+
+  <% dates = events.pluck(:start_of_date).uniq %>
+
+  <% dates.each do |date| %>
+    <strong><%= date.strftime("%-d.%-m.%Y") %></strong><br />
+    <% events.between(date.beginning_of_day, date.end_of_day).each do |event| %>
+      <%= event.start_of_date.strftime("%H:%M") %> - <%= event.title %> - <%= link_to event.hyperlink, event.hyperlink %><br />
+    <% end %>
+    <br />
+  <% end %>
+</div>

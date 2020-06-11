@@ -16,4 +16,8 @@ class EventCalendarController < ApplicationController
   def action_map
     @events = Event.incoming.first(10)
   end
+
+  def event_list
+    @events = Event.incoming
+  end
 end
