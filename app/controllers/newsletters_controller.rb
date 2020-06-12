@@ -39,6 +39,18 @@ class NewslettersController < ApplicationController
     end
   end
 
+  def add_newsletter_to_list
+    @newsletter = Newsletter.new(newsletter_params)
+
+    respond_to do |format|
+      if @newsletter.save
+        format.js
+      else
+        format.js
+      end
+    end
+  end
+
   # PATCH/PUT /newsletters/1
   # PATCH/PUT /newsletters/1.json
   def update

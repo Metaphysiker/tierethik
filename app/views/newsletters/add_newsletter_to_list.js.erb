@@ -1,0 +1,28 @@
+
+var record_id = "#new_newsletter";
+var errors = <%= raw @newsletter.errors.full_messages %>;
+
+if (jQuery.isEmptyObject(errors)) {
+  console.log("keine Fehler");
+
+  content = `
+  <div class="btn btn-c-color rounded-0 w-100">
+  <strong>Newsletter wurde abonniert!</strong>
+  </div>
+  `;
+
+
+  $(record_id).replaceWith(function(){
+    return $(content).hide().fadeIn("slow");
+  });
+
+} else {
+  console.log("Fehler vorhanden");
+
+    content = "<p>Fehler</p>"
+
+    $(record_id).replaceWith(function(){
+      return $(content).hide().fadeIn("slow");
+    });
+
+}

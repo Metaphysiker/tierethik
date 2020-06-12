@@ -1,4 +1,4 @@
-class StaticPagePolicy < ApplicationPolicy
+class StaticPagePolicy < Struct.new(:user, :dashboard)
   attr_reader :user, :record
 
   def initialize(user, record)
@@ -8,11 +8,5 @@ class StaticPagePolicy < ApplicationPolicy
 
   def dashboard?
     user.admin?
-  end
-
-  class Scope < Scope
-    def resolve
-      scope.all
-    end
   end
 end

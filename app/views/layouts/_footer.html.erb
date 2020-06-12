@@ -15,14 +15,16 @@
         <p class="spaced-letters pt-5">
           <strong><%= "Newsletter".upcase %></strong>
         </p>
-        <p class="text-white">
-          <div class="input-group mb-3 rounded-0">
-          <input type="text" class="form-control rounded-0" placeholder="e-Mail-Adresse" aria-label="e-Mail-Adresse" aria-describedby="button-addon2">
-          <div class="input-group-append">
-            <button class="btn btn-c-color rounded-0" type="button" id="button-addon2">anmelden</button>
-          </div>
+        <div id="new_newsletter" class="text-white">
+          <%= simple_form_for(Newsletter.new, url: add_newsletter_to_list_path, method: :post, remote: true) do |f| %>
+            <div class="input-group mb-3 rounded-0">
+              <%= f.text_field :email, placeholder: "e-Mail-Adresse", class: "form-control rounded-0" %>
+              <div class="input-group-append">
+                <%= f.submit "anmelden", class: "btn btn-c-color rounded-0" %>
+              </div>
+            </div>
+          <% end %>
         </div>
-        </p>
       </div>
 
 
