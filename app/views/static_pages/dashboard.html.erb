@@ -1,5 +1,10 @@
 <div class="container">
+  <h3>Unpublished Events</h3>
   <% Event.unpublished.each do |event| %>
     <%= link_to event.title, event_path(event) %><br />
+  <% end %>
+  <h3>Newsletters</h3>
+  <% Newsletter.all.each do |newsletter| %>
+    <%= newsletter.email %><br />
   <% end %>
 </div>

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :newsletters
   get '/event_search/search_example', to: 'event_search#search_example'
   get '/event_search/search', to: 'event_search#search', as: 'search_events'
 

@@ -1,0 +1,24 @@
+
+
+
+
+<div class="container pt-3">
+
+
+
+  <h3 class="text-h-color spaced-letters font-weight-light text-uppercase"><%#= newsletter.title %></h3>
+  <p class="font-weight-bold text-muted pt-3">
+    <%#= newsletter.description %>
+  </p>
+  <p>
+  <%#= simple_format(newsletter.content) %>
+  <%= newsletter.email %>
+  </p>
+  <% if is_current_user_admin? %>
+    <div class="text-center m-2">
+      <hr />
+      <%= link_to 'Eintrag bearbeiten', edit_newsletter_path(newsletter), class: "btn btn-primary m-2" %>
+      <%= link_to 'Eintrag löschen', newsletter_path(newsletter), method: :delete, data: {confirm: 'Bist du sicher?'}, class: "btn btn-danger m-2" %>
+    </div>
+  <% end %>
+</div>

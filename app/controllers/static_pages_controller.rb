@@ -23,6 +23,7 @@ class StaticPagesController < ApplicationController
   end
 
   def dashboard
-    
+    authorize :static_page, :dashboard?
+
   end
 end
