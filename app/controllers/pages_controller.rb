@@ -84,6 +84,6 @@ class PagesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def page_params
       params.require(:page).permit(:cover,
-:title, :description, :content)
+:title, :description, :content, :slug)
     end
 end

@@ -12,6 +12,7 @@
     <%= f.input :start_of_date %>
     <%= f.input :end_of_date %>
     <%= f.input :published, collection: Event.published_statuses.map {|p| [p, p]} %>
+    <%= f.input :slug %>
     <%= f.text_area :content, :class => "tinymce", :rows => 40, :cols => 120 %>
   </div>
 
