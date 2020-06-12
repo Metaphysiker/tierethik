@@ -7,11 +7,11 @@
     </p>
     <h4 class="spaced-letters text-a-color">
       <strong>
-        <%= "Beratung".upcase %>
+        <%= "Video-Material".upcase %>
       </strong>
     </h4>
     <p>
-      <% link_to_page = Page.where(slug: "beratung").first %>
+      <% link_to_page = Page.where(slug: "video-material").first %>
       <% if link_to_page.present? %>
         <%= link_to page_path(link_to_page) do %>
           <button type="button" class="mt-3 btn btn-e-color btn-sm spaced-letters text-nowrap rounded-0">MEHR ERFAHREN <%= fa_icon "chevron-right", class: "ml-2" %></button>
