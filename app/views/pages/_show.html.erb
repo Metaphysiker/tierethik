@@ -23,7 +23,9 @@
     <%= page.description %>
   </p>
   <p>
-  <%= simple_format(page.content) %>
+    <div style="font-size: large;">
+      <%= raw sanitizing(page.content) %>
+    </div>
   </p>
   <% if is_current_user_admin? %>
     <div class="text-center m-2">
