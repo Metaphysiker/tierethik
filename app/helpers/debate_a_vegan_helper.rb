@@ -1,0 +1,2 @@
+module DebateAVeganHelper
+end

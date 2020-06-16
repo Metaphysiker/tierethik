@@ -19,11 +19,11 @@ class StaticPagesController < ApplicationController
   end
 
   def debate_a_vegan
-
+    response.headers["X-FRAME-OPTIONS"] = "ALLOWALL"
+    render "static_pages/debate_a_vegan", layout: "application_blank"
   end
 
   def dashboard
     authorize :static_page, :dashboard?
-
   end
 end

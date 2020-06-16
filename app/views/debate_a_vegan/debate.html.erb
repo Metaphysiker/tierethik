@@ -1,0 +1,32 @@
+<div class="container mt-4">
+  <div id="debate_field" class="text-center mb-4">
+    <div class="spinner">
+      <div class="rect1"></div>
+      <div class="rect2"></div>
+      <div class="rect3"></div>
+      <div class="rect4"></div>
+      <div class="rect5"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $( document ).ready(function() {
+    console.log("debate a vegan - loaded");
+    var field_id_name = "#debate_field";
+
+    load_debater();
+
+    function load_debater() {
+
+    $(field_id_name).fadeOut("fast", function(){
+      $(field_id_name).empty().append(
+        `
+        <%= render "debate_a_vegan/slides_for_debate_a_vegan/start" %>
+        `
+      ).fadeIn("fast");
+    });
+  }
+
+  });
+</script>

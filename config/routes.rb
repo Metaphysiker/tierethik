@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   post '/newsletters/add_newsletter_to_list', to: "newsletters#add_newsletter_to_list", as: "add_newsletter_to_list"
   resources :newsletters
   get '/event_search/search_example', to: 'event_search#search_example'
@@ -15,7 +16,7 @@ Rails.application.routes.draw do
   devise_for :users
   root 'static_pages#welcome'
   get '/static_pages/texts', to: 'static_pages#texts', as: 'texts'
-  get '/static_pages/debate_a_vegan', to: 'static_pages#debate_a_vegan', as: 'debate_a_vegan'
+
   get '/static_pages/dashboard', to: 'static_pages#dashboard', as: 'dashboard'
 
   #get '/event_calendar', to: 'event_calendar#event_calendar', as: 'event_calendar'
@@ -28,4 +29,7 @@ Rails.application.routes.draw do
   get 'api/events_icalendar', to: 'events#icalendar', as: 'events_icalendar'
   get 'api/events_to_icalendar/:id', to: 'events#to_icalendar', as: 'to_icalendar'
 
+  #debate
+  get '/debate_a_vegan', to: 'debate_a_vegan#debate', as: 'debate_a_vegan'
+  post '/debate_a_vegan/load_slide/:name_of_slide', to: 'debate_a_vegan#load_slide', as: 'debate_a_vegan_load_slide'
 end
