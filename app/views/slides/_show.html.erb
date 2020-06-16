@@ -1,11 +1,17 @@
 <div class="debate-argument">
   <%= raw sanitizing(slide.content) %>
 </div>
+<div class="debate-answer-options">
+  <% slide.options.each do |option| %>
+    <%= link_to option.content, debate_a_vegan_load_slide_path(option.target_slide), remote: true, method: :post, class: "debate-button" %>
+  <% end %>
+</div>
 
   <% if is_current_user_admin? %>
     <div class="text-center m-2">
       <hr />
       <%= link_to 'Eintrag bearbeiten', edit_slide_path(slide), class: "btn btn-primary m-2" %>
       <%= link_to 'Eintrag löschen', slide_path(slide), method: :delete, data: {confirm: 'Bist du sicher?'}, class: "btn btn-danger m-2" %>
+      <%= render 'options/form', option: Option.new, slide: slide %>
     </div>
   <% end %>

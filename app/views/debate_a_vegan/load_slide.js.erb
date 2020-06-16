@@ -4,7 +4,7 @@ var field_id_name = "#debate_field";
 $(field_id_name).fadeOut("fast", function(){
   $(field_id_name).empty().append(
     `
-    <%= render "debate_a_vegan/slides_for_debate_a_vegan/#{@name_of_slide}" %>
+    <%= render "slides/show", slide: @slide unless @slide.blank? %>
     `
   ).fadeIn("fast");
 });

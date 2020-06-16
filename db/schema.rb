@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_16_211423) do
+ActiveRecord::Schema.define(version: 2020_06_16_213851) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,6 +76,15 @@ ActiveRecord::Schema.define(version: 2020_06_16_211423) do
     t.string "email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "options", force: :cascade do |t|
+    t.string "content", default: ""
+    t.string "target_slide", default: ""
+    t.bigint "slide_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["slide_id"], name: "index_options_on_slide_id"
   end
 
   create_table "pages", force: :cascade do |t|

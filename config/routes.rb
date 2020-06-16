@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :options
   resources :slides
   resources :accounts
   post '/newsletters/add_newsletter_to_list', to: "newsletters#add_newsletter_to_list", as: "add_newsletter_to_list"

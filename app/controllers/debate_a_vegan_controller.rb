@@ -19,6 +19,7 @@ class DebateAVeganController < ApplicationController
   def load_slide
     @name_of_slide = params[:name_of_slide]
     @account.update(current_name_of_slide: @name_of_slide)
+    @slide = Slide.find_by_name(@name_of_slide)
   end
 
   def reset_debate
