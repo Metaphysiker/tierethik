@@ -1,0 +1,17 @@
+<div class="debate-argument">
+  <h1>Cool!</h1>
+  <p>
+    Falls du Hilfe brauchst, vegan zu leben, dann bekommst du hier Unterstützung!
+  </p>
+  <p>
+    <%= link_to "Vegan Challenge!", "https://www.vegan-challenge.ch/", class: "btn btn-info" %>
+  </p>
+</div>
+
+<div class="debate-answer-options">
+  <div class="row">
+      <div class="col-12">
+        <%= link_to "Ich möchte mit dir reden", debate_a_vegan_load_slide_path("start"), remote: true, method: :post, class: "debate-button" %>
+      </div>
+  </div>
+</div>
