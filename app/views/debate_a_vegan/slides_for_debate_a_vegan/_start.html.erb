@@ -1,24 +1,21 @@
-<div class="border rounded mb-3 p-3">
-<p>
-  <b>
-    Hallo! Ich bin Sandro!
-  </b>
-</p>
-<p>
-  Ich denke, dass es falsch ist,
-  tierische Produkte wie Fleisch, Eier oder Milchprodukte zu konsumieren.
-</p>
-<p>
-  <b>Denkst du das auch?</b>
-</p>
+<div class="debate-argument">
+  <h1>Hallo! Ich bin Sandro!</h1>
+  <p>
+    Ich denke, dass es falsch ist,
+    tierische Produkte wie Fleisch, Eier oder Milchprodukte zu konsumieren.
+  </p>
+  <p>
+    <b>Denkst du das auch?</b>
+  </p>
 </div>
-<div class="row">
-    <div class="col-6">
-      <button type="button mb-2" class="debate-button">Ja</button>
-      <%= link_to "Delete article", debate_a_vegan_load_slide_path("start"), remote: true, method: :post, class: "btn btn-light btn-lg btn-block border" %>
-    </div>
-    <div class="col-6">
-      <button type="button mb-2" class="btn btn-light btn-lg btn-block border">Nein</button>
-    </div>
+
+<div class="debate-answer-options">
+  <div class="row">
+      <div class="col-6">
+        <%= link_to "Ja", debate_a_vegan_load_slide_path("start"), remote: true, method: :post, class: "debate-button" %>
+      </div>
+      <div class="col-6">
+          <%= link_to "Nein", debate_a_vegan_load_slide_path("start"), remote: true, method: :post, class: "debate-button" %>
+      </div>
+  </div>
 </div>
-<%= link_to "Delete article", debate_a_vegan_load_slide_path("start"), remote: true, method: :post, class: "btn btn-light btn-lg btn-block border" %>

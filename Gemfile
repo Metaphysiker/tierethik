@@ -13,6 +13,8 @@ gem 'devise-i18n'
 gem 'rails-i18n'
 gem 'icalendar'
 gem 'geocoder'
+gem 'bootstrap', '~> 4.5.0'
+gem 'jquery-rails'
 
 gem 'devise'
 gem 'simple_form'

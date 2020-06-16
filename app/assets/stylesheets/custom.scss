@@ -22,7 +22,21 @@ body {
 
 .debate-button {
   @extend .btn;
-  //@extend .btn-dark;
+  @extend .btn-light;
+  @extend .btn-lg;
+  @extend .btn-block;
+  @extend .border;
+}
+
+.debate-argument {
+  @extend .border;
+  @extend .rounded;
+  @extend .p-3;
+  @extend .mb-3;
+
+  h1 {
+    font-size: 1.5em; 
+  }
 }
 
 blockquote {
