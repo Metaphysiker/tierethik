@@ -31,7 +31,8 @@ plugins:
 
     def change_view_file
       @name_of_attribute = options['name_of_attribute']
-      gsub_file "app/views/#{plural_table_name}/_show.html.erb", "<%= #{singular_table_name}.#{@name_of_attribute} %>", "<%= raw Sanitize.fragment(#{singular_table_name}.#{@name_of_attribute}, Sanitize::Config::RELAXED) %>"
+      #gsub_file "app/views/#{plural_table_name}/_show.html.erb", "<%= #{singular_table_name}.#{@name_of_attribute} %>", "<%= raw Sanitize.fragment(#{singular_table_name}.#{@name_of_attribute}, Sanitize::Config::RELAXED) %>"
+      gsub_file "app/views/#{plural_table_name}/_show.html.erb", "<%= #{singular_table_name}.#{@name_of_attribute} %>", "<%= raw sanitizing(#{singular_table_name}.#{@name_of_attribute}) %>"
       #    <%= raw sanitizing(#{singular_table_name}.#{@name_of_attribute}) %>
 
     end

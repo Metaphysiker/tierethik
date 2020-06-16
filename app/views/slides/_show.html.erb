@@ -1,0 +1,16 @@
+<div class="container pt-3">
+
+
+
+  <h3 class="text-h-color spaced-letters font-weight-light text-uppercase"><%= slide.name %></h3>
+  <p>
+  <%= raw sanitizing(slide.content) %>
+  </p>
+  <% if is_current_user_admin? %>
+    <div class="text-center m-2">
+      <hr />
+      <%= link_to 'Eintrag bearbeiten', edit_slide_path(slide), class: "btn btn-primary m-2" %>
+      <%= link_to 'Eintrag löschen', slide_path(slide), method: :delete, data: {confirm: 'Bist du sicher?'}, class: "btn btn-danger m-2" %>
+    </div>
+  <% end %>
+</div>
