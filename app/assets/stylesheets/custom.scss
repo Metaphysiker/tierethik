@@ -28,6 +28,14 @@ body {
   @extend .border;
 }
 
+.debate-button-success {
+  @extend .btn;
+  @extend .btn-success;
+  @extend .btn-lg;
+  @extend .btn-block;
+  @extend .border;
+}
+
 .debate-argument {
   @extend .border;
   @extend .rounded;
@@ -35,7 +43,7 @@ body {
   @extend .mb-3;
 
   h1 {
-    font-size: 1.5em; 
+    font-size: 1.5em;
   }
 }
 

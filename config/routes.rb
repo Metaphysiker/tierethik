@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :accounts
   post '/newsletters/add_newsletter_to_list', to: "newsletters#add_newsletter_to_list", as: "add_newsletter_to_list"
   resources :newsletters
   get '/event_search/search_example', to: 'event_search#search_example'
@@ -30,6 +31,8 @@ Rails.application.routes.draw do
   get 'api/events_to_icalendar/:id', to: 'events#to_icalendar', as: 'to_icalendar'
 
   #debate
-  get '/debate_a_vegan', to: 'debate_a_vegan#debate', as: 'debate_a_vegan'
+  get '/debate_a_vegan/reset_debate', to: 'debate_a_vegan#reset_debate', as: 'debate_a_vegan_reset_debate'
+  get '/debate_a_vegan(/:name_of_slide)', to: 'debate_a_vegan#debate', as: 'debate_a_vegan'
+
   post '/debate_a_vegan/load_slide/:name_of_slide', to: 'debate_a_vegan#load_slide', as: 'debate_a_vegan_load_slide'
 end
