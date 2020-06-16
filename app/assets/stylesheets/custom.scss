@@ -20,6 +20,11 @@ body {
 	//font-family: Nunito;
 }
 
+.debate-button {
+  @extend .btn;
+  //@extend .btn-dark;
+}
+
 blockquote {
   border-left: 2px solid #ccc;
   margin-left: 1rem;

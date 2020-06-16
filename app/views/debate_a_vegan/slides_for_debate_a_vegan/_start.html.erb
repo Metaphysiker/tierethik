@@ -14,7 +14,8 @@
 </div>
 <div class="row">
     <div class="col-6">
-      <button type="button mb-2" class="btn btn-light btn-lg btn-block border">Ja</button>
+      <button type="button mb-2" class="debate-button">Ja</button>
+      <%= link_to "Delete article", debate_a_vegan_load_slide_path("start"), remote: true, method: :post, class: "btn btn-light btn-lg btn-block border" %>
     </div>
     <div class="col-6">
       <button type="button mb-2" class="btn btn-light btn-lg btn-block border">Nein</button>
