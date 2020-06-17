@@ -16,10 +16,26 @@ class DebateAVeganController < ApplicationController
     render layout: "application_blank"
   end
 
+  def debate_static
+
+    if params[:name_of_slide].present?
+      @name_of_slide = params[:name_of_slide]
+    elsif !@account.current_name_of_slide.blank?
+      @name_of_slide = @account.current_name_of_slide
+    else
+      @name_of_slide = "start"
+    end
+
+    response.headers["X-FRAME-OPTIONS"] = "ALLOWALL"
+    render layout: "application_blank"
+  end
+
   def load_slide
     @name_of_slide = params[:name_of_slide]
     @account.update(current_name_of_slide: @name_of_slide)
+
     @slide = Slide.find_by_name(@name_of_slide)
+
   end
 
   def reset_debate

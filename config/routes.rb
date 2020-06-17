@@ -35,6 +35,7 @@ Rails.application.routes.draw do
   #debate
   get '/debate_a_vegan/reset_debate', to: 'debate_a_vegan#reset_debate', as: 'debate_a_vegan_reset_debate'
   get '/debate_a_vegan(/:name_of_slide)', to: 'debate_a_vegan#debate', as: 'debate_a_vegan'
+  get '/debate_a_vegan_static(/:name_of_slide)', to: 'debate_a_vegan#debate_static', as: 'debate_a_vegan_static'
 
   post '/debate_a_vegan/load_slide/:name_of_slide', to: 'debate_a_vegan#load_slide', as: 'debate_a_vegan_load_slide'
 end

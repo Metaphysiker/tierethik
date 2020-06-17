@@ -22,10 +22,11 @@ body {
 
 .debate-button {
   @extend .btn;
-  @extend .btn-light;
+  @extend .btn-info;
   @extend .btn-lg;
   @extend .btn-block;
   @extend .border;
+  @extend .mb-4;
 }
 
 .debate-button-success {

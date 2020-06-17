@@ -1,17 +1,54 @@
 <div class="debate-argument">
   <%= raw sanitizing(slide.content) %>
 </div>
+<% if is_current_user_admin? %>
+  <div class="text-center m-2 rounded border">
+    <hr />
+    <%= link_to 'Eintrag bearbeiten', edit_slide_path(slide), class: "btn btn-primary m-2" %>
+    <%= link_to 'Eintrag löschen', slide_path(slide), method: :delete, data: {confirm: 'Bist du sicher?'}, class: "btn btn-danger m-2" %>
+    <%= link_to 'Neuer Eintrag', new_slide_path, class: "btn btn-light m-2" %>
+    <%= render 'options/form', option: Option.new, slide: slide %>
+  </div>
+<% end %>
+
 <div class="debate-answer-options">
   <% slide.options.each do |option| %>
     <%= link_to option.content, debate_a_vegan_load_slide_path(option.target_slide), remote: true, method: :post, class: "debate-button" %>
+    <% if is_current_user_admin? %>
+      <%= link_to 'Eintrag bearbeiten', edit_option_path(option), class: "btn btn-primary m-2" %>
+      <%= link_to 'Eintrag löschen', option_path(option), method: :delete, data: {confirm: 'Bist du sicher?'}, class: "btn btn-danger m-2" %>
+    <% end %>
   <% end %>
 </div>
 
-  <% if is_current_user_admin? %>
-    <div class="text-center m-2">
-      <hr />
-      <%= link_to 'Eintrag bearbeiten', edit_slide_path(slide), class: "btn btn-primary m-2" %>
-      <%= link_to 'Eintrag löschen', slide_path(slide), method: :delete, data: {confirm: 'Bist du sicher?'}, class: "btn btn-danger m-2" %>
-      <%= render 'options/form', option: Option.new, slide: slide %>
+<hr />
+<div class="text-center">
+  <button type="button" class="ml-1 btn btn-info" data-toggle="modal" data-target="#statusModal">
+    <%= fa_icon "user-circle" %>
+  </button>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="statusModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Argumentiere mit einem Veganer!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= link_to "Neu anfangen", debate_a_vegan_reset_debate_path, method: :get, class: "debate-button" %>
+        <br />
+        <%#= render "/courses/status", account: @account, course: course %>
+        <%= mail_to "s.raess@me.com", "Ich möchte mit dir sprechen", class: "debate-button-success" %>
+        <%#= link_to "Ich möchte mit dir reden", debate_a_vegan_load_slide_path("start"), remote: true, method: :post, class: "debate-button" %>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Schliessen</button>
+      </div>
     </div>
-  <% end %>
+  </div>
+</div>
