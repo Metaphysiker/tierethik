@@ -28,7 +28,7 @@ class SlidesController < ApplicationController
 
     respond_to do |format|
       if @slide.save
-        format.html { redirect_to debate_a_vegan_path(@slide.name) }
+        format.html { redirect_to debate_a_vegan_path(@slide.id) }
         #format.html { redirect_to @slide, notice: 'Slide was successfully created.' }
         format.json { render :show, status: :created, location: @slide }
       else
@@ -43,7 +43,7 @@ class SlidesController < ApplicationController
   def update
     respond_to do |format|
       if @slide.update(slide_params)
-        format.html { redirect_to debate_a_vegan_path(@slide.name) }
+        format.html { redirect_to debate_a_vegan_path(@slide.id) }
         #format.html { redirect_to @slide, notice: 'Slide was successfully updated.' }
         format.json { render :show, status: :ok, location: @slide }
       else

@@ -4,27 +4,15 @@ class DebateAVeganController < ApplicationController
 
   def debate
 
-    if params[:name_of_slide].present?
-      @name_of_slide = params[:name_of_slide]
-    elsif !@account.current_name_of_slide.blank?
-      @name_of_slide = @account.current_name_of_slide
+    if params[:slide].present?
+      slide_id = params[:slide]
+    elsif !@account.current_slide.blank?
+      slide_id = @account.current_slide
     else
-      @name_of_slide = "start"
+      slide_id = 1
     end
 
-    response.headers["X-FRAME-OPTIONS"] = "ALLOWALL"
-    render layout: "application_blank"
-  end
-
-  def debate_static
-
-    if params[:name_of_slide].present?
-      @name_of_slide = params[:name_of_slide]
-    elsif !@account.current_name_of_slide.blank?
-      @name_of_slide = @account.current_name_of_slide
-    else
-      @name_of_slide = "start"
-    end
+    @slide = Slide.find(slide_id)
 
     response.headers["X-FRAME-OPTIONS"] = "ALLOWALL"
     render layout: "application_blank"
@@ -36,16 +24,14 @@ class DebateAVeganController < ApplicationController
 
     option = Option.find(option_id)
 
-    @name_of_slide = option.target_slide
+    target_slide = Slide.find(option.target_slide)
 
-    @account.update(current_name_of_slide: @name_of_slide)
+    @account.update(current_slide: option.target_slide)
 
-    slide = Slide.find_by_name(@name_of_slide)
-
-    @account.slides << slide
+    @account.slides << target_slide
     @account.options << option
 
-    @slide = slide
+    @slide = target_slide
 
   end
 
