@@ -31,10 +31,21 @@ class DebateAVeganController < ApplicationController
   end
 
   def load_slide
-    @name_of_slide = params[:name_of_slide]
+
+    option_id = params[:option]
+
+    option = Option.find(option_id)
+
+    @name_of_slide = option.target_slide
+
     @account.update(current_name_of_slide: @name_of_slide)
 
-    @slide = Slide.find_by_name(@name_of_slide)
+    slide = Slide.find_by_name(@name_of_slide)
+
+    @account.slides << slide
+    @account.options << option
+
+    @slide = slide
 
   end
 
