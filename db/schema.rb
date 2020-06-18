@@ -10,10 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_16_213851) do
+ActiveRecord::Schema.define(version: 2020_06_18_140559) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "account_options", force: :cascade do |t|
+    t.bigint "account_id"
+    t.bigint "option_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["account_id"], name: "index_account_options_on_account_id"
+    t.index ["option_id"], name: "index_account_options_on_option_id"
+  end
+
+  create_table "account_slides", force: :cascade do |t|
+    t.bigint "account_id"
+    t.bigint "slide_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["account_id"], name: "index_account_slides_on_account_id"
+    t.index ["slide_id"], name: "index_account_slides_on_slide_id"
+  end
 
   create_table "accounts", force: :cascade do |t|
     t.string "current_name_of_slide", default: "start"
