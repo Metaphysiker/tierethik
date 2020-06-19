@@ -5,7 +5,7 @@
 
   <div class="form-inputs">
     <%= f.input :content %>
-    <%= f.input :target_slide, as: :select, collection: Slide.all, label: "Target-Slide", label_method: :name, value_method: :name, input_html: {class: 'chosen-select', :data => {:placeholder => "Slide auswählen"}, multiple: false} %>
+    <%= f.input :target_slide, as: :select, collection: Slide.all, label: "Target-Slide", label_method: :name, value_method: :id, input_html: {class: 'chosen-select', :data => {:placeholder => "Slide auswählen"}, multiple: false} %>
     <%#= f.input :slide_id %>
     <%= f.input :slide_id, as: :select, collection: Slide.all, label: "Slide", label_method: :name, value_method: :id, selected: slide.id, input_html: {class: 'chosen-select', :data => {:placeholder => "Slide auswählen"}, multiple: false} %>
   </div>

@@ -1,7 +1,7 @@
 <div class="container mt-4">
   <div id="debate_field" class="text-center mb-4">
     <%#= render "debate_a_vegan/slides_for_debate_a_vegan/#{@name_of_slide}" %>
-    <% slide = Slide.find_by_name(@name_of_slide) %>
-    <%= render "slides/show", slide: slide unless slide.blank? %>
+    <%# slide = Slide.find_by_name(@name_of_slide) %>
+    <%= render "slides/show", slide: @slide unless @slide.blank? %>
   </div>
 </div>

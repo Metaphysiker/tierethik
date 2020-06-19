@@ -1,7 +1,7 @@
 class CreateAccounts < ActiveRecord::Migration[6.0]
   def change
     create_table :accounts do |t|
-      t.string :current_name_of_slide, default: "start"
+      t.integer :current_slide, default: 1
 
       t.timestamps
     end
