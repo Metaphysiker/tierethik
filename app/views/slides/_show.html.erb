@@ -12,7 +12,7 @@
 <% end %>
 
 <div class="debate-answer-options">
-  <% slide.options.each do |option| %>
+  <% slide.options.published.each do |option| %>
     <% if @account.options.where(id: option.id).any? %>
       <%= link_to option.content, debate_a_vegan_load_slide_path(option), remote: true, method: :post, class: "debate-button disabled" %>
     <% else %>
@@ -24,6 +24,9 @@
       <%= link_to 'Eintrag löschen', option_path(option), method: :delete, data: {confirm: 'Bist du sicher?'}, class: "btn btn-danger m-2" %>
     <% end %>
   <% end %>
+  <hr />
+    <%= link_to "Ich möchte an dieser Stelle etwas anderes sagen", debate_a_vegan_path, remote: true, method: :post, class: "debate-button-dark" %>
+    <%= render 'options/form_for_suggesters', option: Option.new, slide: slide %>
 </div>
 
 <hr />

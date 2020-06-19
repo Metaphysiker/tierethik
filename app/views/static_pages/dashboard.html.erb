@@ -7,4 +7,9 @@
   <% Newsletter.all.each do |newsletter| %>
     <%= newsletter.email %><br />
   <% end %>
+
+  <h3>Suggested Options</h3>
+  <% Option.suggested.each do |option| %>
+    <%= link_to option.content, edit_option_path(option) %> - <%= option.email %><br />
+  <% end %>
 </div>

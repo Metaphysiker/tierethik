@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_18_140559) do
+ActiveRecord::Schema.define(version: 2020_06_19_210417) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -102,6 +102,8 @@ ActiveRecord::Schema.define(version: 2020_06_18_140559) do
     t.bigint "slide_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "status", default: "published"
+    t.string "email", default: ""
     t.index ["slide_id"], name: "index_options_on_slide_id"
   end
 

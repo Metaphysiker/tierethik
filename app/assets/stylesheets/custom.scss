@@ -29,6 +29,15 @@ body {
   @extend .mb-4 !optional;
 }
 
+.debate-button-dark {
+  @extend .btn !optional;
+  @extend .btn-dark !optional;
+  @extend .btn-lg !optional;
+  @extend .btn-block !optional;
+  @extend .border !optional;
+  @extend .mb-4 !optional;
+}
+
 .debate-button-success {
   @extend .btn !optional;
   @extend .btn-success !optional;

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  post '/options/create_option_for_suggesters', to: 'options#create_option_for_suggesters', as: 'create_option_for_suggesters'
   resources :options
   resources :slides
   resources :accounts
