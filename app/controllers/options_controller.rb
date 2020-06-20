@@ -38,6 +38,22 @@ class OptionsController < ApplicationController
     end
   end
 
+  def create_option_for_suggesters
+    @option = Option.new(option_params)
+    @option.status = "suggested"
+
+    respond_to do |format|
+      if @option.save
+        format.html { redirect_to debate_a_vegan_path(@option.slide.id) }
+        #format.html { redirect_to @option, notice: 'Option was successfully created.' }
+        format.json { render :show, status: :created, location: @option }
+      else
+        format.html { render :new }
+        format.json { render json: @option.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   # PATCH/PUT /options/1
   # PATCH/PUT /options/1.json
   def update
@@ -71,6 +87,6 @@ class OptionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def option_params
-      params.require(:option).permit(:content, :target_slide, :slide_id)
+      params.require(:option).permit(:content, :target_slide, :slide_id, :status, :email)
     end
 end
