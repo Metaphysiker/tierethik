@@ -25,8 +25,18 @@
     <% end %>
   <% end %>
   <hr />
-    <%= link_to "Ich möchte an dieser Stelle etwas anderes sagen", debate_a_vegan_path, remote: true, method: :post, class: "debate-button-dark" %>
-    <%= render 'options/form_for_suggesters', option: Option.new, slide: slide %>
+<p>
+  <button class="debate-button-dark" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    Ich möchte an dieser Stelle etwas anderes sagen
+  </button>
+</p>
+<div class="collapse" id="collapseExample">
+  <div class="card card-body">
+      <%= render 'options/form_for_suggesters', option: Option.new, slide: slide %>
+  </div>
+</div>
+    <%#= link_to "Ich möchte an dieser Stelle etwas anderes sagen", debate_a_vegan_path, remote: true, method: :post, class: "debate-button-dark" %>
+
 </div>
 
 <hr />
@@ -49,6 +59,7 @@
       <div class="modal-body">
         <%= link_to "Neu anfangen", debate_a_vegan_reset_debate_path, method: :get, class: "debate-button" %>
         <br />
+        <%= link_to "Zur Startseite", root_path, class: "debate-button" %><br />
         <%#= render "/courses/status", account: @account, course: course %>
         <%= mail_to "s.raess@me.com", "Ich möchte mit dir sprechen", class: "debate-button-success" %>
         <%#= link_to "Ich möchte mit dir reden", debate_a_vegan_load_slide_path("start"), remote: true, method: :post, class: "debate-button" %>

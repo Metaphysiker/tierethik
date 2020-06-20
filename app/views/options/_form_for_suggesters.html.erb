@@ -5,7 +5,7 @@
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
-    <%= f.input :content %>
+    <%= f.input :content, label: "Was möchtest du an dieser Stelle sagen?" %>
     <%#= f.input :target_slide, as: :select, collection: Slide.all, label: "Target-Slide", label_method: :name, value_method: :id, input_html: {class: 'chosen-select', :data => {:placeholder => "Slide auswählen"}, multiple: false} %>
     <%#= f.input :slide_id %>
     <div class="d-none">
@@ -16,7 +16,7 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, "Absenden" %>
   </div>
 <% end %>
 
