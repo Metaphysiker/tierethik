@@ -12,29 +12,35 @@
 <% end %>
 
 <div class="debate-answer-options">
-  <% slide.options.published.each do |option| %>
-    <% if @account.options.where(id: option.id).any? %>
-      <%= link_to option.content, debate_a_vegan_load_slide_path(option), remote: true, method: :post, class: "debate-button disabled" %>
-    <% else %>
-      <%= link_to option.content, debate_a_vegan_load_slide_path(option), remote: true, method: :post, class: "debate-button" %>
-    <% end %>
-
+  <% slide.options.published.where.not(id: @account.options.pluck(:id) ).each do |option| %>
+    <%= link_to option.content, debate_a_vegan_load_slide_path(option), remote: true, method: :post, class: "debate-button" %>
     <% if is_current_user_admin? %>
       <%= link_to 'Eintrag bearbeiten', edit_option_path(option), class: "btn btn-primary m-2" %>
       <%= link_to 'Eintrag löschen', option_path(option), method: :delete, data: {confirm: 'Bist du sicher?'}, class: "btn btn-danger m-2" %>
     <% end %>
   <% end %>
+
   <hr />
 <p>
-  <button class="debate-button-dark" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+  <button class="debate-button-dark" type="button" data-toggle="collapse" data-target="#suggest-option" aria-expanded="false" aria-controls="collapseExample">
     Ich möchte an dieser Stelle etwas anderes sagen
   </button>
-</p>
-<div class="collapse" id="collapseExample">
-  <div class="card card-body">
-      <%= render 'options/form_for_suggesters', option: Option.new, slide: slide %>
+  <div class="collapse" id="suggest-option">
+    <div class="card card-body">
+        <%= render 'options/form_for_suggesters', option: Option.new, slide: slide %>
+    </div>
   </div>
-</div>
+</p>
+<hr />
+<% slide.options.published.where(id: @account.options.pluck(:id) ).each do |option| %>
+  <%= link_to option.content, debate_a_vegan_load_slide_path(option), remote: true, method: :post, class: "debate-button-already-visited" %>
+  <% if is_current_user_admin? %>
+    <%= link_to 'Eintrag bearbeiten', edit_option_path(option), class: "btn btn-primary m-2" %>
+    <%= link_to 'Eintrag löschen', option_path(option), method: :delete, data: {confirm: 'Bist du sicher?'}, class: "btn btn-danger m-2" %>
+  <% end %>
+<% end %>
+
+
     <%#= link_to "Ich möchte an dieser Stelle etwas anderes sagen", debate_a_vegan_path, remote: true, method: :post, class: "debate-button-dark" %>
 
 </div>
