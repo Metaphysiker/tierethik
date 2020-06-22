@@ -31,8 +31,12 @@
     </div>
   </div>
 </p>
-<hr />
-<% slide.options.published.where(id: @account.options.pluck(:id) ).each do |option| %>
+<% used_options = slide.options.published.where(id: @account.options.pluck(:id) ) %>
+<% unless used_options.empty? %>
+  <hr />
+<% end %>
+
+<% used_options.each do |option| %>
   <%= link_to option.content, debate_a_vegan_load_slide_path(option), remote: true, method: :post, class: "debate-button-already-visited" %>
   <% if is_current_user_admin? %>
     <%= link_to 'Eintrag bearbeiten', edit_option_path(option), class: "btn btn-primary m-2" %>
@@ -64,8 +68,7 @@
       </div>
       <div class="modal-body">
         <%= link_to "Neu anfangen", debate_a_vegan_reset_debate_path, method: :get, class: "debate-button" %>
-        <br />
-        <%= link_to "Zur Startseite", root_path, class: "debate-button" %><br />
+        <%= link_to "Zur Startseite", root_path, class: "debate-button" %>
         <%#= render "/courses/status", account: @account, course: course %>
         <%= mail_to "s.raess@me.com", "Ich möchte mit dir sprechen", class: "debate-button-success" %>
         <%#= link_to "Ich möchte mit dir reden", debate_a_vegan_load_slide_path("start"), remote: true, method: :post, class: "debate-button" %>
