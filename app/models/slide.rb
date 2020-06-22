@@ -4,4 +4,8 @@ has_many :accounts, :through => :account_slides
   has_many :options
 
   validates :name, uniqueness: true
+
+  def self.show_suggestion_options
+    ["yes", "no"]
+  end
 end
