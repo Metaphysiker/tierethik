@@ -56,6 +56,12 @@
 
 <hr />
 <div class="text-center">
+  <% if @account.account_slides.count >= 2 %>
+    <%= link_to debate_a_vegan_go_one_slide_back_path, remote: true, method: :post, class: "ml-1 btn btn-secondary" do %>
+      <%= fa_icon "chevron-left", class: "" %> <%= fa_icon "chevron-left", class: "" %>
+    <% end %>
+  <% end %>
+
   <button type="button" class="ml-1 btn btn-info" data-toggle="modal" data-target="#statusModal">
     <%= fa_icon "bars" %>
   </button>

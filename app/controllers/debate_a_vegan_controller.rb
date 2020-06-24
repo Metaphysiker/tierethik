@@ -35,10 +35,22 @@ class DebateAVeganController < ApplicationController
 
   end
 
+  def go_one_slide_back
+
+    latest_slide = @account.account_slides.order(:created_at).last.slide
+    latest_option = @account.account_options.order(:created_at).last.option
+
+    @account.options.delete(latest_option)
+    @account.slides.delete(latest_slide)
+
+    latest_slide = @account.account_slides.order(:created_at).last.slide
+
+    @account.update(current_slide: latest_slide)
+    @slide = latest_slide
+  end
+
   def reset_debate
-    #cookies.permanent["debate-a-vegan-cookie-id"] = @account.id
-    @account = Account.create
-    cookies.permanent["debate-a-vegan-cookie-id"] = @account.id
+    create_a_new_account
     redirect_to debate_a_vegan_path
   end
 
@@ -49,12 +61,20 @@ class DebateAVeganController < ApplicationController
       if Account.exists?(cookies["debate-a-vegan-cookie-id"])
         @account = Account.find(cookies["debate-a-vegan-cookie-id"])
       else
-        @account = Account.create
-        cookies.permanent["debate-a-vegan-cookie-id"] = @account.id
+        create_a_new_account
       end
     else
-      @account = Account.create
-      cookies.permanent["debate-a-vegan-cookie-id"] = @account.id
+      create_a_new_account
     end
   end
+
+  def create_a_new_account
+    slide_to_begin = Slide.find(1)
+    @account = Account.create
+    cookies.permanent["debate-a-vegan-cookie-id"] = @account.id
+    @account.update(current_slide: slide_to_begin)
+    @account.slides << slide_to_begin
+  end
+
+
 end
