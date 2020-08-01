@@ -77,7 +77,7 @@ class EventsController < ApplicationController
     cal = Icalendar::Calendar.new
     filename = "tierethik-events"
     tzid = "Europe/Zurich"
-    cal.x_wr_calname = 'Fokus Tierethik'
+    cal.x_wr_calname = 'Kennsch Ethik?'
 
     if params[:format] == 'vcs'
       #cal.prodid = '-//Microsoft Corporation//Outlook MIMEDIR//EN'
@@ -130,7 +130,7 @@ class EventsController < ApplicationController
     cal = Icalendar::Calendar.new
     filename = @event.title
     tzid = "Europe/Zurich"
-    cal.x_wr_calname = 'Fokus Tierethik'
+    cal.x_wr_calname = 'Kennsch Ethik?'
 
     if params[:format] == 'vcs'
       #cal.prodid = '-//Microsoft Corporation//Outlook MIMEDIR//EN'

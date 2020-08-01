@@ -2,8 +2,8 @@ class StaticPagesController < ApplicationController
   def welcome
     image = ActionController::Base.helpers.asset_url("pigs.jpg", type: :image)
 
-    set_meta_tags title: "Fokus Tierethik", reverse: true,
-              description: "Fokus Tierethik ist ein Portal für Tierethik und Tierschutz-Aktivismus.",
+    set_meta_tags title: "Kennsch Ethik?", reverse: true,
+              description: "Kennsch Ethik? ist ein Portal für Tierethik und Tierschutz-Aktivismus.",
               og: {
                 title: :title,
                 description: :description,
@@ -14,7 +14,7 @@ class StaticPagesController < ApplicationController
 
   def texts
     @page_title       = 'Texte & Argumente'
-    @page_description = 'Eine Übersicht aller Texte und Argumente auf Fokus Tierethik'
+    @page_description = 'Eine Übersicht aller Texte und Argumente auf Kennsch Ethik?'
     @page_keywords    = 'Tierethik, Argumente'
   end
 
