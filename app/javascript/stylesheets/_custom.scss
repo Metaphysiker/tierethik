@@ -60,6 +60,12 @@ blockquote {
   background-color: $base-color;
 }
 
+.greenbg {
+  background-color: rgb(153,102,153);
+  color: rgb(255,255,204);
+  border: 3px solid #73AD21;
+}
+
 .a-color {
   background-color: $a-color;
 

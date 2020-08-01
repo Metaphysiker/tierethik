@@ -54,6 +54,10 @@ class DebateAVeganController < ApplicationController
     redirect_to debate_a_vegan_path
   end
 
+  def chat
+    
+  end
+
   private
 
   def set_account
