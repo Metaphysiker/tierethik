@@ -55,7 +55,7 @@ class DebateAVeganController < ApplicationController
   end
 
   def chat
-    
+    render layout: "application_blank"
   end
 
   private
