@@ -17,11 +17,11 @@ var field_id_name = "#chat-field";
     $(field_id_name).append(
       `
       <%= link_to debate_a_vegan_load_message_path(1), method: :post, remote: true do %>
-        <div class="chat-option-field">
-            <p class="bigger">
-              Weiter
-            </p>
-        </div>
+      <div class="chat-option-field chat-section-field animate__animated animate__bounceIn animate__delay-1s">
+          <p class="bigger">
+            Weiter
+          </p>
+      </div>
       <% end %>
       `
     );
