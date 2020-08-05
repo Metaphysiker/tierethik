@@ -1,4 +1,4 @@
-<div class="fluid-container chat-bg chat-field mb-3">
+<div class="fluid-container chat-bg mb-3">
 
   <div style="overflow-x: hidden;">
     <div class="chat-top">
@@ -11,23 +11,30 @@
   </div>
 
   <div class="container">
-    <div class="chat-argument-field">
-        <h1>Hallo!</h1>
-        <p>
-          Ich möchte dir ein Video zeigen und dir eine Frage stellen.
-        </p>
-        <p class="bigger">
-            Ist das okay?
-        </p>
-    </div>
 
-    <%= link_to debate_a_vegan_reset_debate_path, method: :get do %>
-      <div class="chat-option-field">
+    <div id="chat-field">
+      <div class="chat-argument-field">
+          <h1>Hallo!</h1>
+          <p>
+            Ich möchte dir ein Video zeigen und dir eine Frage stellen.
+          </p>
           <p class="bigger">
-            Ja, zeig mir das Video.
+              Ist das okay?
           </p>
       </div>
-    <% end %>
+
+      <%= link_to debate_a_vegan_load_video_path, method: :post, remote: true do %>
+        <div class="chat-option-field">
+            <p class="bigger">
+              Ja, zeig mir das Video.
+            </p>
+        </div>
+      <% end %>
+    </div>
+
+
+
+    <%#= link_to option.content, debate_a_vegan_load_slide_path(option), remote: true, method: :post, class: "debate-button" %>
 
 
     <div class="float-right my-3 menu-button">

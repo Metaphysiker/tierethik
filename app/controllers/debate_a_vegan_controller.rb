@@ -58,6 +58,23 @@ class DebateAVeganController < ApplicationController
     render layout: "application_chat"
   end
 
+  def load_video
+
+  #  option_id = params[:option]
+
+  #  option = Option.find(option_id)
+
+  #  target_slide = Slide.find(option.target_slide)
+
+  #  @account.update(current_slide: option.target_slide)
+
+  #  @account.slides << target_slide
+  #  @account.options << option
+
+  #  @slide = target_slide
+
+  end
+
   private
 
   def set_account

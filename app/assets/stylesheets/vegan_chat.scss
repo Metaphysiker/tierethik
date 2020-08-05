@@ -112,3 +112,10 @@
   @extend .mx-4 !optional;
 
 }
+
+.chat-video-field {
+  @extend .rounded !optional;
+  @extend .pt-3 !optional;
+  @extend .pb-1 !optional;
+  @extend .mx-4 !optional;
+}
