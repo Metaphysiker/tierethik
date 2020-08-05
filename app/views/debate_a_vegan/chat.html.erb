@@ -13,7 +13,7 @@
   <div class="container">
 
     <div id="chat-field">
-      <div class="chat-argument-field animate__animated animate__bounceIn">
+      <div class="chat-argument-field chat-section-field animate__animated animate__bounceIn">
           <h1>Hallo!</h1>
           <p>
             Ich möchte dir ein Video zeigen und dir eine Frage stellen.
@@ -24,12 +24,28 @@
       </div>
 
       <%= link_to debate_a_vegan_load_video_path, method: :post, remote: true do %>
-        <div class="chat-option-field animate__animated animate__bounceIn animate__delay-1s">
+        <div class="chat-option-field chat-section-field animate__animated animate__bounceIn animate__delay-1s">
             <p class="bigger">
               Ja, zeig mir das Video.
             </p>
         </div>
       <% end %>
+
+      <div class="chat-section-field">
+        <div class="row">
+            <div class="col-2 d-flex align-items-end">
+              <%= image_tag "duckduckportrait.png", class: "rounded-circle bg-white", height: "40" %>
+            </div>
+            <div class="col-8">
+              <div class="chat-argument-field animate__animated animate__bounceIn">
+                  <p>
+                    Müssen wir Tiere essen?
+                  </p>
+              </div>
+            </div>
+        </div>
+      </div>
+
 
 
     </div>

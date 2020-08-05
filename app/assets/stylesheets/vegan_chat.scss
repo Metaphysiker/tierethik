@@ -53,9 +53,11 @@
 
 .chat-argument-field {
     @extend .rounded !optional;
-    @extend .p-3 !optional;
-    @extend .my-3 !optional;
-    @extend .mx-4 !optional;
+    @extend .p-2 !optional;
+    //@extend .pb-1 !optional;
+    //@extend .py-2 !optional;
+  //  @extend .my-3 !optional;
+  //  @extend .mx-4 !optional;
     background: #354E44;
 
     h1 {
@@ -81,9 +83,9 @@
 
 .chat-option-field {
   @extend .rounded !optional;
-  @extend .pt-3 !optional;
-  @extend .pb-1 !optional;
-  @extend .mx-4 !optional;
+  //@extend .pt-3 !optional;
+  //@extend .pb-1 !optional;
+  //@extend .mx-4 !optional;
 
   background: white;
 
@@ -118,4 +120,11 @@
   @extend .pt-3 !optional;
   @extend .pb-1 !optional;
   @extend .mx-4 !optional;
+}
+
+.chat-section-field {
+  @extend .pt-3 !optional;
+  @extend .pb-1 !optional;
+  @extend .mx-4 !optional;
+  @extend .my-4 !optional;
 }
