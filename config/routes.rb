@@ -43,4 +43,5 @@ Rails.application.routes.draw do
   post '/debate_a_vegan/go_one_slide_back', to: 'debate_a_vegan#go_one_slide_back', as: 'debate_a_vegan_go_one_slide_back'
 
   post '/debate_a_vegan/load_video', to: 'debate_a_vegan#load_video', as: 'debate_a_vegan_load_video'
+  post '/debate_a_vegan/load_message/:option', to: 'debate_a_vegan#load_message', as: 'debate_a_vegan_load_message'
 end

@@ -1,0 +1,20 @@
+//console.log("load slide");
+var field_id_name = "#chat-field";
+
+  $(field_id_name).append(
+    `
+    <div class="chat-argument-field">
+    <%= raw sanitizing(@slide.content) unless @slide.blank? %>
+    </div>
+    `
+  );
+
+  setTimeout(
+  function()
+  {
+    $(field_id_name).append(
+      `
+      echo
+      `
+    );
+  }, 10000);
