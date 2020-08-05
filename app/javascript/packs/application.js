@@ -23,3 +23,4 @@ require("channels")
 //= require bootstrap-sprockets
 
 //require("bootstrap")
+require("animate")
