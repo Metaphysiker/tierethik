@@ -1,9 +1,10 @@
-<div class="fluid-container chat-bg">
-<div style="overflow-x: hidden;">
-  <div class="chat-top">
+<div class="fluid-container chat-bg chat-field mb-3">
 
+  <div style="overflow-x: hidden;">
+    <div class="chat-top">
+
+    </div>
   </div>
-</div>
 
   <div class="text-center">
     <%= image_tag "portrait-icon-5.jpg", class: "rounded-circle border-white chat-top-image mt-n6", height: "125" %>
@@ -15,13 +16,28 @@
         <p>
           Ich möchte dir ein Video zeigen und dir eine Frage stellen.
         </p>
-        <p>
-          <strong>
+        <p class="bigger">
             Ist das okay?
-          </strong>
         </p>
+    </div>
+
+    <%= link_to debate_a_vegan_reset_debate_path, method: :get do %>
+      <div class="chat-option-field">
+          <p class="bigger">
+            Ja, zeig mir das Video.
+          </p>
+      </div>
+    <% end %>
+
+
+    <div class="float-right my-3 menu-button">
+      <button type="button" class="px-3 py-2 btn btn-light rounded-circle" data-toggle="modal" data-target="#statusModal">
+        <%= fa_icon "bars 2x", class: "text-info" %>
+      </button>
     </div>
   </div>
 
 
 </div>
+
+<%= render 'debate_a_vegan/menu' %>

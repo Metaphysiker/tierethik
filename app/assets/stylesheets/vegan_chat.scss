@@ -53,20 +53,62 @@
 
 .chat-argument-field {
     @extend .rounded !optional;
-    @extend .p-1 !optional;
+    @extend .p-3 !optional;
     @extend .my-3 !optional;
+    @extend .mx-4 !optional;
     background: #354E44;
 
     h1 {
       @extend .text-center !optional;
       color: #33C1A7;
+      font-size: 28px;
+      @extend .font-weight-bolder !optional;
     }
 
     p {
+      @extend .font-weight-bold !optional;
       text-align: center;
-      font-size: 20px;
+      font-size: 16px;
       //font: SemiBold 15px/20px Axiforma;
       letter-spacing: 0px;
       color: #FFFFFF;
     }
+
+    .bigger {
+      font-size: 22px;
+    }
+}
+
+.chat-option-field {
+  @extend .rounded !optional;
+  @extend .pt-3 !optional;
+  @extend .pb-1 !optional;
+  @extend .mx-4 !optional;
+
+  background: white;
+
+  &:hover {
+    background-color: darken(white, 10%);
+    text-decoration: none;
+  }
+
+  p {
+    @extend .font-weight-bold !optional;
+    text-align: center;
+    font-size: 16px;
+    //font: SemiBold 15px/20px Axiforma;
+    color: #354E44;
+  }
+
+  .bigger {
+    font-size: 22px;
+  }
+}
+
+.menu-button {
+  @extend .rounded !optional;
+  @extend .pt-3 !optional;
+  @extend .pb-1 !optional;
+  @extend .mx-4 !optional;
+
 }
