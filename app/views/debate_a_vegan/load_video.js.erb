@@ -16,10 +16,11 @@ var field_id_name = "#chat-field";
   {
     $(field_id_name).append(
       `
-      <%= link_to debate_a_vegan_load_message_path(1), method: :post, remote: true, class: "no-underline" do %>
+      <% starting_slide = Slide.where(starting_slide: "yes").sample %>
+      <%= link_to debate_a_vegan_load_starting_slide_path(starting_slide.id), method: :post, remote: true, class: "no-underline" do %>
       <div class="chat-option-field chat-section-field animate__animated animate__bounceIn animate__delay-1s">
           <p class="bigger">
-            Weiter
+            Weiter <%= starting_slide.id %>
           </p>
       </div>
       <% end %>

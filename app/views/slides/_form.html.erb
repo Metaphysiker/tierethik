@@ -6,6 +6,7 @@
   <div class="form-inputs">
     <%= f.input :name %>
     <%= f.input :show_suggestion, as: :select, collection: Slide.show_suggestion_options, input_html: {class: 'chosen-select', :data => {:placeholder => "Option auswählen"}, multiple: false} %>
+    <%= f.input :starting_slide, as: :select, collection: Slide.starting_slide_options, input_html: {class: 'chosen-select', :data => {:placeholder => "Option auswählen"}, multiple: false} %>
     <%= f.text_area :content, :class => "tinymce", :rows => 40, :cols => 120 %>
   </div>
 

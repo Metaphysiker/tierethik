@@ -18,7 +18,7 @@
     <div class="row">
 
         <div class="offset-1 col-11 d-flex align-items-end justify-content-end">
-          <%= link_to debate_a_vegan_load_message_path(option.target_slide), remote: true, method: :post, class: "no-underline" do %>
+          <%= link_to debate_a_vegan_load_message_path(option), remote: true, method: :post, class: "no-underline" do %>
             <div class="chat-option-field animate__animated animate__bounceIn">
               <p class="">
                 <%= option.content unless option.content.blank? %>

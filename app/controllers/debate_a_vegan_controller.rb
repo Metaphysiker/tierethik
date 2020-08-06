@@ -92,6 +92,23 @@ class DebateAVeganController < ApplicationController
 
   end
 
+  def load_starting_slide
+
+    starting_slide = params[:starting_slide]
+
+    #option = Option.find(option_id)
+
+    target_slide = Slide.find(starting_slide)
+
+    @account.update(current_slide: starting_slide)
+
+    @account.slides << target_slide
+    #@account.options << option
+
+    @slide = target_slide
+
+  end
+
   private
 
   def set_account
