@@ -1,0 +1,31 @@
+<div class="chat-section-field">
+  <div class="row">
+      <div class="col-11 d-flex align-items-end">
+        <%= image_tag "duckduckportrait.png", class: "rounded-circle bg-white mr-3", height: "40" %>
+
+        <div class="chat-argument-field animate__animated animate__bounceIn">
+          <%= raw sanitizing(slide.content) unless slide.blank? %>
+        </div>
+      </div>
+  </div>
+</div>
+
+<% options = slide.options.published %>
+
+<% options.each do |option| %>
+
+  <div class="chat-section-field">
+    <div class="row">
+
+        <div class="offset-1 col-11 d-flex align-items-end justify-content-end">
+          <%= link_to debate_a_vegan_load_message_path(option.target_slide), remote: true, method: :post, class: "no-underline" do %>
+            <div class="chat-option-field animate__animated animate__bounceIn">
+              <%= raw sanitizing(option.content) unless option.content.blank? %>
+            </div>
+          <% end %>
+          <%= image_tag "duckduckportrait.png", class: "rounded-circle bg-white ml-3", height: "40" %>
+        </div>
+    </div>
+  </div>
+
+<% end %>

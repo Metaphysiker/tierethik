@@ -3,17 +3,7 @@ var field_id_name = "#chat-field";
 
   $(field_id_name).append(
     `
-    <div class="chat-section-field">
-      <div class="row">
-          <div class="col-11 d-flex align-items-end">
-            <%= image_tag "duckduckportrait.png", class: "rounded-circle bg-white mr-3", height: "40" %>
-
-            <div class="chat-argument-field animate__animated animate__bounceIn">
-              <%= raw sanitizing(@slide.content) unless @slide.blank? %>
-            </div>
-          </div>
-      </div>
-    </div>
+    <%= render "slides/message", slide: @slide unless @slide.blank? %>
 
     `
   );

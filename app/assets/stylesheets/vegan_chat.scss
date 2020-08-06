@@ -1,3 +1,7 @@
+.no-underline {
+  text-decoration: none !important;
+}
+
 .debate_left_to_right {
   background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
 }
@@ -84,15 +88,18 @@
 
 .chat-option-field {
   @extend .rounded !optional;
-  //@extend .pt-3 !optional;
-  //@extend .pb-1 !optional;
-  //@extend .mx-4 !optional;
+  @extend .p-1 !optional;
+  //@extend .p-2 !optional;
+  @extend .pt-3 !optional;
+  @extend .px-3 !optional;
+  //@extend .py-3 !optional;
+//  @extend .mx-4 !optional;
 
   background: white;
 
   &:hover {
     background-color: darken(white, 10%);
-    text-decoration: none;
+    text-decoration: none !important;
   }
 
   p {

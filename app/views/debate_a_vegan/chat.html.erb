@@ -23,7 +23,7 @@
           </p>
       </div>
 
-      <%= link_to debate_a_vegan_load_video_path, method: :post, remote: true do %>
+      <%= link_to debate_a_vegan_load_video_path, method: :post, remote: true, class: "no-underline" do %>
         <div class="chat-option-field chat-section-field animate__animated animate__bounceIn animate__delay-1s">
             <p class="bigger">
               Ja, zeig mir das Video.
@@ -38,9 +38,26 @@
 
               <div class="chat-argument-field animate__animated animate__bounceIn">
                   <p>
-                    Müssen wir Tiere essen?
+                    Müssen wir Tiere essen? Müssen wir Tiere essen? Müssen wir Tiere essen? Müssen wir Tiere essen? Müssen wir Tiere essen?
                   </p>
               </div>
+            </div>
+            <div class="col-1">
+              &nbsp;
+            </div>
+        </div>
+      </div>
+
+      <div class="chat-section-field">
+        <div class="row">
+
+            <div class="offset-1 col-11 d-flex align-items-end justify-content-end">
+              <div class="chat-option-field animate__animated animate__bounceIn">
+                  <p>
+                    Nein, eigentlich nicht.
+                  </p>
+              </div>
+              <%= image_tag "duckduckportrait.png", class: "rounded-circle bg-white ml-3", height: "40" %>
             </div>
         </div>
       </div>
