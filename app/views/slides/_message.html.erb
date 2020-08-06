@@ -20,7 +20,9 @@
         <div class="offset-1 col-11 d-flex align-items-end justify-content-end">
           <%= link_to debate_a_vegan_load_message_path(option.target_slide), remote: true, method: :post, class: "no-underline" do %>
             <div class="chat-option-field animate__animated animate__bounceIn">
-              <%= raw sanitizing(option.content) unless option.content.blank? %>
+              <p class="">
+                <%= option.content unless option.content.blank? %>
+              </p>
             </div>
           <% end %>
           <%= image_tag "duckduckportrait.png", class: "rounded-circle bg-white ml-3", height: "40" %>

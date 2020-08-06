@@ -16,7 +16,7 @@ var field_id_name = "#chat-field";
   {
     $(field_id_name).append(
       `
-      <%= link_to debate_a_vegan_load_message_path(1), method: :post, remote: true do %>
+      <%= link_to debate_a_vegan_load_message_path(1), method: :post, remote: true, class: "no-underline" do %>
       <div class="chat-option-field chat-section-field animate__animated animate__bounceIn animate__delay-1s">
           <p class="bigger">
             Weiter
@@ -25,4 +25,4 @@ var field_id_name = "#chat-field";
       <% end %>
       `
     );
-  }, 10000);
+  }, 5000);
