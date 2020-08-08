@@ -40,6 +40,8 @@ Rails.application.routes.draw do
 
   #get '/debate_a_vegan_chat', to: 'debate_a_vegan#chat', as: 'debate_a_vegan_chat'
   get '/vegan_chat', to: 'vegan_chat#chat', as: 'vegan_chat'
+  post '/vegan_chat/get_message/:message', to: 'vegan_chat#get_message', as: 'vegan_chat_get_message'
+  post '/vegan_chat/get_video/:video', to: 'vegan_chat#get_video', as: 'vegan_chat_get_video'
 
   post '/debate_a_vegan/load_slide/:option', to: 'debate_a_vegan#load_slide', as: 'debate_a_vegan_load_slide'
   post '/debate_a_vegan/go_one_slide_back', to: 'debate_a_vegan#go_one_slide_back', as: 'debate_a_vegan_go_one_slide_back'
@@ -47,4 +49,7 @@ Rails.application.routes.draw do
   post '/debate_a_vegan/load_video', to: 'debate_a_vegan#load_video', as: 'debate_a_vegan_load_video'
   post '/debate_a_vegan/load_message/:option', to: 'debate_a_vegan#load_message', as: 'debate_a_vegan_load_message'
   post '/debate_a_vegan/load_starting_slide/:starting_slide', to: 'debate_a_vegan#load_starting_slide', as: 'debate_a_vegan_load_starting_slide'
+
+
+
 end

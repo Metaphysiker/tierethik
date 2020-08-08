@@ -1,0 +1,29 @@
+<% if message.chatter == "vegan" %>
+  <div class="chat-section-field">
+    <div class="row">
+        <div class="col-11 d-flex align-items-end">
+          <%= image_tag "duckduckportrait.png", class: "rounded-circle bg-white mr-3", height: "40" %>
+
+          <div class="chat-argument-field animate__animated animate__bounceIn">
+            <%= raw sanitizing(message.content) unless message.blank? %>
+          </div>
+        </div>
+    </div>
+  </div>
+<% else %>
+<div class="chat-section-field">
+  <div class="row">
+
+      <div class="offset-1 col-11 d-flex align-items-end justify-content-end">
+        <%= link_to debate_a_vegan_load_message_path(option), remote: true, method: :post, class: "no-underline" do %>
+          <div class="chat-option-field animate__animated animate__bounceIn">
+            <p class="">
+              <%= message.content unless message.content.blank? %>
+            </p>
+          </div>
+        <% end %>
+        <%= image_tag "duckduckportrait.png", class: "rounded-circle bg-white ml-3", height: "40" %>
+      </div>
+  </div>
+</div>
+<% end %>

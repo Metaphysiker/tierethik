@@ -18,12 +18,18 @@
 
 
 
-  <h3 class="text-h-color spaced-letters font-weight-light text-uppercase"><%#= message.title %></h3>
+  <h3 class="text-h-color spaced-letters font-weight-light text-uppercase"><%= message.name %></h3>
   <p class="font-weight-bold text-muted pt-3">
     <%#= message.description %>
   </p>
   <p>
   <%= simple_format(message.content) %>
+  </p>
+  <p>
+    <%= message.chatter %>
+  </p>
+  <p>
+    <%= message.category %>
   </p>
   <% if is_current_user_admin? %>
     <div class="text-center m-2">

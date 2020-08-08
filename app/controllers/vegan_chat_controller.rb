@@ -7,6 +7,11 @@ class VeganChatController < ApplicationController
   end
 
   def get_message
+    message_id = params[:message]
+    @message = Message.find(message_id)
+  end
+
+  def get_video
     
   end
 
