@@ -1,0 +1,51 @@
+<div class="fluid-container chat-bg mb-3">
+
+  <div style="overflow-x: hidden;">
+    <div class="chat-top">
+
+    </div>
+  </div>
+
+  <div class="text-center">
+    <%= image_tag "portrait-icon-5.jpg", class: "rounded-circle border-white chat-top-image mt-n6", height: "125" %>
+  </div>
+
+  <div class="container">
+
+    <div id="chat-field">
+      <div class="chat-argument-field chat-section-field animate__animated animate__bounceIn">
+          <h1>Hallo!</h1>
+          <p>
+            Ich möchte dir ein Video zeigen und dir eine Frage stellen.
+          </p>
+          <p class="bigger">
+              Ist das okay?
+          </p>
+      </div>
+
+      <%= link_to debate_a_vegan_load_video_path, method: :post, remote: true, class: "no-underline" do %>
+        <div class="chat-option-field chat-section-field animate__animated animate__bounceIn animate__delay-1s">
+            <p class="bigger">
+              Ja, zeig mir das Video.
+            </p>
+        </div>
+      <% end %>
+
+    </div>
+
+
+
+    <%#= link_to option.content, debate_a_vegan_load_slide_path(option), remote: true, method: :post, class: "debate-button" %>
+
+
+    <div class="float-right my-3 menu-button">
+      <button type="button" class="px-3 py-2 btn btn-light rounded-circle" data-toggle="modal" data-target="#statusModal">
+        <%= fa_icon "bars 2x", class: "text-info" %>
+      </button>
+    </div>
+  </div>
+
+
+</div>
+
+<%= render 'debate_a_vegan/menu' %>

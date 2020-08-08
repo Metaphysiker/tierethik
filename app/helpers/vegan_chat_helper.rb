@@ -1,0 +1,2 @@
+module VeganChatHelper
+end
