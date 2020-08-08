@@ -9,6 +9,6 @@
         <%= link_to 'Neuer Eintrag', new_message_path, class: "btn btn-primary my-2" %>
       </div><hr />
     <% end %>
-    <%= render partial: "messages/card", collection: @messages, as: :message %>
+    <%= render partial: "messages/show", collection: @messages, as: :message %>
   </div>
 </div>
