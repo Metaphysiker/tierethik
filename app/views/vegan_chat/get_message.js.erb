@@ -11,13 +11,15 @@ var field_id_name = "#chat-field";
   setTimeout(
   function()
   {
-    let message_id = "<%= @message.id %>";
-    console.log(message_id);
+    let target_message_id = "<%= @message.target_message_id %>";
+    let load_next_message = "<%= (@message.chatter == 'user' && Message.find(@message.target_message_id).chatter == 'vegan').to_s %>";
 
-    if ("yallo" === "yallo") {
+    console.log(load_next_message);
+
+    if (load_next_message === "false") {
 
       $.ajax({
-        url: "/vegan_chat/get_message/2",
+        url: "/vegan_chat/get_message/" + target_message_id,
         method: 'POST',
         headers: {
           'X-CSRF-Token': document.querySelector("meta[name=csrf-token]").content
@@ -25,8 +27,4 @@ var field_id_name = "#chat-field";
       });
     }
 
-    $(field_id_name).append(
-      `
-      `
-    );
-  }, 5000);
+  }, 2000);
