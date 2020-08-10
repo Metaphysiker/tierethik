@@ -1,5 +1,7 @@
 class Message < ApplicationRecord
 
+  has_ancestry
+
   def self.categories
     ["only_text", "video"]
   end

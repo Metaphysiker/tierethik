@@ -37,6 +37,12 @@
   <p>
     <%= message.target_message_id_for_option %>
   </p>
+  <p>
+    Children: <%= message.children.count %><br />
+    <% message.children.each do |child| %>
+      <%= link_to child.name, message_path(child) %> <br />
+    <% end %>
+  </p>
   <% if is_current_user_admin? %>
     <div class="text-center m-2">
       <hr />

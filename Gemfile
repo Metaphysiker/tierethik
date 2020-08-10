@@ -16,6 +16,7 @@ gem 'geocoder'
 gem 'seed_dump'
 #gem 'bootstrap', '~> 4.5.0'
 #gem 'jquery-rails'
+gem 'ancestry'
 
 gem 'devise'
 gem 'simple_form'
