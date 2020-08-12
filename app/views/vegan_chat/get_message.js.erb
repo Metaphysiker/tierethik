@@ -12,9 +12,16 @@ var field_id_name = "#chat-field";
 
   var ids_of_children = "<%= @message.children.pluck(:id) %>";
 
-  $.each(JSON.parse(ids_of_children), function(index, value){
-  	get_message(value, index * 100);
-  });
+  setTimeout(
+  function()
+  {
+
+    $.each(JSON.parse(ids_of_children), function(index, value){
+    	get_message(value, index * 1000);
+    });
+
+
+  }, 1000);
 
   function get_message(id, timeout) {
     setTimeout(
