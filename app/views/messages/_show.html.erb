@@ -38,6 +38,9 @@
     <%= message.target_message_id_for_option %>
   </p>
   <p>
+    Parent: <%= link_to message.parent.name, message_path(message.parent) if message.has_parent? %>
+    </p>
+  <p>
     Children: <%= message.children.count %><br />
     <% message.children.each do |child| %>
       <%= link_to child.name, message_path(child) %> <br />
