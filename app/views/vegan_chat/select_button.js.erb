@@ -1,0 +1,29 @@
+var ids_of_buttons = "<%= @message.parent.children.pluck(:id) %>";
+var target_message_id = "<%= @target_message.id %>";
+var message_id = "<%= @message.id %>";
+
+$.each(JSON.parse(ids_of_buttons), function(index, value){
+  remove_button(value, 0);
+});
+
+$.ajax({
+  url: "/vegan_chat/get_message/" + message_id,
+  method: 'POST',
+  headers: {
+    'X-CSRF-Token': document.querySelector("meta[name=csrf-token]").content
+  }
+});
+
+
+
+function remove_button(id, timeout) {
+  setTimeout(
+  function()
+  {
+
+    $("#chat-select-button-" + id).addClass('animate__fadeOut animate__faster');
+    console.log("chat-select-button-" + id);
+
+
+  }, timeout);
+}

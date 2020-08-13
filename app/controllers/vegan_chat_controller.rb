@@ -11,8 +11,21 @@ class VeganChatController < ApplicationController
     @message = Message.find(message_id)
   end
 
+  def get_button
+    message_id = params[:message]
+    @message = Message.find(message_id)
+  end
+
+  def select_button
+    message_id = params[:message]
+    @message = Message.find(message_id)
+
+    target_message_id = params[:target_message]
+    @target_message = Message.find(target_message_id)
+  end
+
   def get_video
-    
+
   end
 
   private

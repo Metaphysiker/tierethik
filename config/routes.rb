@@ -41,6 +41,8 @@ Rails.application.routes.draw do
   #get '/debate_a_vegan_chat', to: 'debate_a_vegan#chat', as: 'debate_a_vegan_chat'
   get '/vegan_chat', to: 'vegan_chat#chat', as: 'vegan_chat'
   post '/vegan_chat/get_message/:message', to: 'vegan_chat#get_message', as: 'vegan_chat_get_message'
+  post '/vegan_chat/get_button/:message', to: 'vegan_chat#get_button', as: 'vegan_chat_get_button'
+  post '/vegan_chat/select_button/:message/:target_message', to: 'vegan_chat#select_button', as: 'vegan_chat_select_button'
   post '/vegan_chat/get_video/:video', to: 'vegan_chat#get_video', as: 'vegan_chat_get_video'
 
   post '/debate_a_vegan/load_slide/:option', to: 'debate_a_vegan#load_slide', as: 'debate_a_vegan_load_slide'

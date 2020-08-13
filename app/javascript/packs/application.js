@@ -7,7 +7,7 @@ require("@rails/ujs").start()
 require("@rails/activestorage").start()
 require("channels")
 //require("ol")
-//require("packs/marker")
+require("packs/vegan_chat")
 
 //require("../stylesheets/application")
 

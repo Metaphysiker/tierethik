@@ -1,0 +1,6 @@
+<% message_target_message_id_for_option = message.target_message_id_for_option.nil? ? Message.first.id : message.target_message_id_for_option %>
+<%= link_to vegan_chat_select_button_path(message, message_target_message_id_for_option), remote: true, method: :post, class: "no-underline animate__animated", id: "chat-select-button-#{message.id}" do %>
+  <div class="chat-option-field chat-section-field animate__animated animate__fadeIn animate__delay-1s">
+        <%= raw sanitizing(message.content) unless message.content.blank? %>
+  </div>
+<% end %>

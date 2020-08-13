@@ -5,7 +5,7 @@ var field_id_name = "#chat-field";
 
   $(field_id_name).append(
     `
-    <%= render "messages/message", message: @message unless @message.blank? %>
+    <%= render "messages/button", message: @message unless @message.blank? %>
 
     `
   );
@@ -17,7 +17,7 @@ var field_id_name = "#chat-field";
   {
 
     $.each(JSON.parse(ids_of_children), function(index, value){
-    	get_button(value, index * 1000);
+    	get_message(value, index * 1000);
     });
 
 
@@ -40,28 +40,11 @@ var field_id_name = "#chat-field";
     }, timeout);
   }
 
-  function get_button(id, timeout) {
-    setTimeout(
-    function()
-    {
-
-        $.ajax({
-          url: "/vegan_chat/get_button/" + id,
-          method: 'POST',
-          headers: {
-            'X-CSRF-Token': document.querySelector("meta[name=csrf-token]").content
-          }
-        });
-
-
-    }, timeout);
-  }
-
   setTimeout(
   function()
   {
     let target_message_id = "<%= @message.target_message_id %>";
-    let load_next_message = "<%= (Message.where(id: @message.target_message_id).present?).to_s %>";
+    let load_next_message = "<%= (@message.chatter == 'vegan' && Message.where(id: @message.target_message_id).present? && Message.find(@message.target_message_id).chatter == 'vegan').to_s %>";
 
     //console.log(load_next_message);
 
