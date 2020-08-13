@@ -28,13 +28,7 @@ var field_id_name = "#chat-field";
     function()
     {
 
-        $.ajax({
-          url: "/vegan_chat/get_message/" + id,
-          method: 'POST',
-          headers: {
-            'X-CSRF-Token': document.querySelector("meta[name=csrf-token]").content
-          }
-        });
+      VEGANCHAT.get_message_with_ajax(id);
 
 
     }, timeout);
@@ -45,13 +39,7 @@ var field_id_name = "#chat-field";
     function()
     {
 
-        $.ajax({
-          url: "/vegan_chat/get_button/" + id,
-          method: 'POST',
-          headers: {
-            'X-CSRF-Token': document.querySelector("meta[name=csrf-token]").content
-          }
-        });
+      VEGANCHAT.get_button_with_ajax(id);
 
 
     }, timeout);
@@ -67,13 +55,8 @@ var field_id_name = "#chat-field";
 
     if (load_next_message === "true") {
 
-      $.ajax({
-        url: "/vegan_chat/get_message/" + target_message_id,
-        method: 'POST',
-        headers: {
-          'X-CSRF-Token': document.querySelector("meta[name=csrf-token]").content
-        }
-      });
+      VEGANCHAT.get_message_with_ajax(target_message_id);
+
     }
 
   }, 2000);

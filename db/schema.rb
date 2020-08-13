@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2020_08_11_081831) do
   end
 
   create_table "accounts", force: :cascade do |t|
-    t.integer "current_slide", default: 1
+    t.string "current_name_of_slide", default: "start"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

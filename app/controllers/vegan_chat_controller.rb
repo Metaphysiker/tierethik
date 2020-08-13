@@ -35,10 +35,10 @@ class VeganChatController < ApplicationController
       if Account.exists?(cookies["debate-a-vegan-cookie-id"])
         @account = Account.find(cookies["debate-a-vegan-cookie-id"])
       else
-        create_a_new_account
+        #create_a_new_account
       end
     else
-      create_a_new_account
+      #create_a_new_account
     end
   end
 
