@@ -25,19 +25,18 @@
       }
 
       return {
-        
-          get_message_with_ajax: function(id) {
+          get_button_with_ajax: function(id) {
             $.ajax({
-              url: "/vegan_chat/get_message/" + id,
+              url: "/vegan_chat/get_button/" + id,
               method: 'POST',
               headers: {
                 'X-CSRF-Token': document.querySelector("meta[name=csrf-token]").content
               }
             });
           },
-          get_button_with_ajax: function(id) {
+          get_message_with_ajax: function(id) {
             $.ajax({
-              url: "/vegan_chat/get_button/" + id,
+              url: "/vegan_chat/get_message/" + id,
               method: 'POST',
               headers: {
                 'X-CSRF-Token': document.querySelector("meta[name=csrf-token]").content
