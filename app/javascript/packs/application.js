@@ -8,6 +8,8 @@ require("@rails/activestorage").start()
 require("channels")
 //require("ol")
 require("packs/vegan_chat")
+require("packs/animate")
+require("packs/rectangle")
 
 //require("../stylesheets/application")
 
