@@ -3,6 +3,8 @@ var target_message_id = "<%= @target_message.id %>";
 var message_id = "<%= @message.id %>";
 var parsed_ids_of_buttons = JSON.parse(ids_of_buttons);
 
+VEGANCHAT.a_func()
+
 function remove_all_buttons(parsed_ids_of_buttons) {
   return new Promise((resolve, reject) => {
     $.each(parsed_ids_of_buttons, function(index, value){
