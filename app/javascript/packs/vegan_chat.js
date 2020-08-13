@@ -25,6 +25,7 @@
       }
 
       return {
+        
           get_message_with_ajax: function(id) {
             $.ajax({
               url: "/vegan_chat/get_message/" + id,

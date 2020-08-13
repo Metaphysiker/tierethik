@@ -5,21 +5,20 @@ var field_id_name = "#chat-field";
     `
     <div class="chat-video-field">
         <p>
-          <div class="embed-responsive embed-responsive-16by9 rounded" style="text-align: justify;"><iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://player.vimeo.com/video/334631596?muted=1&amp;autoplay=1&amp;loop=1&amp;title=0&amp;byline=0&amp;portrait=0" frameborder="0" allowfullscreen=""></iframe></div>
+          <div class="embed-responsive embed-responsive-16by9 rounded martigny" style="text-align: justify;"><iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://player.vimeo.com/video/334631596?muted=1&amp;autoplay=1&amp;loop=1&amp;title=0&amp;byline=0&amp;portrait=0" frameborder="0" allowfullscreen=""></iframe></div>
         </p>
     </div>
     `
   );
 
+  $('html, body').animate({
+      scrollTop: $('.martigny:first').offset().top
+  }, 1000);
+
   setTimeout(
   function()
   {
-    $.ajax({
-      url: "/vegan_chat/get_message/1",
-      method: 'POST',
-      headers: {
-        'X-CSRF-Token': document.querySelector("meta[name=csrf-token]").content
-      }
-    });
+    //VEGANCHAT.get_message_with_ajax("1");
+      VEGANCHAT.get_message_with_ajax(1);
 
   }, 5000);
