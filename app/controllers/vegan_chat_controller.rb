@@ -25,7 +25,10 @@ class VeganChatController < ApplicationController
   end
 
   def get_video
+    @url = params[:url]
 
+    target_message_id = params[:target_message]
+    @target_message = Message.find(target_message_id)
   end
 
   private
