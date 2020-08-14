@@ -3,6 +3,7 @@
 
   var field_id_name = "#chat-field";
   var message_id = "<%= @message.id %>";
+  var element_message_id = ".message_" + message_id;
   var element_for_message_id = ".chat-select-button-" + message_id;
   var first_element_of_message_id = '.chat-select-button-' + message_id;
 
@@ -14,17 +15,13 @@
     `
   );
 
+  VEGANCHAT.animateCSS(element_message_id, 'bounceIn');
 
-  setTimeout(
-  function()
-  {
-
-    $('html, body').animate({
-        scrollTop: $(first_element_of_message_id).bottom
-    }, 1000);
-
-
+  $('html, body').animate({
+      scrollTop: $(element_message_id).offset().top
   }, 1000);
+
+
 
 
   //$('html, body').animate({
@@ -46,7 +43,7 @@
     });
 
 
-  }, 1000);
+  }, 2000);
 
   function get_message(id, timeout) {
     setTimeout(

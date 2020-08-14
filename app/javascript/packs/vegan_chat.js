@@ -43,10 +43,10 @@
               }
             });
           },
-          remove_button: function(id) {
-            var element = ".chat-select-button-" + id;
+          remove_button: function(element) {
+            //var element = ".chat-select-button-" + id;
 
-            animateCSS(element, 'fadeOut').then((message) => {
+            animateCSS(element, 'bounceOut').then((message) => {
               $(element).remove();
               //$(element).empty();
             });

@@ -2,11 +2,12 @@ var ids_of_buttons = "<%= @message.parent.children.pluck(:id) %>";
 var target_message_id = "<%= @target_message.id %>";
 var message_id = "<%= @message.id %>";
 var parsed_ids_of_buttons = JSON.parse(ids_of_buttons);
+var button_message = ".button_message_";
 
 function remove_all_buttons(parsed_ids_of_buttons) {
   return new Promise((resolve, reject) => {
     $.each(parsed_ids_of_buttons, function(index, value){
-      remove_button(value, 0);
+      remove_button(value, 100);
       if(index === parsed_ids_of_buttons.length){
         resolve("SUCCESS");
       }
@@ -19,8 +20,8 @@ remove_all_buttons(parsed_ids_of_buttons).then(
   setTimeout(function() {
 
     VEGANCHAT.get_message_with_ajax(message_id);
-    
-  }, 1000)
+
+  }, 1200)
 );
 
 
@@ -34,7 +35,7 @@ function remove_button(id, timeout) {
   function()
   {
 
-    VEGANCHAT.remove_button(id);
+    VEGANCHAT.remove_button(button_message + id);
 
     //$("#chat-select-button-" + id).addClass('animate__fadeOut animate__faster');
     //$("#chat-select-button-" + id).fadeOut();

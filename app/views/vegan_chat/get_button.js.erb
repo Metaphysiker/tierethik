@@ -1,7 +1,10 @@
 //console.log("load message");
-window.scrollBy(0, 200);
+//window.scrollBy(0, 200);
 
 var field_id_name = "#chat-field";
+var message_id = "<%= @message.id %>";
+//var element_message_id = ".message_button" + message_id;
+var element_message_id = "." + "<%= dom_id(@message, :button) %>";
 
   $(field_id_name).append(
     `
@@ -10,53 +13,8 @@ var field_id_name = "#chat-field";
     `
   );
 
-  var ids_of_children = "<%= @message.children.pluck(:id) %>";
+  VEGANCHAT.animateCSS(element_message_id, 'fadeIn');
 
-  setTimeout(
-  function()
-  {
-
-    $.each(JSON.parse(ids_of_children), function(index, value){
-    	get_message(value, index * 1000);
-    });
-
-
-  }, 1000);
-
-  function get_message(id, timeout) {
-    setTimeout(
-    function()
-    {
-
-        $.ajax({
-          url: "/vegan_chat/get_message/" + id,
-          method: 'POST',
-          headers: {
-            'X-CSRF-Token': document.querySelector("meta[name=csrf-token]").content
-          }
-        });
-
-
-    }, timeout);
-  }
-
-  setTimeout(
-  function()
-  {
-    let target_message_id = "<%= @message.target_message_id %>";
-    let load_next_message = "<%= (@message.chatter == 'vegan' && Message.where(id: @message.target_message_id).present? && Message.find(@message.target_message_id).chatter == 'vegan').to_s %>";
-
-    //console.log(load_next_message);
-
-    if (load_next_message === "true") {
-
-      $.ajax({
-        url: "/vegan_chat/get_message/" + target_message_id,
-        method: 'POST',
-        headers: {
-          'X-CSRF-Token': document.querySelector("meta[name=csrf-token]").content
-        }
-      });
-    }
-
-  }, 2000);
+  $('html, body').animate({
+      scrollTop: $(element_message_id).offset().top
+  }, 500);
