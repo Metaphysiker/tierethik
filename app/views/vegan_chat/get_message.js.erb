@@ -6,6 +6,9 @@
   var element_message_id = ".message_" + message_id;
   var element_for_message_id = ".chat-select-button-" + message_id;
   var first_element_of_message_id = '.chat-select-button-' + message_id;
+  var target_message_id = "<%= @message.target_message_id %>";
+  console.log(target_message_id);
+
 
 
   $(field_id_name).append(
@@ -18,7 +21,7 @@
   VEGANCHAT.animateCSS(element_message_id, 'bounceIn');
 
   $('html, body').animate({
-      scrollTop: $(element_message_id).offset().top
+      scrollTop: $(element_message_id).last().offset().top
   }, 1000);
 
 
@@ -70,12 +73,17 @@
   setTimeout(
   function()
   {
-    let target_message_id = "<%= @message.target_message_id %>";
-    let load_next_message = "<%= (Message.where(id: @message.target_message_id).present?).to_s %>";
 
+    var load_next_message = "<%= (Message.where(id: @message.target_message_id).present?).to_s %>";
+
+    console.log(target_message_id);
+    console.log("aaaaargh");
+    console.log(load_next_message);
     //console.log(load_next_message);
 
     if (load_next_message === "true") {
+
+      console.log(target_message_id);
 
       VEGANCHAT.get_message_with_ajax(target_message_id);
 

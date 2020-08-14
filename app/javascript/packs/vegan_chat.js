@@ -35,6 +35,8 @@
             });
           },
           get_message_with_ajax: function(id) {
+            console.log("get message!!!");
+            console.log(id);
             $.ajax({
               url: "/vegan_chat/get_message/" + id,
               method: 'POST',
