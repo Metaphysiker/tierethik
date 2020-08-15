@@ -73,8 +73,10 @@
 
     var load_next_message = "<%= (Message.where(id: @message.target_message_id).present?).to_s %>";
 
+      console.log(target_message_id);
     if (load_next_message === "true") {
 
+      console.log("load_next_message was true");
       console.log(target_message_id);
 
       VEGANCHAT.get_message_with_ajax(target_message_id);

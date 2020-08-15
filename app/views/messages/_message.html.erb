@@ -28,7 +28,7 @@
       <div class="offset-1 col-11 d-flex align-items-end justify-content-end">
         <% message_target_message_id_for_option = message.target_message_id_for_option.nil? ? Message.first.id : message.target_message_id_for_option %>
         <%= link_to vegan_chat_get_message_path(message_target_message_id_for_option), remote: true, method: :post, class: "no-underline" do %>
-          <div class="chat-option-field">
+          <div class="chat-option-field chat-argument-field <%= dom_id(message) %>">
               <%= raw sanitizing(message.content) unless message.content.blank? %>
               <% if is_current_user_admin? %>
                 <div class="text-center m-2 rounded border">
