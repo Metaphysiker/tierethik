@@ -7,43 +7,50 @@
   var element_for_message_id = ".chat-select-button-" + message_id;
   var first_element_of_message_id = '.chat-select-button-' + message_id;
   var target_message_id = "<%= @message.target_message_id %>";
+  var chatter = "<%= @message.chatter %>";
 
   $(field_id_name).append(
     `
-    <%= render "messages/message", message: @message unless @message.blank? %>
-
+    <%= render "messages/loader", chatter: @message.chatter %>
     `
   );
-
-  VEGANCHAT.animateCSS(element_message_id, 'bounceIn');
-
-  $('html, body').animate({
-      scrollTop: $(element_message_id).last().offset().top
-  }, 1000);
-
-
-
-
-  //$('html, body').animate({
-  //  scrollTop: $(".chat-select-button-" + message_id).offset().top
-  //}, 2000);
-
-  //document.getElementById("element-id").scrollIntoView();
-
-  //VEGANCHAT
-
-  var ids_of_children = "<%= @message.children.pluck(:id) %>";
 
   setTimeout(
   function()
   {
+    $(".message-loader").remove();
+  }, 1000);
 
-    $.each(JSON.parse(ids_of_children), function(index, value){
-    	get_button(value, index * 1000);
-    });
+  setTimeout(
+  function()
+  {
+    $(field_id_name).append(
+      `
+      <%= render "messages/message", message: @message unless @message.blank? %>
+      `
+    );
+
+    VEGANCHAT.animateCSS(element_message_id, 'bounceIn');
+
+    $('html, body').animate({
+        scrollTop: $(element_message_id).last().offset().top
+    }, 1000);
+
+    var ids_of_children = "<%= @message.children.pluck(:id) %>";
+
+    setTimeout(
+    function()
+    {
+
+      $.each(JSON.parse(ids_of_children), function(index, value){
+        get_button(value, index * 1000);
+      });
 
 
-  }, 2000);
+    }, 2000);
+
+  }, 1500);
+
 
   function get_message(id, timeout) {
     setTimeout(
@@ -63,7 +70,6 @@
 
       VEGANCHAT.get_button_with_ajax(id);
 
-
     }, timeout);
   }
 
@@ -73,11 +79,7 @@
 
     var load_next_message = "<%= (Message.where(id: @message.target_message_id).present?).to_s %>";
 
-      console.log(target_message_id);
     if (load_next_message === "true") {
-
-      console.log("load_next_message was true");
-      console.log(target_message_id);
 
       VEGANCHAT.get_message_with_ajax(target_message_id);
 
