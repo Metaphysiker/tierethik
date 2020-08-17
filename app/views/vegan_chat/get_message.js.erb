@@ -43,13 +43,13 @@
     {
 
       $.each(JSON.parse(ids_of_children), function(index, value){
-        get_button(value, index * 1000);
+        get_button(value, index * 500);
       });
 
 
     }, 2000);
 
-  }, 1500);
+  }, 1200);
 
 
   function get_message(id, timeout) {
@@ -85,4 +85,4 @@
 
     }
 
-  }, 2000);
+  }, 3000);
