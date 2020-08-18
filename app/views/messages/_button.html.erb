@@ -1,5 +1,5 @@
-<% message_target_message_id_for_option = message.target_message_id_for_option.nil? ? Message.first.id : message.target_message_id_for_option %>
-<%= link_to vegan_chat_select_button_path(message, message_target_message_id_for_option), remote: true, method: :post, class: "no-underline chat-select-button-#{message.id}" do %>
+<% message_target_message_id = message.target_message_id.nil? ? Message.first.id : message.target_message_id %>
+<%= link_to vegan_chat_select_button_path(message, message_target_message_id), remote: true, method: :post, class: "no-underline chat-select-button-#{message.id}" do %>
   <div class="chat-option-field chat-section-field chat-select-button-<%= message.id %> <%= dom_id(message, :button) %>">
         <%= raw sanitizing(message.content) unless message.content.blank? %>
   </div>
