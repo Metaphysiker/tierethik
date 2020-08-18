@@ -10,4 +10,8 @@ class Message < ApplicationRecord
     ["vegan", "user"]
   end
 
+  def self.starting_points
+    ["yes", "no"]
+  end
+
 end

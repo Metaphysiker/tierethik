@@ -43,7 +43,7 @@ Rails.application.routes.draw do
   post '/vegan_chat/get_message/:message', to: 'vegan_chat#get_message', as: 'vegan_chat_get_message'
   post '/vegan_chat/get_button/:message', to: 'vegan_chat#get_button', as: 'vegan_chat_get_button'
   post '/vegan_chat/select_button/:message/:target_message', to: 'vegan_chat#select_button', as: 'vegan_chat_select_button'
-  post '/vegan_chat/get_video/:target_message', to: 'vegan_chat#get_video', as: 'vegan_chat_get_video'
+  post '/vegan_chat/get_video/:message', to: 'vegan_chat#get_video', as: 'vegan_chat_get_video'
 
   post '/debate_a_vegan/load_slide/:option', to: 'debate_a_vegan#load_slide', as: 'debate_a_vegan_load_slide'
   post '/debate_a_vegan/go_one_slide_back', to: 'debate_a_vegan#go_one_slide_back', as: 'debate_a_vegan_go_one_slide_back'

@@ -43,6 +43,15 @@
               }
             });
           },
+          get_video_with_ajax: function(id) {
+            $.ajax({
+              url: "/vegan_chat/get_video/" + id,
+              method: 'POST',
+              headers: {
+                'X-CSRF-Token': document.querySelector("meta[name=csrf-token]").content
+              }
+            });
+          },
           remove_button: function(element) {
             //var element = ".chat-select-button-" + id;
 

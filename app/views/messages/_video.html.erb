@@ -1,0 +1,13 @@
+<div class="chat-video-field <%= dom_id(message) %>">
+  <p>
+    <div class="embed-responsive embed-responsive-16by9 rounded martigny" style="text-align: justify;"><iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="<%= message.video_url %>" frameborder="0" allowfullscreen=""></iframe></div>
+  </p>
+  <% if is_current_user_admin? %>
+    <div class="text-center m-2">
+      <hr />
+      <%= link_to 'Eintrag bearbeiten', edit_message_path(message), class: "btn btn-primary m-2" %>
+      <%= link_to 'Eintrag löschen', message_path(message), method: :delete, data: {confirm: 'Bist du sicher?'}, class: "btn btn-danger m-2" %>
+      <%= link_to 'Neuer Eintrag', new_message_path, class: "btn btn-light m-2" %>
+    </div>
+  <% end %>
+</div>

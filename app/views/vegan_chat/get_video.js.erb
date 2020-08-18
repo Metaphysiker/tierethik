@@ -1,23 +1,30 @@
-//console.log("load slide");
 var field_id_name = "#chat-field";
+var message_id = "<%= @message.id %>";
+var element_message_id = ".message_" + message_id;
+var element_for_message_id = ".chat-select-button-" + message_id;
+var first_element_of_message_id = '.chat-select-button-' + message_id;
+var target_message_id = "<%= @message.target_message_id %>";
+var chatter = "<%= @message.chatter %>";
+
 
   $(field_id_name).append(
     `
-    <div class="chat-video-field">
-        <p>
-          <div class="embed-responsive embed-responsive-16by9 rounded martigny" style="text-align: justify;"><iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="<%= @url %>" frameborder="0" allowfullscreen=""></iframe></div>
-        </p>
-    </div>
+    <%= render "messages/video", message: @message unless @message.blank? %>
     `
   );
 
+  var last_element_message_id = $(element_message_id).last();
+
+  VEGANCHAT.animateCSS(element_message_id, 'bounceIn');
+
   $('html, body').animate({
-      scrollTop: $('.martigny:first').offset().top
+      scrollTop: $(element_message_id).last().offset().top
   }, 1000);
+
 
   setTimeout(
   function()
   {
-    VEGANCHAT.get_message_with_ajax(<%= @target_message.id %>)
+    VEGANCHAT.get_message_with_ajax(target_message_id)
 
   }, 1000);

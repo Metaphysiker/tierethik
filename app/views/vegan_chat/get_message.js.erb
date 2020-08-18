@@ -8,6 +8,7 @@
   var first_element_of_message_id = '.chat-select-button-' + message_id;
   var target_message_id = "<%= @message.target_message_id %>";
   var chatter = "<%= @message.chatter %>";
+  var category = "<%= @message.category %>";
 
   $(field_id_name).append(
     `
@@ -29,6 +30,8 @@
       <%= render "messages/message", message: @message unless @message.blank? %>
       `
     );
+
+    var last_element_message_id = $(element_message_id).last();
 
     VEGANCHAT.animateCSS(element_message_id, 'bounceIn');
 
@@ -80,9 +83,13 @@
     var load_next_message = "<%= (Message.where(id: @message.target_message_id).present?).to_s %>";
 
     if (load_next_message === "true") {
+      var next_category = "<%= Message.where(id: @message.target_message_id).last.category if Message.where(id: @message.target_message_id).present? %>";
 
-      VEGANCHAT.get_message_with_ajax(target_message_id);
-
+      if (next_category === "video") {
+        VEGANCHAT.get_video_with_ajax(target_message_id);
+      } else {
+        VEGANCHAT.get_message_with_ajax(target_message_id);
+      }
     }
 
   }, 3000);

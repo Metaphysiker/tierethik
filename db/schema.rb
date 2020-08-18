@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_11_081831) do
+ActiveRecord::Schema.define(version: 2020_08_18_083548) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -100,6 +100,8 @@ ActiveRecord::Schema.define(version: 2020_08_11_081831) do
     t.integer "target_message_id"
     t.integer "target_message_id_for_option"
     t.string "ancestry"
+    t.string "starting_point", default: "no"
+    t.string "video_url", default: ""
     t.index ["ancestry"], name: "index_messages_on_ancestry"
   end
 
