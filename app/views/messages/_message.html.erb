@@ -3,7 +3,7 @@
   <div class="chat-section-field">
     <div class="row">
         <div class="col-11 d-flex align-items-end">
-          <%= image_tag "duckduckportrait.png", class: "rounded-circle bg-white mr-3", height: "40" %>
+          <%= image_tag "duckduckportrait.png", class: "rounded-circle bg-white mr-3", width: "40" %>
 
           <div class="chat-argument-field <%= dom_id(message) %>">
             <%= raw sanitizing(message.content) unless message.blank? %>
@@ -40,7 +40,7 @@
               <% end %>
           </div>
         <% end %>
-        <%= image_tag "duckduckportrait.png", class: "rounded-circle bg-white ml-3", height: "40" %>
+        <%= image_tag "duckduckportrait.png", class: "rounded-circle bg-white ml-3", width: "40" %>
       </div>
   </div>
 </div>

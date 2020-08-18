@@ -1,5 +1,3 @@
-console.log("animateCss loaded!");
-
 function animateCss(element, animationName, callback) {
     //const node = document.querySelector(element)
     var node = document.querySelector(element)

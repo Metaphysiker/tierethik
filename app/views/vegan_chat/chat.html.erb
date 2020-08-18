@@ -23,7 +23,7 @@
           </p>
       </div>
 
-      <%= link_to vegan_chat_get_video_path(7), method: :post, remote: true, class: "no-underline" do %>
+      <%= link_to vegan_chat_get_video_path(Message.where(starting_point: "yes").sample.id), method: :post, remote: true, class: "no-underline" do %>
         <div class="chat-option-field chat-section-field animate__animated animate__bounceIn animate__delay-1s">
             <p class="bigger">
               Ja, zeig mir das Video.
