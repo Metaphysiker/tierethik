@@ -69,6 +69,6 @@ class MessagesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def message_params
-      params.require(:message).permit(:category, :name, :chatter, :content, :target_message_id, :target_message_id_for_option, :parent_id, :starting_point, :video_url)
+      params.require(:message).permit(:category, :name, :chatter, :content, :target_message_id, :target_message_id_for_option, :parent_id, :starting_point, :video_url, :video_duration)
     end
 end
