@@ -5,7 +5,7 @@ var element_for_message_id = ".chat-select-button-" + message_id;
 var first_element_of_message_id = '.chat-select-button-' + message_id;
 var target_message_id = "<%= @message.target_message_id %>";
 var chatter = "<%= @message.chatter %>";
-var video_duration = "<%= @message.video_duration %>";
+var sleep_time = "<%= @message.sleep_time %>";
 
 
   $(field_id_name).append(
@@ -28,4 +28,4 @@ var video_duration = "<%= @message.video_duration %>";
   {
     VEGANCHAT.get_message_with_ajax(target_message_id)
 
-  }, video_duration);
+  }, sleep_time);

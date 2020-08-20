@@ -9,6 +9,7 @@
   var target_message_id = "<%= @message.target_message_id %>";
   var chatter = "<%= @message.chatter %>";
   var category = "<%= @message.category %>";
+  var sleep_time = "<%= @message.sleep_time %>";
 
   $(field_id_name).append(
     `
@@ -46,7 +47,7 @@
     {
 
       $.each(JSON.parse(ids_of_children), function(index, value){
-        get_button(value, index * 500);
+        get_button(value, index * 100);
       });
 
 
@@ -92,4 +93,4 @@
       }
     }
 
-  }, 3000);
+  }, sleep_time);
