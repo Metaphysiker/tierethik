@@ -1,4 +1,8 @@
 class User < ApplicationRecord
+has_many :user_messages
+has_many :messages, :through => :user_messages
+
+
 has_many :user_roles
 has_many :roles, :through => :user_roles
   # Include default devise modules. Others available are:

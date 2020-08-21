@@ -40,7 +40,7 @@
         scrollTop: $(element_message_id).last().offset().top
     }, 1000);
 
-    var ids_of_children = "<%= @message.children.pluck(:id) %>";
+    var ids_of_children = "<%= @message.children.pluck(:id) - @account.messages.pluck(:id) %>";
 
     setTimeout(
     function()
@@ -51,7 +51,7 @@
       });
 
 
-    }, 2000);
+    }, sleep_time);
 
   }, 1200);
 

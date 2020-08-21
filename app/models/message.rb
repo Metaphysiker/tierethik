@@ -1,4 +1,8 @@
 class Message < ApplicationRecord
+has_many :account_messages
+has_many :accounts, :through => :account_messages
+has_many :user_messages
+has_many :users, :through => :user_messages
 
   has_ancestry
 

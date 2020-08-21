@@ -2,5 +2,13 @@
 <%= link_to vegan_chat_select_button_path(message, message_target_message_id), remote: true, method: :post, class: "no-underline chat-select-button-#{message.id}" do %>
   <div class="chat-option-field chat-section-field chat-select-button-<%= message.id %> <%= dom_id(message, :button) %>">
         <%= raw sanitizing(message.content) unless message.content.blank? %>
+        <% if is_current_user_admin? %>
+          <div class="text-center m-2">
+            <hr />
+            <%= link_to 'Eintrag bearbeiten', edit_message_path(message), class: "btn btn-primary m-2" %>
+            <%= link_to 'Eintrag löschen', message_path(message), method: :delete, data: {confirm: 'Bist du sicher?'}, class: "btn btn-danger m-2" %>
+            <%= link_to 'Neuer Eintrag', new_message_path, class: "btn btn-light m-2" %>
+          </div>
+        <% end %>
   </div>
 <% end %>

@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_20_124139) do
+ActiveRecord::Schema.define(version: 2020_08_21_102620) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "account_messages", force: :cascade do |t|
+    t.bigint "account_id"
+    t.bigint "message_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["account_id"], name: "index_account_messages_on_account_id"
+    t.index ["message_id"], name: "index_account_messages_on_message_id"
+  end
 
   create_table "account_options", force: :cascade do |t|
     t.bigint "account_id"
@@ -174,6 +183,15 @@ ActiveRecord::Schema.define(version: 2020_08_20_124139) do
     t.string "title"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "user_messages", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "message_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["message_id"], name: "index_user_messages_on_message_id"
+    t.index ["user_id"], name: "index_user_messages_on_user_id"
   end
 
   create_table "user_roles", force: :cascade do |t|
