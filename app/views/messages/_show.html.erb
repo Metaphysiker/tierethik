@@ -38,8 +38,10 @@
     Starting_point: <%= message.starting_point %>
   </p>
   <p>
+    <% unless message.target_message_id.blank? %>
     <% target_message = Message.find(message.target_message_id) %>
     Target: <%= link_to target_message.name, message_path(target_message) %>
+    <% end %>  
   </p>
   <p>
     Parent: <%= link_to message.parent.name, message_path(message.parent) if message.has_parent? %>
