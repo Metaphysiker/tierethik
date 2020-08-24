@@ -1,3 +1,12 @@
+.chat-field {
+
+}
+
+.axiforma {
+  font-family: "Axiforma-Light";
+}
+
+
 .no-underline {
   text-decoration: none !important;
 }
@@ -38,6 +47,7 @@
   border-style: solid;
   border-width: 5px;
   box-shadow: 0px 3px 25px #00000029;
+  padding: 1px;
 }
 
 .white-border-for-rounded-circle {
@@ -81,7 +91,7 @@
 
     p {
       @extend .font-weight-bold !optional;
-      text-align: center;
+      //text-align: center;
       font-size: 16px;
       //font: SemiBold 15px/20px Axiforma;
       letter-spacing: 0px;
@@ -111,7 +121,7 @@
 
   p {
     @extend .font-weight-bold !optional;
-    text-align: center;
+    //text-align: center;
     font-size: 16px;
     //font: SemiBold 15px/20px Axiforma;
     color: #354E44;

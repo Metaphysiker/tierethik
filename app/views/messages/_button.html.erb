@@ -1,6 +1,6 @@
 <% message_target_message_id = message.target_message_id.nil? ? Message.first.id : message.target_message_id %>
 <%= link_to vegan_chat_select_button_path(message, message_target_message_id), remote: true, method: :post, class: "no-underline chat-select-button-#{message.id}" do %>
-  <div class="chat-option-field chat-section-field chat-select-button-<%= message.id %> <%= dom_id(message, :button) %>">
+  <div class="chat-option-field axiforma chat-section-field chat-select-button-<%= message.id %> <%= dom_id(message, :button) %>">
         <%= raw sanitizing(message.content) unless message.content.blank? %>
         <% if is_current_user_admin? %>
           <div class="text-center m-2">
