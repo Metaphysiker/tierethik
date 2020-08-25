@@ -6,8 +6,7 @@
           <%= image_tag "portrait_veganer.png", class: "rounded-circle border-white white-border-for-rounded-circle bg-white mr-3", width: "50" %>
 
           <div class="chat-argument-field <%= dom_id(message) %>">
-            <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
-            <%#= raw sanitizing(message.content) unless message.blank? %>
+            <%= raw sanitizing(message.content) unless message.blank? %>
             <% if is_current_user_admin? %>
               <div class="text-center m-2">
                 <hr />
@@ -43,20 +42,3 @@
   </div>
 </div>
 <% end %>
-
-<script>
-  var message_content = "<%= raw sanitizing(message.content) unless message.blank? %>";
-  var id_of_message = ".<%= dom_id(message) %>";
-  var chatter = "<%= @message.chatter %>";
-
-  $( document ).ready(function() {
-
-    if (chatter === "vegan"){
-      setTimeout(function(){
-        VEGANCHAT.animateCSS(id_of_message, 'fadeIn');
-         $( id_of_message ).html( message_content );
-       }, 1200);
-    }
-
-  });
-</script>
