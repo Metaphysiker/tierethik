@@ -10,18 +10,25 @@
   var chatter = "<%= @message.chatter %>";
   var category = "<%= @message.category %>";
   var sleep_time = "<%= @message.sleep_time %>";
+  var time_after_loader = 0;
 
-  $(field_id_name).append(
-    `
-    <%= render "messages/loader", chatter: @message.chatter %>
-    `
-  );
+  if (chatter === "vegan"){
+    time_after_loader = 1200;
 
-  setTimeout(
-  function()
-  {
-    $(".message-loader").remove();
-  }, 1000);
+    $(field_id_name).append(
+      `
+      <%= render "messages/loader", chatter: @message.chatter %>
+      `
+    );
+
+    setTimeout(
+    function()
+    {
+      $(".message-loader").remove();
+    }, 1000);
+  }
+
+
 
   setTimeout(
   function()
@@ -53,7 +60,9 @@
 
     }, sleep_time);
 
-  }, 1200);
+  }, time_after_loader);
+
+
 
 
   function get_message(id, timeout) {
