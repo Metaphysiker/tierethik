@@ -21,6 +21,10 @@
       `
     );
 
+    $('html, body').animate({
+        scrollTop: $(".message-loader").last().offset().top
+    }, 1000);
+
     setTimeout(
     function()
     {
