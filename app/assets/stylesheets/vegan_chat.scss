@@ -153,3 +153,13 @@
   @extend .mx-4 !optional;
   @extend .my-4 !optional;
 }
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}

@@ -6,6 +6,16 @@ class VeganChatController < ApplicationController
     render layout: "application_chat"
   end
 
+  def test
+    response.headers["X-FRAME-OPTIONS"] = "ALLOWALL"
+    render layout: "application_chat"
+  end
+
+  def overview
+    response.headers["X-FRAME-OPTIONS"] = "ALLOWALL"
+    render layout: "application_chat"
+  end
+
   def get_message
     message_id = params[:message]
     @message = Message.find(message_id)

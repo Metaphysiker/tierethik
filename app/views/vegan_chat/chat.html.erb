@@ -1,50 +1,56 @@
-<div class="fluid-container chat-bg mb-3">
+<main role="main" class="">
+  <div class="fluid-container chat-bg mb-3">
 
-  <div style="overflow-x: hidden;">
-    <div class="chat-top">
+    <div style="overflow-x: hidden;">
+      <div class="chat-top">
 
-    </div>
-  </div>
-
-  <div class="text-center">
-    <%= image_tag "portrait_veganer.png", class: "bg-white rounded-circle border-white chat-top-image mt-n6", height: "125" %>
-  </div>
-
-  <div class="container">
-
-    <div id="chat-field">
-      <div class="chat-argument-field axiforma chat-section-field animate__animated animate__bounceIn text-center">
-          <h1>Hallo!</h1>
-          <p>
-            Ich möchte dir ein Video zeigen und dir eine Frage stellen.
-          </p>
-          <p class="bigger">
-              Ist das okay?
-          </p>
       </div>
+    </div>
 
-      <%= link_to vegan_chat_get_video_path(Message.where(starting_point: "yes").sample.id), method: :post, remote: true, class: "no-underline" do %>
-        <div class="chat-option-field chat-section-field animate__animated animate__bounceIn animate__delay-1s text-center axiforma">
+    <div class="text-center">
+      <%= image_tag "portrait_veganer.png", class: "bg-white rounded-circle border-white chat-top-image mt-n6", height: "125" %>
+    </div>
+
+    <div class="container">
+
+      <div id="chat-field">
+        <div class="chat-argument-field axiforma chat-section-field animate__animated animate__bounceIn text-center">
+            <h1>Hallo!</h1>
+            <p>
+              Ich möchte dir ein Video zeigen <br /> und dir eine Frage stellen.
+            </p>
             <p class="bigger">
-              Ja, zeig mir das Video
+                Ist das okay?
             </p>
         </div>
-      <% end %>
+
+        <%= link_to vegan_chat_get_video_path(Message.where(starting_point: "yes").sample.id), method: :post, remote: true, class: "no-underline" do %>
+          <div class="chat-option-field chat-section-field animate__animated animate__bounceIn animate__delay-1s text-center axiforma">
+              <p class="bigger">
+                Ja, zeig mir das Video
+              </p>
+          </div>
+        <% end %>
+      </div>
+
+
+
+
+      <%#= link_to option.content, debate_a_vegan_load_slide_path(option), remote: true, method: :post, class: "debate-button" %>
+
     </div>
 
+  </div>
+</main>
 
-
-
-    <%#= link_to option.content, debate_a_vegan_load_slide_path(option), remote: true, method: :post, class: "debate-button" %>
-
+<footer class="footer fixed-bottom">
+  <div class="container">
     <div class="float-right my-3 menu-button">
       <button type="button" class="px-3 py-2 btn btn-light rounded-circle" data-toggle="modal" data-target="#statusModal">
-        <%= fa_icon "bars 2x", class: "text-info" %>
+        <%= fa_icon "bars 3x", class: "text-info" %>
       </button>
     </div>
   </div>
-
-
-</div>
+</footer>
 
 <%= render 'vegan_chat/menu' %>
