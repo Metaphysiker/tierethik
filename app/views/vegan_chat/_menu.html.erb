@@ -1,19 +1,26 @@
 <!-- Modal -->
 <div class="modal fade" id="statusModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
-    <div class="modal-content">
+    <div class="modal-content darker-chat-bg-color">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Argumentiere mit einem Veganer!</h5>
+        <h5 class="modal-title axiforma text-white" id="exampleModalLabel">Chat</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body text-center">
-        <%= link_to "Neu anfangen", vegan_chat_reset_chat_path, class: "debate-button" %>
-        <%= link_to "Um was geht es hier?", root_path, class: "debate-button" %>
-        <%= mail_to "s.raess@me.com", "Ich möchte mit dir sprechen", class: "debate-button-success" %>
-        <hr />
-        Icons erstellt von <a href="http://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/de/" title="Flaticon"> www.flaticon.com</a>
+        <%= link_to "Neu anfangen", vegan_chat_reset_chat_path, class: "btn btn-light axiforma no-underline btn-lg btn-block" %>
+        <br />
+        <%= link_to "Um was geht es hier?", root_path, class: "btn btn-light axiforma no-underline btn-lg btn-block" %>
+        <br />
+        <%= mail_to "s.raess@me.com", "Ich möchte mit dir sprechen", class: "btn btn-light axiforma no-underline btn-lg btn-block" %>
+        <hr class="bg-light" />
+        <p class="text-white">
+            Icons erstellt von <a href="http://www.freepik.com/" class="text-dark" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/de/" title="Flaticon" class="text-dark"> www.flaticon.com</a>
+        </p>
+        <p class="text-white">
+          Chat-Design von <%= link_to "Daniel Rüthemann - Dunkhell", "https://www.dunkhell.ch/", class: "text-dark" %>
+        </p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Schliessen</button>

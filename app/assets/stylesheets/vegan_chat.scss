@@ -72,6 +72,14 @@
   //background: green;
 }
 
+.darker-chat-bg-color {
+  background: linear-gradient(180deg, #46BFC7 0%, #33C1A7 100%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  //background-repeat: no-repeat;
+  //background: green;
+}
+
 .chat-argument-field {
     @extend .rounded !optional;
     @extend .p-1 !optional;
