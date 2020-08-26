@@ -13,7 +13,7 @@ class VeganChatController < ApplicationController
 
   def overview
     response.headers["X-FRAME-OPTIONS"] = "ALLOWALL"
-    render layout: "application_chat"
+    render layout: "application_blank"
   end
 
   def get_message

@@ -18,4 +18,17 @@ has_many :users, :through => :user_messages
     ["yes", "no"]
   end
 
+  def to_node
+
+    target_message = Message.where(id: self.target_message_id).map { |c| c.to_node }
+    children = self.children.map { |c| c.to_node }
+
+    both = target_message + children
+
+    { "name" => ActionController::Base.helpers.strip_tags(self.content.to_s),
+      "children" => both
+      #{}"children"   => self.children.map { |c| c.to_node }
+    }
+  end
+
 end
