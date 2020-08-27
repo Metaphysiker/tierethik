@@ -26,8 +26,8 @@ var treeData = [<%= raw Message.first.to_node.to_json %>];
 
 // ************** Generate the tree diagram	 *****************
 var margin = {top: 40, right: 120, bottom: 20, left: 120},
-	width = 8000 - margin.right - margin.left,
-	height = 8000 - margin.top - margin.bottom;
+	width = 4000 - margin.right - margin.left,
+	height = 4000 - margin.top - margin.bottom;
 
 var i = 0;
 
@@ -36,6 +36,14 @@ var tree = d3.layout.tree()
 
 var diagonal = d3.svg.diagonal()
 	.projection(function(d) { return [d.x, d.y]; });
+
+  var line = d3.svg.line()
+      .x(function(d) {
+          return d.x; // because tree is horizontal
+      })
+      .y(function(d) {
+          return d.y; // because tree is horizontal
+      });
 
 var svg = d3.select("body").append("svg")
 	.attr("width", width + margin.right + margin.left)
@@ -54,7 +62,11 @@ function update(source) {
 	  links = tree.links(nodes);
 
   // Normalize for fixed-depth.
-  nodes.forEach(function(d) { d.y = d.depth * 150; });
+  nodes.forEach(function(d) {
+      //d.y = d.depth * 100;
+      //d.x = d.x / 1;
+      d.y = d.depth * 100;
+                });
 
   // Declare the nodes…
   var node = svg.selectAll("g.node")
@@ -85,7 +97,10 @@ function update(source) {
   // Enter the links.
   link.enter().insert("path", "g")
 	  .attr("class", "link")
-	  .attr("d", diagonal);
+    .attr("d", function(d) {
+                return line([d.source, d.target]);
+            });
+	  //.attr("d", diagonal);
 
 }
 
