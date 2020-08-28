@@ -30,15 +30,42 @@
 <script>
 var treeData = [<%= raw @message.to_node2(0).to_json %>];
 
+root = treeData[0];
+
 // ************** Generate the tree diagram	 *****************
 var margin = {top: 100, right: 120, bottom: 20, left: 120},
-	width = 2000 - margin.right - margin.left,
-	height = 2000 - margin.top - margin.bottom;
+	width = 4000 - margin.right - margin.left,
+	height = 4000 - margin.top - margin.bottom;
+
+//var width = $(window).width() * 4 - margin.right - margin.left;
+//	var height = $(window).height() * 4 - margin.top - margin.bottom;
+
+// compute the new width
+var levelWidth = [1];
+var childCount = function(level, n) {
+
+	if(n.children && n.children.length > 0) {
+		if(levelWidth.length <= level + 1) levelWidth.push(0);
+
+		levelWidth[level+1] += n.children.length;
+		n.children.forEach(function(d) {
+			childCount(level + 1, d);
+		});
+	}
+};
+childCount(0, root);
+var newWidth = d3.max(levelWidth) * 400; // 20 pixels per line
+//tree = tree.size([newHeight, width]);
+//console.log(levelWidth);
+var newHeight = levelWidth.length * 100 //
+
+width = newWidth;
+height = newHeight;
 
 var i = 0;
 
 var tree = d3.layout.tree()
-	.size([height, width]);
+	.size([width, height]);
 
 var diagonal = d3.svg.diagonal()
 	.projection(function(d) { return [d.x, d.y]; });
@@ -57,7 +84,6 @@ var svg = d3.select("#diagram").append("svg")
   .append("g")
 	.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-root = treeData[0];
 
 update(root);
 
@@ -70,7 +96,7 @@ function update(source) {
   // Normalize for fixed-depth.
   nodes.forEach(function(d) {
       //d.y = d.depth * 100;
-      //d.x = d.x / 1;
+      //d.x = d.x * 3000;
       d.y = d.depth * 100;
                 });
 
@@ -130,6 +156,11 @@ function update(source) {
 	});
 
 	//scrollTop: $("#diagram").offset().top + $("#diagram").height() / 2;
-	$( "#diagram" ).scrollLeft( 300 );
+	$('html, body').animate({
+		scrollLeft: $(window).width()
+	}, 100);
+
+
+
 
 </script>
