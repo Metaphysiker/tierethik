@@ -21,6 +21,10 @@
 	  stroke-width: 1px;
 	}
 
+	.click-circle {
+		cursor: pointer;
+	}
+
 </style>
 
 <div id="diagram">
@@ -54,7 +58,7 @@ var childCount = function(level, n) {
 	}
 };
 childCount(0, root);
-var newWidth = d3.max(levelWidth) * 400; // 20 pixels per line
+var newWidth = d3.max(levelWidth) * 800; // 20 pixels per line
 //tree = tree.size([newHeight, width]);
 //console.log(levelWidth);
 var newHeight = levelWidth.length * 100 //
@@ -96,7 +100,7 @@ function update(source) {
   // Normalize for fixed-depth.
   nodes.forEach(function(d) {
       //d.y = d.depth * 100;
-      //d.x = d.x * 3000;
+      d.x = d.x * 1;
       d.y = d.depth * 100;
                 });
 
@@ -111,18 +115,35 @@ function update(source) {
 		  return "translate(" + d.x + "," + d.y + ")"; });
 
   nodeEnter.append("circle")
-	  .attr("r", 10)
-		.attr("class", "click-circle")
+	  .attr("r", 1)
+		//.attr("class", "click-circle")
 		.attr("id_of_message", function(d) { return d.id_of_message})
 	  .style("fill", "#fff");
 
-  nodeEnter.append("text")
-	  .attr("y", function(d) {
-		  return d.children || d._children ? -35 : 35; })
-	  .attr("dy", ".35em")
-	  .attr("text-anchor", "middle")
-	  .text(function(d) { return d.name; })
-	  .style("fill-opacity", 1);
+		/*nodeEnter.append("div")
+			.attr("class", "click-circle")
+			.style("opacity", 1)
+			.html("<b>Hey!</b>")*/
+
+
+		nodeEnter.append("foreignObject")
+		.attr("y", function(d) {
+			return d.children || d._children ? -0 : 0; })
+		.attr("x", function(d){
+			return -200;
+		})
+		//.attr("dy", ".35em")
+    .attr("width", 400)
+    .attr("height", 100)
+  	.append("xhtml:div")
+		.append('div')
+		.attr("id_of_message", function(d) { return d.id_of_message})
+		.attr('class', "border click-circle text-center bg-light p-1 rounded")
+		.append('p')
+		.text(function(d) { return d.name; });
+    //.html(function(d) { return "<div class=\"border click-circle text-center bg-light p-1 rounded\" id_of_message=\"" + d.id_of_message + "\"><b>" + d.name + "</div></b>"; });
+
+
 
   // Declare the links…
   var link = svg.selectAll("path.link")
@@ -138,21 +159,19 @@ function update(source) {
 
 }
 
-  //click function
-
-  function edit_message(d,i) {
-		alert("hey!");
-  }
-
 	$( ".click-circle" ).click(function() {
 	 var id_of_message = $( this ).attr( 'id_of_message' );
 	 window.location.href = window.location.origin + "/vegan_chat/overview/" + id_of_message;
 	});
 
 	$(".click-circle").hover(function(){
-	  $(this).css("fill", "yellow");
+	  //$(this).css("background-color", "yellow !important");
+		$( this ).removeClass( "bg-light" );
+		$( this ).addClass( "bg-primary" );
 	  }, function(){
-	  $(this).css("fill", "white");
+	  //$(this).css("fill", "white");
+		$( this ).addClass( "bg-light" );
+		$( this ).removeClass( "bg-primary" );
 	});
 
 	//scrollTop: $("#diagram").offset().top + $("#diagram").height() / 2;

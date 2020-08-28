@@ -33,7 +33,13 @@ has_many :users, :through => :user_messages
   end
 
   def to_node2(n)
-    return [] if n > 6
+    if n > 6
+      last_node = { "name" => ActionController::Base.helpers.strip_tags(self.content.to_s),
+            "id_of_message" => self.id,
+          }
+      return last_node
+    end
+
     n = n + 1
 
     target_message = Message.where(id: self.target_message_id).map { |c| c.to_node2(n) }
