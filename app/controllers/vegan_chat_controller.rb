@@ -12,6 +12,15 @@ class VeganChatController < ApplicationController
   end
 
   def overview
+    message_id = params[:id]
+
+    if message_id.blank?
+      @message = Message.where(starting_point: "yes").sample
+    else
+      @message = Message.find(message_id)
+    end
+
+
     response.headers["X-FRAME-OPTIONS"] = "ALLOWALL"
     render layout: "application_blank"
   end

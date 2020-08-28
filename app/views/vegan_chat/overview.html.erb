@@ -6,7 +6,9 @@
 	  fill: #fff;
 	  stroke: steelblue;
 	  stroke-width: 3px;
+		cursor: pointer;
 	}
+
 
 	.node text {
     font: 18px;
@@ -21,13 +23,17 @@
 
 </style>
 
+<div id="diagram">
+
+</div>
+
 <script>
-var treeData = [<%= raw Message.first.to_node.to_json %>];
+var treeData = [<%= raw @message.to_node2(0).to_json %>];
 
 // ************** Generate the tree diagram	 *****************
-var margin = {top: 40, right: 120, bottom: 20, left: 120},
-	width = 4000 - margin.right - margin.left,
-	height = 4000 - margin.top - margin.bottom;
+var margin = {top: 100, right: 120, bottom: 20, left: 120},
+	width = 2000 - margin.right - margin.left,
+	height = 2000 - margin.top - margin.bottom;
 
 var i = 0;
 
@@ -45,7 +51,7 @@ var diagonal = d3.svg.diagonal()
           return d.y; // because tree is horizontal
       });
 
-var svg = d3.select("body").append("svg")
+var svg = d3.select("#diagram").append("svg")
 	.attr("width", width + margin.right + margin.left)
 	.attr("height", height + margin.top + margin.bottom)
   .append("g")
@@ -80,6 +86,8 @@ function update(source) {
 
   nodeEnter.append("circle")
 	  .attr("r", 10)
+		.attr("class", "click-circle")
+		.attr("id_of_message", function(d) { return d.id_of_message})
 	  .style("fill", "#fff");
 
   nodeEnter.append("text")
@@ -103,5 +111,25 @@ function update(source) {
 	  //.attr("d", diagonal);
 
 }
+
+  //click function
+
+  function edit_message(d,i) {
+		alert("hey!");
+  }
+
+	$( ".click-circle" ).click(function() {
+	 var id_of_message = $( this ).attr( 'id_of_message' );
+	 window.location.href = window.location.origin + "/vegan_chat/overview/" + id_of_message;
+	});
+
+	$(".click-circle").hover(function(){
+	  $(this).css("fill", "yellow");
+	  }, function(){
+	  $(this).css("fill", "white");
+	});
+
+	//scrollTop: $("#diagram").offset().top + $("#diagram").height() / 2;
+	$( "#diagram" ).scrollLeft( 300 );
 
 </script>
