@@ -71,5 +71,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "font-awesome-rails"
 
 gem 'tinymce-rails'
-gem 'sanitize'
+gem "sanitize", ">= 5.2.1"
 gem 'mini_magick'
+
+gem "rack", ">= 2.2.3"
+gem "websocket-extensions", ">= 0.1.5"
