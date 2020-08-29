@@ -18,6 +18,20 @@ has_many :users, :through => :user_messages
     ["yes", "no"]
   end
 
+  def self.dead_end_breaker_options
+    ["yes", "no"]
+  end
+
+  def ids_of_children(account)
+    children = self.children.where(dead_end_breaker: "no").pluck(:id) - account.messages.pluck(:id)
+
+    if children.empty?
+      children = self.children.where(dead_end_breaker: "yes").pluck(:id)
+    end
+
+    children
+  end
+
   def to_node
 
     target_message = Message.where(id: self.target_message_id).map { |c| c.to_node }

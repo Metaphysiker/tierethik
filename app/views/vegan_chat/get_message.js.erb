@@ -51,7 +51,7 @@
         scrollTop: $(element_message_id).last().offset().top
     }, 1000);
 
-    var ids_of_children = "<%= @message.children.pluck(:id) - @account.messages.pluck(:id) %>";
+    var ids_of_children = "<%= raw @message.ids_of_children(@account) %>";
 
     setTimeout(
     function()
