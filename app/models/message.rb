@@ -26,7 +26,8 @@ has_many :users, :through => :user_messages
     children = self.children.where(dead_end_breaker: "no").pluck(:id) - account.messages.pluck(:id)
 
     if children.empty?
-      children = self.children.where(dead_end_breaker: "yes").pluck(:id)
+      #children = self.children.where(dead_end_breaker: "yes").pluck(:id)
+      children = self.children.pluck(:id)
     end
 
     children
