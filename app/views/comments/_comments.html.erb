@@ -1,4 +1,7 @@
-<% parent.comments.each do |comment| %>
-  <%= comment.content %>
-  <hr />
-<% end %>
+<div class="comment_field_<%= dom_id(parent) %>">
+
+  <% parent.comments.each do |comment| %>
+    <%= comment.content %>
+    <hr />
+  <% end %>
+</div>

@@ -44,14 +44,16 @@
 </div>
 <% end %>
 
-<button class="btn btn-primary" type="button" data-toggle="collapse" data-target=".collapse-<%= dom_id(message) %>" aria-expanded="false" aria-controls="collapse-<%= dom_id(message) %>">Kommentieren</button>
+  <%#= render 'comments/comment_function', message: message %>
 
-<div class="collapse multi-collapse collapse-<%= dom_id(message) %>" id="">
-  <div class="card card-body">
-    <%= render 'comments/comments', parent: message %>
-    <%= render 'comments/form', parent: message %>
+  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target=".collapse-<%= dom_id(message) %>" aria-expanded="false" aria-controls="collapse-<%= dom_id(message) %>">Kommentieren</button>
+
+  <div class="collapse multi-collapse collapse-<%= dom_id(message) %>" id="">
+    <div class="card card-body">
+      <%= render 'comments/comments', parent: message %>
+      <%= render 'comments/form', parent: message %>
+    </div>
   </div>
-</div>
 
 
 <script>

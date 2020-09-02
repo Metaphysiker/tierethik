@@ -9,6 +9,10 @@ class CommentsController < ApplicationController
 
   end
 
+  def comment_function
+    @message = Message.find(params[:id])
+  end
+
   private
   def comment_params
     params.require(:comment).permit(:content, :commentable_id, :commentable_type)

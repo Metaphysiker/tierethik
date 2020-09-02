@@ -56,5 +56,6 @@ Rails.application.routes.draw do
   post '/debate_a_vegan/load_starting_slide/:starting_slide', to: 'debate_a_vegan#load_starting_slide', as: 'debate_a_vegan_load_starting_slide'
 
   post '/comments/create_comment', to: 'comments#create_comment', as: 'create_comment'
+  get '/comments/comment_function/:id', to: 'comments#comment_function', as: 'comment_function'
 
 end

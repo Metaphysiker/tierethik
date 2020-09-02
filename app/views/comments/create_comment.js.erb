@@ -1,1 +1,6 @@
-alert("<%= @comment.content %>");
+comment_field = ".comment_field_<%= dom_id(@comment.commentable) %>";
+content = "<%= raw @comment.content %>"
+
+VEGANCHAT.animateCSS(comment_field, 'fadeIn');
+ $( comment_field ).append( content );
+ $( comment_field ).append( "<hr>" );
