@@ -12,10 +12,11 @@
     <%= f.input :chatter, as: :select, collection: Message.chatters, input_html: {class: 'chosen-select', :data => {:placeholder => "Option auswählen"}, multiple: false} %>
     <%= f.input :starting_point, as: :select, collection: Message.starting_points, input_html: {class: 'chosen-select', :data => {:placeholder => "Option auswählen"}, multiple: false} %>
     <%= f.input :target_message_id, as: :select, collection: Message.all, input_html: {class: 'chosen-select', :data => {:placeholder => "Option auswählen"}, multiple: false} %>
-    <%= f.input :dead_end_breaker, as: :select, collection: Message.dead_end_breaker_options, input_html: {class: 'chosen-select', :data => {:placeholder => "Option auswählen"}, multiple: false} %>
+    <%#= f.input :dead_end_breaker, as: :select, collection: Message.dead_end_breaker_options, input_html: {class: 'chosen-select', :data => {:placeholder => "Option auswählen"}, multiple: false} %>
 
     <%#= f.input :target_message_id_for_option, as: :select, collection: Message.all, input_html: {class: 'chosen-select', :data => {:placeholder => "Option auswählen"}, multiple: false} %>
     <%= f.input :parent_id, as: :select, collection: Message.all, input_html: {class: 'chosen-select', :data => {:placeholder => "Option auswählen"}, multiple: false} %>
+    <%= f.input :order %>
     <%= f.text_area :content, :class => "tinymce", :rows => 40, :cols => 120 %>
   </div>
 

@@ -23,11 +23,11 @@ has_many :users, :through => :user_messages
   end
 
   def ids_of_children(account)
-    children = self.children.where(dead_end_breaker: "no").pluck(:id) - account.messages.pluck(:id)
+    children = self.children.order(:order).pluck(:id) - account.messages.pluck(:id)
 
     if children.empty?
       #children = self.children.where(dead_end_breaker: "yes").pluck(:id)
-      children = self.children.pluck(:id)
+      children = self.children.order(:order).pluck(:id)
     end
 
     children

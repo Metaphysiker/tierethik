@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_29_194607) do
+ActiveRecord::Schema.define(version: 2020_09_02_052012) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -114,6 +114,7 @@ ActiveRecord::Schema.define(version: 2020_08_29_194607) do
     t.integer "video_duration", default: 0
     t.integer "sleep_time", default: 2000
     t.string "dead_end_breaker", default: "no"
+    t.integer "order", default: 5
     t.index ["ancestry"], name: "index_messages_on_ancestry"
   end
 
