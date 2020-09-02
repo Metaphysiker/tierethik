@@ -1,0 +1,17 @@
+<% parent_id = parent.id %>
+<% parent_type = parent.class.to_s %>
+
+<%= simple_form_for Comment.new, {url: create_comment_path, method: :post, remote: true} do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :content, label: "Kommentar" %>
+    <%= f.hidden_field :commentable_id, value: parent_id %>
+    <%= f.hidden_field :commentable_type, value: parent_type %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Absenden" %>
+  </div>
+<% end %>
