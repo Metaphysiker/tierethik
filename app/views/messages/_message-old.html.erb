@@ -3,7 +3,7 @@
   <div class="chat-section-field axiforma">
     <div class="row">
         <div class="col-11 d-flex align-items-end">
-          <%= image_tag "portrait_veganer.png", class: "rounded-circle border-white white-border-for-rounded-circle bg-white mr-3", width: "50" %>
+          <%= image_tag @account.portrait_name, class: "rounded-circle border-white white-border-for-rounded-circle bg-white mr-3", width: "50" %>
 
           <div class="chat-argument-field <%= dom_id(message) %>">
             <%= raw sanitizing(message.content) unless message.blank? %>

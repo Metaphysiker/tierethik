@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   get '/static_pages/texts', to: 'static_pages#texts', as: 'texts'
 
   get '/static_pages/dashboard', to: 'static_pages#dashboard', as: 'dashboard'
+  get '/static_pages/impressum', to: 'static_pages#impressum', as: 'impressum'
 
   #get '/event_calendar', to: 'event_calendar#event_calendar', as: 'event_calendar'
   get '/event_calendar/(:date)', to: 'event_calendar#event_calendar', as: 'event_calendar'
